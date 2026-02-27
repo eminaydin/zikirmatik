@@ -1,0 +1,34 @@
+[
+  {
+    "id": "1",
+    "text": "Subhanallahi ve bihamdihi",
+    "translation": "Allah'ı hamd ile tesbih ederim",
+    "source": "Buhari, Müslim",
+    "target": 100,
+    "virtue": "Günde 100 defa söyleyenin günahları deniz köpüğü kadar da olsa affedilir."
+  },
+  {
+    "id": "2",
+    "text": "Subhanallahi'l-Azim ve bihamdihi",
+    "translation": "Yüce Allah'ı hamd ile tesbih ederim",
+    "source": "Buhari",
+    "target": 33,
+    "virtue": "Dilde hafif, terazide ağır, Rahman'a sevgili olan iki kelime..."
+  },
+  {
+    "id": "3",
+    "text": "La havel ve la kuvvete illa billah",
+    "translation": "Güç ve kuvvet ancak Allah'ındır",
+    "source": "Müslim",
+    "target": 100,
+    "virtue": "Cennet hazinelerinden bir hazinedir."
+  },
+  {
+    "id": "4",
+    "text": "Elhamdulillah",
+    "translation": "Hamd Allah'adır",
+    "source": "Hadis-i Şerif",
+    "target": 33,
+    "virtue": "Mizanı doldurur."
+  }
+]

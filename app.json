@@ -1,15 +1,16 @@
 {
   "expo": {
-    "name": "ethereal-parsec",
-    "slug": "ethereal-parsec",
+    "name": "Zikirmatik",
+    "slug": "zikirmatik",
     "version": "1.0.0",
     "orientation": "portrait",
+    "scheme": "zikirmatik",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
+    "userInterfaceStyle": "dark",
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#0F172A"
     },
     "ios": {
       "supportsTablet": true
@@ -24,6 +25,10 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      "expo-router",
+      "expo-font"
+    ]
   }
 }
