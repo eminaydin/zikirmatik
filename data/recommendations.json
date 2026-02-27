@@ -1,34 +1,122 @@
 [
   {
     "id": "1",
-    "text": "Subhanallahi ve bihamdihi",
-    "translation": "Allah'ı hamd ile tesbih ederim",
-    "source": "Buhari, Müslim",
-    "target": 100,
-    "virtue": "Günde 100 defa söyleyenin günahları deniz köpüğü kadar da olsa affedilir."
+    "text": "La ilahe illa ente subhaneke inni kuntu minez-zalimin",
+    "translation": "Senden başka ilah yoktur. Seni eksikliklerden tenzih ederim, ben zalimlerden oldum.",
+    "source": "Kur'an-ı Kerim (Enbiya, 87)",
+    "target": 33,
+    "virtue": "Hz. Yunus'un (as) balığın karnındaki zikridir. Dert ve kederden kurtulmak için çekilir."
   },
   {
     "id": "2",
-    "text": "Subhanallahi'l-Azim ve bihamdihi",
-    "translation": "Yüce Allah'ı hamd ile tesbih ederim",
-    "source": "Buhari",
-    "target": 33,
-    "virtue": "Dilde hafif, terazide ağır, Rahman'a sevgili olan iki kelime..."
+    "text": "Hasbiyallahu la ilahe illa hu, aleyhi tevekkeltü ve hüve rabbü'l-arşi'l-azim",
+    "translation": "Allah bana kafidir. O'ndan başka ilah yoktur. Ben O'na tevekkül ettim.",
+    "source": "Kur'an-ı Kerim (Tevbe, 129)",
+    "target": 7,
+    "virtue": "Dünya ve ahiret işlerinde Allah'ın kafi gelmesi ve sıkıntıların def'i için."
   },
   {
     "id": "3",
-    "text": "La havel ve la kuvvete illa billah",
-    "translation": "Güç ve kuvvet ancak Allah'ındır",
-    "source": "Müslim",
+    "text": "Rabbi inni messeniye'd-durru ve ente erhamu'r-rahimin",
+    "translation": "Rabbim! Zarar bana dokundu, Sen ise merhametlilerin en merhametlisisin.",
+    "source": "Kur'an-ı Kerim (Enbiya, 83)",
     "target": 100,
-    "virtue": "Cennet hazinelerinden bir hazinedir."
+    "virtue": "Hz. Eyyub'un (as) şifa zikridir. Maddi ve manevi hastalıklara şifa niyetine çekilir."
   },
   {
     "id": "4",
-    "text": "Elhamdulillah",
-    "translation": "Hamd Allah'adır",
-    "source": "Hadis-i Şerif",
+    "text": "Hasbunallahu ve ni'mel vekil, ni'mel mevla ve ni'men-nasir",
+    "translation": "Allah bize yeter, O ne güzel vekildir. Ne güzel mevla ve ne güzel yardımcıdır.",
+    "source": "Kur'an (Âl-i İmrân, 173 / Enfâl, 40)",
+    "target": 100,
+    "virtue": "Kuvvetli bir korunma ve Allah'ın yardımına sığınma zikridir."
+  },
+  {
+    "id": "5",
+    "text": "Rabbena atina fid-dunya haseneten ve fil-ahireti haseneten ve kina azaben-nar",
+    "translation": "Rabbimiz! Bize dünyada da iyilik ver, ahirette de iyilik ver ve bizi ateşten koru.",
+    "source": "Kur'an-ı Kerim (Bakara, 201)",
     "target": 33,
-    "virtue": "Mizanı doldurur."
+    "virtue": "İki cihan saadeti için en kapsamlı Kur'an dualarındandır."
+  },
+  {
+    "id": "6",
+    "text": "Subhanallahi ve bihamdihi adede halkihi ve rida nefsihi ve zinete arşihi ve midade kelimatih",
+    "translation": "Mahlukatı sayısınca, nefsi rızasınca, arşının ağırlığınca ve kelimelerinin adedince Allah'ı hamd ile tesbih ederim.",
+    "source": "Hadis-i Şerif (Müslim)",
+    "target": 100,
+    "virtue": "Çok kısa sürede çok büyük sevap kazandıran kapsamlı bir tesbihtir."
+  },
+  {
+    "id": "7",
+    "text": "Estağfirullahe'l-azim el-lezi la ilahe illa huve'l-hayyu'l-kayyumu ve etubü ileyh",
+    "translation": "Kendisinden başka ilah olmayan, Hayy ve Kayyum olan Azim Allah'tan mağfiret dilerim.",
+    "source": "Hadis-i Şerif (Tirmizi)",
+    "target": 100,
+    "virtue": "Günahların bağışlanmasına ve kalbin nurlanmasına vesile olan güçlü bir istiğfardır."
+  },
+  {
+    "id": "8",
+    "text": "Ya Hayyu Ya Kayyum bi-rahmetike estegisu, aslih li şe'ni kullehu ve la tekilni ila nefsi tarfete ayn",
+    "translation": "Ey Hayy ve Kayyum olan! Rahmetinle yardım dilerim. Bütün işlerimi düzelt ve beni göz açıp kapayıncaya kadar nefsime bırakma.",
+    "source": "Hadis-i Şerif (Tirmizi)",
+    "target": 33,
+    "virtue": "Sıkıntılı anlarda ve ilahi yardım talebinde en etkili zikirlerden biridir."
+  },
+  {
+    "id": "9",
+    "text": "La ilahe illallahü'l-melikü'l-hakku'l-mübin",
+    "translation": "Mülk sahibi, hak ve varlığı apaçık olan Allah'tan başka ilah yoktur.",
+    "source": "Hadis-i Şerif (Ebu Nuaym)",
+    "target": 100,
+    "virtue": "Rızkın bollaşmasına ve kabir azabından korunmaya vesile olur."
+  },
+  {
+    "id": "10",
+    "text": "Allahumme salli ala seyyidina Muhammedin salaten tuncina biha min cemial ehvali vel-afat",
+    "translation": "Allah'ım! Efendimiz Muhammed'e öyle bir salat et ki, onunla bizi tüm korku ve belalardan kurtar.",
+    "source": "Salat-ı Münciye (Ariflerin Virdi)",
+    "target": 11,
+    "virtue": "Maddi ve manevi tehlikelerden korunmak ve selamet bulmak için okunur."
+  },
+  {
+    "id": "11",
+    "text": "Allahumme salli salaten kamileten ve sellim selamen tammen ala seyyidina Muhammedinillezi tenhallu bihil ukad",
+    "translation": "Allah'ım! Efendimiz Muhammed'e tam bir salat ve selâm eyle ki, onunla düğümler çözülsün, sıkıntılar dağılsın.",
+    "source": "Salat-ı Tefriciye (Meşhur Salavat)",
+    "target": 100,
+    "virtue": "Çıkmaza giren işlerin açılması ve muratların hasıl olması için çekilir."
+  },
+  {
+    "id": "12",
+    "text": "Subhanallahi vel-hamdülillahi ve la ilahe illallahu vallahu ekber",
+    "translation": "Allah'ı tenzih ederim, hamd O'nadır, O'ndan başka ilah yoktur ve Allah en büyüktür.",
+    "source": "Hadis-i Şerif (Müslim)",
+    "target": 100,
+    "virtue": "Baki kalacak salih amellerdendir ve cennet ağaçları sayılır."
+  },
+  {
+    "id": "13",
+    "text": "Ya Zel Celali vel İkram",
+    "translation": "Ey Celal ve İkram sahibi olan Allah'ım!",
+    "source": "Hadis-i Şerif (Tirmizi)",
+    "target": 100,
+    "virtue": "Duaların kabulünü hızlandıran ve Allah'ın en büyük isimlerinden birini içeren zikirdir."
+  },
+  {
+    "id": "14",
+    "text": "Rabbi heb li min ledunke zurriyeten tayyibeten inneke semi'ud-dua",
+    "translation": "Rabbim! Bana katından temiz bir nesil bahşet. Şüphesiz sen duayı hakkıyla işitensin.",
+    "source": "Kur'an-ı Kerim (Âl-i İmrân, 38)",
+    "target": 33,
+    "virtue": "Hayırlı evlat ve temiz bir aile hayatı için edilen Kur'anî bir duadır."
+  },
+  {
+    "id": "15",
+    "text": "La ilahe illallahu vahdehu la şerike leh, lehü'l-mülkü ve lehü'l-hamdü ve hüve ala külli şey'in kadir",
+    "translation": "Allah'tan başka ilah yoktur, tektir, ortağı yoktur. Mülk O'nundur, hamd O'nadır.",
+    "source": "Hadis-i Şerif (Buhari)",
+    "target": 100,
+    "virtue": "Günde 100 defa çekilmesi 10 köle azat etmek kadar sevaptır ve şeytandan korur."
   }
 ]

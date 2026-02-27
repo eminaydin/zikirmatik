@@ -26,6 +26,10 @@ export default function RootLayout() {
           name="settings"
           options={{ title: 'Yeni Zikir Ekle', presentation: 'modal' }}
         />
+        <Stack.Screen
+          name="history"
+          options={{ title: 'Zikir Geçmişi' }}
+        />
       </Stack>
     </>
   );

@@ -11,12 +11,15 @@ import {
   Alert,
 } from 'react-native';
 import { Colors } from '../constants/Colors';
-import { useRouter } from 'expo-router';
+import { useRouter, useFocusEffect } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Haptics from 'expo-haptics';
+import { Ionicons } from '@expo/vector-icons';
+import { Switch } from 'react-native';
 
 export default function SettingsScreen() {
   const [text, setText] = useState('');
+  const [arabic, setArabic] = useState('');
   const [target, setTarget] = useState('33');
   const router = useRouter();
 
@@ -27,9 +30,9 @@ export default function SettingsScreen() {
       return;
     }
 
-    await Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
     const newZikir = {
       text: trimmed,
+      arabic: arabic.trim() || undefined,
       target: parseInt(target, 10) || 33,
       count: 0,
     };
@@ -44,17 +47,29 @@ export default function SettingsScreen() {
     >
       <ScrollView contentContainerStyle={styles.scroll} keyboardShouldPersistTaps="handled">
         <Text style={styles.hint}>
-          Kendi zikirini ekleyerek sayısını takip edebilirsin.
+          Yeni bir zikir ekleyerek hedefinizi belirleyebilir ve uygulama ayarlarını yönetebilirsiniz.
         </Text>
 
         <View style={styles.section}>
-          <Text style={styles.label}>Zikir Metni</Text>
+          <Text style={styles.label}>Zikir Metni (Türkçe / Okunuş)</Text>
           <TextInput
             style={styles.input}
             placeholder="Örn: La İlahe İllallah"
             placeholderTextColor={Colors.dark.textSecondary}
             value={text}
             onChangeText={setText}
+            multiline
+          />
+        </View>
+
+        <View style={styles.section}>
+          <Text style={styles.label}>Zikir Metni (Arapça - İsteğe Bağlı)</Text>
+          <TextInput
+            style={[styles.input, { textAlign: 'right', fontSize: 20 }]}
+            placeholder="لَا إِلٰهَ إِلَّا اللّٰهُ"
+            placeholderTextColor={Colors.dark.textSecondary}
+            value={arabic}
+            onChangeText={setArabic}
             multiline
           />
         </View>
@@ -140,5 +155,16 @@ const styles = StyleSheet.create({
     color: '#0F172A',
     fontSize: 16,
     fontWeight: '700',
+  },
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  subHint: {
+    color: Colors.dark.textSecondary,
+    fontSize: 12,
+    marginTop: 2,
+    opacity: 0.7,
   },
 });

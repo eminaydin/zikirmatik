@@ -2,7 +2,9 @@
   "compilerOptions": {
     "strict": false,
     "noImplicitAny": false,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "jsx": "react-native",
+    "lib": ["es2015", "dom"]
   },
   "extends": "expo/tsconfig.base"
 }

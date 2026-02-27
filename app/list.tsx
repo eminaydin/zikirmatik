@@ -1,109 +1,252 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   StyleSheet,
   Text,
   View,
-  FlatList,
+  SectionList,
   Pressable,
-  ListRenderItem,
+  Platform,
+  UIManager,
 } from 'react-native';
+import Animated, {
+  FadeIn,
+  FadeOut,
+  LinearTransition,
+  Easing,
+  useSharedValue,
+  useAnimatedStyle,
+  withTiming,
+} from 'react-native-reanimated';
 import { Colors } from '../constants/Colors';
 import { useRouter } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Haptics from 'expo-haptics';
+import { Ionicons } from '@expo/vector-icons';
+
+if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental) {
+  UIManager.setLayoutAnimationEnabledExperimental(true);
+}
 
 interface ZikirItem {
   id: string;
   text: string;
+  arabic?: string;
   translation: string;
   source: string;
   target: number;
-  virtue: string;
 }
 
-// Embedded data to avoid JSON import type issues
-const RECOMMENDATIONS: ZikirItem[] = [
+const AccordionItem = ({ item, index, isExpanded, onPress }: { item: ZikirItem, index: number, isExpanded: boolean, onPress: () => void }) => {
+  const height = useSharedValue(0);
+  const opacity = useSharedValue(0);
+  const [contentHeight, setContentHeight] = useState(1);
+
+  useEffect(() => {
+    height.value = withTiming(isExpanded ? contentHeight : 0, {
+      duration: 400,
+      easing: Easing.out(Easing.quad),
+    });
+    opacity.value = withTiming(isExpanded ? 1 : 0, { duration: 300 });
+  }, [isExpanded, contentHeight]);
+
+  const animatedStyle = useAnimatedStyle(() => ({
+    height: height.value,
+    opacity: opacity.value,
+    overflow: 'hidden',
+  }));
+
+  return (
+    <Animated.View style={animatedStyle}>
+      <View 
+        onLayout={(e) => {
+          const h = e.nativeEvent.layout.height;
+          if (h > 0 && h !== contentHeight) setContentHeight(h);
+        }}
+        style={{ position: 'absolute', width: '100%' }}
+      >
+        <Pressable 
+          style={[
+            styles.card,
+            index === 0 ? styles.cardFirst : styles.cardSubsequent
+          ]} 
+          onPress={onPress}
+        >
+          <View style={styles.cardHeader}>
+            <Text style={styles.cardTitle}>{item.text}</Text>
+            <Text style={styles.cardTarget}>{item.target}×</Text>
+          </View>
+          {item.arabic && (
+            <Text style={styles.cardArabic}>{item.arabic}</Text>
+          )}
+          <Text style={styles.cardTranslation}>{item.translation}</Text>
+          <View style={styles.cardFooter}>
+            <Text style={styles.cardSource}>📜 {item.source}</Text>
+          </View>
+        </Pressable>
+      </View>
+    </Animated.View>
+  );
+};
+
+interface ZikirSection {
+  title: string;
+  data: ZikirItem[];
+}
+
+const CATEGORIZED_RECOMMENDATIONS: ZikirSection[] = [
   {
-    id: '1',
-    text: 'Subhanallahi ve bihamdihi',
-    translation: "Allah'ı hamd ile tesbih ederim",
-    source: 'Buhari, Müslim',
-    target: 100,
-    virtue: "Günde 100 defa söyleyenin günahları deniz köpüğü kadar da olsa affedilir.",
+    title: 'Temel Zikirler',
+    data: [
+      {
+        id: '12',
+        text: 'Subhanallahi vel-hamdülillahi ve la ilahe illallahu vallahu ekber',
+        arabic: 'سُبْحَانَ اللَّهِ وَالْحَمْدُ لِلَّهِ وَلَا إِلٰهَ إِلَّا اللَّهُ وَاللَّهُ أَكْبَرُ',
+        translation: 'Allah\'ı tenzih ederim, hamd O\'nadır, O\'ndan başka ilah yoktur ve Allah en büyüktür.',
+        source: 'Resulullah (sav) buyurdu: "Allah katında kelamın en sevimlisi dörttür: Sübhanallah, Elhamdülillah, Lâ ilâhe illallah ve Allahu ekber. Hangisiyle başlasan sana zarar vermez." (Müslim, Âdâb 12)',
+        target: 100,
+      },
+      {
+        id: '15',
+        text: 'La ilahe illallahu vahdehu la şerike leh, lehü\'l-mülkü ve lehü\'l-hamdü ve hüve ala külli şey\'in kadir',
+        arabic: 'لَا إِلٰهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ',
+        translation: 'Allah\'tan başka ilah yoktur, tektir, ortağı yoktur. Mülk O\'nundur, hamd O\'nadır.',
+        source: 'Resulullah (sav) buyurdu: "Kim günde yüz defa bu zikri söylerse, on köle azat etmiş gibi sevap alır, kendisine yüz iyilik yazılır ve yüz günahı silinir." (Buhari, Daavat 54)',
+        target: 100,
+      },
+    ]
   },
   {
-    id: '2',
-    text: "Subhanallahi'l-Azim ve bihamdihi",
-    translation: "Yüce Allah'ı hamd ile tesbih ederim",
-    source: 'Buhari',
-    target: 33,
-    virtue: 'Dilde hafif, terazide ağır, Rahman\'a sevgili olan iki kelime.',
+    title: 'Korunma ve Selamet',
+    data: [
+      {
+        id: '1',
+        text: 'La ilahe illa ente subhaneke inni kuntu minez-zalimin',
+        arabic: 'لَا إِلٰهَ إِلَّا أَنْتَ سُبْحَانَكَ إِنِّي كُنْتُ مِنَ الظَّالِمِينَ',
+        translation: 'Senden başka ilah yoktur. Seni eksikliklerden tenzih ederim, ben zalimlerden oldum.',
+        source: 'Kur\'an-ı Kerim, Enbiya Suresi 87. Ayet. Peygamber Efendimiz (sav) şöyle buyurmuştur: "Bir müslüman darda kaldığında bu dua ile dua ederse Allah mutlaka onun duasını kabul eder."',
+        target: 33,
+      },
+      {
+        id: '4',
+        text: 'Hasbunallahu ve ni\'mel vekil, ni\'mel mevla ve ni\'men-nasir',
+        arabic: 'حَسْبُنَا اللَّهُ وَنِعْمَ الْوَكِيلُ نِعْمَ الْمَوْلَى وَنِعْمَ النَّصِيرُ',
+        translation: 'Allah bize yeter, O ne güzel vekildir. Ne güzel mevla ve ne güzel yardımcıdır.',
+        source: 'Hz. İbrahim (as) ateşe atıldığı zaman "Hasbunallahu ve ni\'mel vekil" demiştir. Sahabe-i Kiram da düşman orduları üzerlerine geldiğinde bu zikri okumuştur. (Âl-i İmrân, 173)',
+        target: 100,
+      },
+    ]
   },
   {
-    id: '3',
-    text: 'La havle ve la kuvvete illa billah',
-    translation: "Güç ve kuvvet ancak Allah'ındır",
-    source: 'Müslim',
-    target: 100,
-    virtue: "Cennet hazinelerinden bir hazinedir.",
+    title: 'Şifa ve İstiğfar',
+    data: [
+      {
+        id: '7',
+        text: 'Estağfirullahe\'l-azim el-lezi la ilahe illa huve\'l-hayyu\'l-kayyumu ve etubü ileyh',
+        arabic: 'أَسْتَغْفِرُ اللَّهَ الْعَظِيمَ الَّذِي لَا إِلٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ وَأَتُوبُ إِلَيْهِ',
+        translation: 'Kendisinden başka ilah olmayan, Hayy ve Kayyum olan Azim Allah\'tan mağfiret dilerim.',
+        source: 'Resulullah (sav) buyurdu: "Kim bu istiğfarı günde üç defa söylerse, savaştan kaçmış dahi olsa günahları bağışlanır." (Ebû Dâvûd, Vitir 26)',
+        target: 100,
+      },
+    ]
   },
   {
-    id: '4',
-    text: 'Elhamdulillah',
-    translation: "Hamd Allah'adır",
-    source: 'Müslim',
-    target: 33,
-    virtue: 'Mizanı doldurur.',
-  },
-  {
-    id: '5',
-    text: 'Allahu Ekber',
-    translation: 'Allah en büyüktür',
-    source: 'Müslim',
-    target: 33,
-    virtue: 'Namaz sonrası her birini 33 defa söylemek, bütün günahları siler.',
-  },
-  {
-    id: '6',
-    text: "La ilahe illallah vahdehü la şerike leh, lehü'l-mülkü ve lehü'l-hamdü ve hüve ala külli şey'in kadir",
-    translation: "Allah'tan başka ilah yoktur, O tektir, ortağı yoktur.",
-    source: 'Buhari, Müslim',
-    target: 10,
-    virtue: 'Günde 10 kez söyleyen, İsmail oğullarından 4 köle azat etmiş gibi sevap kazanır.',
-  },
+    title: 'Salavat-ı Şerifeler',
+    data: [
+      {
+        id: '10',
+        text: 'Allahumme salli ala seyyidina Muhammedin salaten tuncina biha min cemial ehvali vel-afat',
+        arabic: 'اللَّهُمَّ صَلِّ عَلَى سَيِّدِنَا مُحَمَّدٍ صَلَاةً تُنْجِينَا بِهَا مِنْ جَمِيعِ الْأَهْوَالِ وَالْآفَاتِ',
+        translation: 'Allah\'ım! Efendimiz Muhammed\'e öyle bir salat et ki, onunla bizi tüm korku ve belalardan kurtar.',
+        source: 'Ariflerden Şeyh Musa Efendi bir gemi yolculuğunda fırtınaya yakalandığında bu salavat kendisine öğretilmiştir ve tüm gemi halkı selâmetle kurtulmuştur.',
+        target: 11,
+      },
+    ]
+  }
 ];
 
 export default function ListScreen() {
   const router = useRouter();
+  const [expandedSection, setExpandedSection] = useState<string | null>('Temel Zikirler');
+
+  const toggleSection = (title: string) => {
+    setExpandedSection(prev => prev === title ? null : title);
+  };
 
   const selectZikir = async (item: ZikirItem) => {
     await Haptics.selectionAsync();
-    const newZikir = { text: item.text, target: item.target, count: 0 };
+    const newZikir = { 
+        text: item.text, 
+        arabic: item.arabic,
+        target: item.target, 
+        count: 0 
+    };
     await AsyncStorage.setItem('selected_zikir', JSON.stringify(newZikir));
+    
+    try {
+        const historyVal = await AsyncStorage.getItem('zikir_history');
+        let history = historyVal ? JSON.parse(historyVal) : [];
+        history.push({
+            id: Date.now().toString(),
+            text: item.text,
+            arabic: item.arabic,
+            count: 0,
+            target: item.target,
+            date: new Date().toISOString(),
+            isFinished: false,
+        });
+        await AsyncStorage.setItem('zikir_history', JSON.stringify(history));
+    } catch (e) {
+        console.error(e);
+    }
     router.back();
   };
 
-  const renderItem: ListRenderItem<ZikirItem> = ({ item }) => (
-    <Pressable style={styles.card} onPress={() => selectZikir(item)}>
-      <View style={styles.cardHeader}>
-        <Text style={styles.cardTitle}>{item.text}</Text>
-        <Text style={styles.cardTarget}>{item.target}×</Text>
-      </View>
-      <Text style={styles.cardTranslation}>{item.translation}</Text>
-      <Text style={styles.cardVirtue}>{item.virtue}</Text>
-      <View style={styles.cardFooter}>
-        <Text style={styles.cardSource}>📖 {item.source}</Text>
-      </View>
-    </Pressable>
-  );
+  const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
+
+  const renderItem = ({ item, section, index }: { item: ZikirItem, section: ZikirSection, index: number }) => {
+    const isExpanded = expandedSection === section.title;
+    
+    // We use a separate component logic per-item to avoid re-rendering entire list unnecessary
+    // But since it's a small list, we can use a controlled visibility.
+    // To ensure animation works, we render items but hide them if not expanded.
+    
+    return (
+      <AccordionItem 
+        item={item} 
+        index={index} 
+        isExpanded={isExpanded} 
+        onPress={() => selectZikir(item)} 
+      />
+    );
+  };
 
   return (
     <View style={styles.container}>
-      <FlatList
-        data={RECOMMENDATIONS}
+      <SectionList
+        sections={CATEGORIZED_RECOMMENDATIONS}
         renderItem={renderItem}
+        renderSectionHeader={({ section: { title } }) => (
+          <Pressable 
+            style={[
+              styles.sectionHeader,
+              expandedSection === title && styles.sectionHeaderExpanded
+            ]} 
+            onPress={() => toggleSection(title)}
+          >
+            <Text style={[
+              styles.sectionTitle,
+              expandedSection === title && styles.sectionTitleExpanded
+            ]}>{title}</Text>
+            <Ionicons 
+              name={expandedSection === title ? "chevron-up" : "chevron-down"} 
+              size={20} 
+              color={expandedSection === title ? Colors.dark.primary : Colors.dark.textSecondary} 
+            />
+          </Pressable>
+        )}
         keyExtractor={(item) => item.id}
         contentContainerStyle={styles.list}
+        stickySectionHeadersEnabled={false}
       />
     </View>
   );
@@ -118,54 +261,90 @@ const styles = StyleSheet.create({
     padding: 16,
     paddingBottom: 32,
   },
-  card: {
+  sectionHeader: {
     backgroundColor: Colors.dark.surface,
+    padding: 18,
     borderRadius: 16,
-    padding: 16,
-    marginBottom: 16,
+    marginBottom: 8,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
     borderWidth: 1,
     borderColor: Colors.dark.border,
+  },
+  sectionHeaderExpanded: {
+    borderColor: Colors.dark.primary,
+    borderBottomLeftRadius: 0,
+    borderBottomRightRadius: 0,
+    borderBottomWidth: 0,
+    marginBottom: 0,
+  },
+  sectionTitle: {
+    fontSize: 16,
+    fontWeight: '700',
+    color: Colors.dark.text,
+  },
+  sectionTitleExpanded: {
+    color: Colors.dark.primary,
+  },
+  card: {
+    backgroundColor: Colors.dark.surface,
+    padding: 16,
+    borderWidth: 1,
+    borderColor: Colors.dark.primary,
+  },
+  cardFirst: {
+    borderTopWidth: 0,
+    borderBottomLeftRadius: 16,
+    borderBottomRightRadius: 16,
+    marginBottom: 16,
+  },
+  cardSubsequent: {
+    borderRadius: 16,
+    marginBottom: 16,
+    marginTop: 4,
   },
   cardHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'flex-start',
-    marginBottom: 6,
+    marginBottom: 10,
   },
   cardTitle: {
-    fontSize: 17,
-    fontWeight: '600',
+    fontSize: 15,
+    fontWeight: '700',
     color: Colors.dark.text,
     flex: 1,
     marginRight: 10,
-    lineHeight: 24,
+  },
+  cardArabic: {
+    fontSize: 22,
+    color: Colors.dark.primary,
+    textAlign: 'right',
+    marginBottom: 12,
+    lineHeight: 34,
   },
   cardTarget: {
-    fontSize: 15,
-    fontWeight: '700',
+    fontSize: 14,
+    fontWeight: '800',
     color: Colors.dark.primary,
   },
   cardTranslation: {
-    fontSize: 14,
+    fontSize: 13,
     color: Colors.dark.textSecondary,
     fontStyle: 'italic',
-    marginBottom: 8,
-  },
-  cardVirtue: {
-    fontSize: 13,
-    color: Colors.dark.text,
-    marginBottom: 12,
-    lineHeight: 19,
-    opacity: 0.85,
+    marginBottom: 10,
+    lineHeight: 18,
   },
   cardFooter: {
     borderTopWidth: 1,
     borderTopColor: Colors.dark.border,
-    paddingTop: 8,
+    paddingTop: 10,
   },
   cardSource: {
     fontSize: 12,
     color: Colors.dark.textSecondary,
-    fontWeight: '500',
+    fontWeight: '400',
+    lineHeight: 18,
   },
 });
