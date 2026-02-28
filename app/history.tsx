@@ -73,6 +73,7 @@ export default function HistoryScreen() {
     
     await Haptics.selectionAsync();
     const activeZikir = {
+        id: item.id, // Pass the existing ID
         text: item.text,
         arabic: item.arabic,
         count: item.count,

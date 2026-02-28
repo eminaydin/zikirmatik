@@ -12,12 +12,14 @@ export default function RootLayout() {
           },
           headerTintColor: '#EAB308',
           headerShadowVisible: false,
+          gestureEnabled: true,
+          animation: 'slide_from_right',
           contentStyle: {
             backgroundColor: '#0F172A',
           },
         }}
       >
-        <Stack.Screen name="index" options={{ title: 'Zikirmatik' }} />
+        <Stack.Screen name="index" options={{ title: 'Zikirmatik', headerShown:false }} />
         <Stack.Screen
           name="list"
           options={{ title: 'Tesbih Önerileri', presentation: 'modal' }}
@@ -28,7 +30,11 @@ export default function RootLayout() {
         />
         <Stack.Screen
           name="history"
-          options={{ title: 'Zikir Geçmişi' }}
+          options={{ 
+            title: 'Zikir Geçmişi',
+            headerBackTitle: 'Zikirmatik',
+            headerTitleAlign: 'center',
+          }}
         />
       </Stack>
     </>

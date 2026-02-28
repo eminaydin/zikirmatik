@@ -39,15 +39,17 @@ interface ZikirItem {
 const AccordionItem = ({ item, index, isExpanded, onPress }: { item: ZikirItem, index: number, isExpanded: boolean, onPress: () => void }) => {
   const height = useSharedValue(0);
   const opacity = useSharedValue(0);
-  const [contentHeight, setContentHeight] = useState(1);
+  const [measuredHeight, setMeasuredHeight] = useState<number | null>(null);
 
   useEffect(() => {
-    height.value = withTiming(isExpanded ? contentHeight : 0, {
-      duration: 400,
-      easing: Easing.out(Easing.quad),
-    });
-    opacity.value = withTiming(isExpanded ? 1 : 0, { duration: 300 });
-  }, [isExpanded, contentHeight]);
+    if (measuredHeight !== null) {
+      height.value = withTiming(isExpanded ? measuredHeight : 0, {
+        duration: 400,
+        easing: Easing.out(Easing.quad),
+      });
+      opacity.value = withTiming(isExpanded ? 1 : 0, { duration: 300 });
+    }
+  }, [isExpanded, measuredHeight]);
 
   const animatedStyle = useAnimatedStyle(() => ({
     height: height.value,
@@ -60,7 +62,13 @@ const AccordionItem = ({ item, index, isExpanded, onPress }: { item: ZikirItem, 
       <View 
         onLayout={(e) => {
           const h = e.nativeEvent.layout.height;
-          if (h > 0 && h !== contentHeight) setContentHeight(h);
+          if (h > 0 && h !== measuredHeight) {
+            setMeasuredHeight(h);
+            if (isExpanded && measuredHeight === null) {
+              height.value = h;
+              opacity.value = 1;
+            }
+          }
         }}
         style={{ position: 'absolute', width: '100%' }}
       >
@@ -164,6 +172,41 @@ const CATEGORIZED_RECOMMENDATIONS: ZikirSection[] = [
   }
 ];
 
+const SectionHeader = ({ title, isExpanded, onPress }: { title: string, isExpanded: boolean, onPress: () => void }) => {
+  const progress = useSharedValue(isExpanded ? 1 : 0);
+
+  useEffect(() => {
+    progress.value = withTiming(isExpanded ? 1 : 0, { duration: 300 });
+  }, [isExpanded]);
+
+  const animatedStyle = useAnimatedStyle(() => ({
+    marginBottom: withTiming(isExpanded ? 0 : 8, { duration: 300 }),
+    borderBottomLeftRadius: withTiming(isExpanded ? 0 : 16, { duration: 300 }),
+    borderBottomRightRadius: withTiming(isExpanded ? 0 : 16, { duration: 300 }),
+    borderColor: isExpanded ? Colors.dark.primary : Colors.dark.border,
+  }));
+
+  const textStyle = useAnimatedStyle(() => ({
+    color: isExpanded ? Colors.dark.primary : Colors.dark.text,
+  }));
+
+  return (
+    <AnimatedPressable 
+      style={[styles.sectionHeader, animatedStyle]} 
+      onPress={onPress}
+    >
+      <Animated.Text style={[styles.sectionTitle, textStyle]}>{title}</Animated.Text>
+      <Ionicons 
+        name={isExpanded ? "chevron-up" : "chevron-down"} 
+        size={20} 
+        color={isExpanded ? Colors.dark.primary : Colors.dark.textSecondary} 
+      />
+    </AnimatedPressable>
+  );
+};
+
+const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
+
 export default function ListScreen() {
   const router = useRouter();
   const [expandedSection, setExpandedSection] = useState<string | null>('Temel Zikirler');
@@ -174,7 +217,9 @@ export default function ListScreen() {
 
   const selectZikir = async (item: ZikirItem) => {
     await Haptics.selectionAsync();
+    const sessionId = Date.now().toString();
     const newZikir = { 
+        id: sessionId,
         text: item.text, 
         arabic: item.arabic,
         target: item.target, 
@@ -186,7 +231,7 @@ export default function ListScreen() {
         const historyVal = await AsyncStorage.getItem('zikir_history');
         let history = historyVal ? JSON.parse(historyVal) : [];
         history.push({
-            id: Date.now().toString(),
+            id: sessionId,
             text: item.text,
             arabic: item.arabic,
             count: 0,
@@ -201,7 +246,6 @@ export default function ListScreen() {
     router.back();
   };
 
-  const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
   const renderItem = ({ item, section, index }: { item: ZikirItem, section: ZikirSection, index: number }) => {
     const isExpanded = expandedSection === section.title;
@@ -225,25 +269,16 @@ export default function ListScreen() {
       <SectionList
         sections={CATEGORIZED_RECOMMENDATIONS}
         renderItem={renderItem}
-        renderSectionHeader={({ section: { title } }) => (
-          <Pressable 
-            style={[
-              styles.sectionHeader,
-              expandedSection === title && styles.sectionHeaderExpanded
-            ]} 
-            onPress={() => toggleSection(title)}
-          >
-            <Text style={[
-              styles.sectionTitle,
-              expandedSection === title && styles.sectionTitleExpanded
-            ]}>{title}</Text>
-            <Ionicons 
-              name={expandedSection === title ? "chevron-up" : "chevron-down"} 
-              size={20} 
-              color={expandedSection === title ? Colors.dark.primary : Colors.dark.textSecondary} 
+        renderSectionHeader={({ section: { title } }) => {
+          const isExp = expandedSection === title;
+          return (
+            <SectionHeader 
+              title={title} 
+              isExpanded={isExp} 
+              onPress={() => toggleSection(title)} 
             />
-          </Pressable>
-        )}
+          );
+        }}
         keyExtractor={(item) => item.id}
         contentContainerStyle={styles.list}
         stickySectionHeadersEnabled={false}
