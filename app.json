@@ -7,11 +7,6 @@
     "scheme": "zikirmatik",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "dark",
-    "splash": {
-      "image": "./assets/splash-icon.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#0F172A"
-    },
     "ios": {
       "bundleIdentifier": "com.emindev.zikirmatik",
       "supportsTablet": true,
@@ -22,10 +17,8 @@
     "android": {
       "package": "com.emindev.zikirmatik",
       "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
-        "foregroundImage": "./assets/android-icon-foreground.png",
-        "backgroundImage": "./assets/android-icon-background.png",
-        "monochromeImage": "./assets/android-icon-monochrome.png"
+        "backgroundColor": "#0F172A",
+        "foregroundImage": "./assets/icon.png"
       }
     },
     "web": {

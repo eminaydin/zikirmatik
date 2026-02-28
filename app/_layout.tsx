@@ -1,3 +1,4 @@
+import React from 'react';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 
@@ -32,7 +33,6 @@ export default function RootLayout() {
           name="history"
           options={{ 
             title: 'Zikir Geçmişi',
-            headerBackTitle: 'Zikirmatik',
             headerTitleAlign: 'center',
           }}
         />

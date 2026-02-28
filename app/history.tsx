@@ -9,7 +9,7 @@ import {
   Dimensions,
 } from 'react-native';
 import { Colors } from '../constants/Colors';
-import { useRouter, useFocusEffect } from 'expo-router';
+import { useRouter, useFocusEffect, Stack } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Ionicons } from '@expo/vector-icons';
 import * as Haptics from 'expo-haptics';
@@ -138,6 +138,12 @@ export default function HistoryScreen() {
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
+      <Stack.Screen 
+        options={{
+          headerTitle: 'Zikir Geçmişi',
+          headerLeft: () => null,
+        }}
+      />
       <View style={styles.container}>
         <View style={styles.tabBar}>
           <Pressable 

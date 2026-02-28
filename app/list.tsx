@@ -27,14 +27,6 @@ if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental
   UIManager.setLayoutAnimationEnabledExperimental(true);
 }
 
-interface ZikirItem {
-  id: string;
-  text: string;
-  arabic?: string;
-  translation: string;
-  source: string;
-  target: number;
-}
 
 const AccordionItem = ({ item, index, isExpanded, onPress }: { item: ZikirItem, index: number, isExpanded: boolean, onPress: () => void }) => {
   const height = useSharedValue(0);
@@ -96,81 +88,8 @@ const AccordionItem = ({ item, index, isExpanded, onPress }: { item: ZikirItem, 
   );
 };
 
-interface ZikirSection {
-  title: string;
-  data: ZikirItem[];
-}
+import { ZikirItem, ZikirSection, CATEGORIZED_RECOMMENDATIONS } from '../constants/Recommendations';
 
-const CATEGORIZED_RECOMMENDATIONS: ZikirSection[] = [
-  {
-    title: 'Temel Zikirler',
-    data: [
-      {
-        id: '12',
-        text: 'Subhanallahi vel-hamdülillahi ve la ilahe illallahu vallahu ekber',
-        arabic: 'سُبْحَانَ اللَّهِ وَالْحَمْدُ لِلَّهِ وَلَا إِلٰهَ إِلَّا اللَّهُ وَاللَّهُ أَكْبَرُ',
-        translation: 'Allah\'ı tenzih ederim, hamd O\'nadır, O\'ndan başka ilah yoktur ve Allah en büyüktür.',
-        source: 'Resulullah (sav) buyurdu: "Allah katında kelamın en sevimlisi dörttür: Sübhanallah, Elhamdülillah, Lâ ilâhe illallah ve Allahu ekber. Hangisiyle başlasan sana zarar vermez." (Müslim, Âdâb 12)',
-        target: 100,
-      },
-      {
-        id: '15',
-        text: 'La ilahe illallahu vahdehu la şerike leh, lehü\'l-mülkü ve lehü\'l-hamdü ve hüve ala külli şey\'in kadir',
-        arabic: 'لَا إِلٰهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ',
-        translation: 'Allah\'tan başka ilah yoktur, tektir, ortağı yoktur. Mülk O\'nundur, hamd O\'nadır.',
-        source: 'Resulullah (sav) buyurdu: "Kim günde yüz defa bu zikri söylerse, on köle azat etmiş gibi sevap alır, kendisine yüz iyilik yazılır ve yüz günahı silinir." (Buhari, Daavat 54)',
-        target: 100,
-      },
-    ]
-  },
-  {
-    title: 'Korunma ve Selamet',
-    data: [
-      {
-        id: '1',
-        text: 'La ilahe illa ente subhaneke inni kuntu minez-zalimin',
-        arabic: 'لَا إِلٰهَ إِلَّا أَنْتَ سُبْحَانَكَ إِنِّي كُنْتُ مِنَ الظَّالِمِينَ',
-        translation: 'Senden başka ilah yoktur. Seni eksikliklerden tenzih ederim, ben zalimlerden oldum.',
-        source: 'Kur\'an-ı Kerim, Enbiya Suresi 87. Ayet. Peygamber Efendimiz (sav) şöyle buyurmuştur: "Bir müslüman darda kaldığında bu dua ile dua ederse Allah mutlaka onun duasını kabul eder."',
-        target: 33,
-      },
-      {
-        id: '4',
-        text: 'Hasbunallahu ve ni\'mel vekil, ni\'mel mevla ve ni\'men-nasir',
-        arabic: 'حَسْبُنَا اللَّهُ وَنِعْمَ الْوَكِيلُ نِعْمَ الْمَوْلَى وَنِعْمَ النَّصِيرُ',
-        translation: 'Allah bize yeter, O ne güzel vekildir. Ne güzel mevla ve ne güzel yardımcıdır.',
-        source: 'Hz. İbrahim (as) ateşe atıldığı zaman "Hasbunallahu ve ni\'mel vekil" demiştir. Sahabe-i Kiram da düşman orduları üzerlerine geldiğinde bu zikri okumuştur. (Âl-i İmrân, 173)',
-        target: 100,
-      },
-    ]
-  },
-  {
-    title: 'Şifa ve İstiğfar',
-    data: [
-      {
-        id: '7',
-        text: 'Estağfirullahe\'l-azim el-lezi la ilahe illa huve\'l-hayyu\'l-kayyumu ve etubü ileyh',
-        arabic: 'أَسْتَغْفِرُ اللَّهَ الْعَظِيمَ الَّذِي لَا إِلٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ وَأَتُوبُ إِلَيْهِ',
-        translation: 'Kendisinden başka ilah olmayan, Hayy ve Kayyum olan Azim Allah\'tan mağfiret dilerim.',
-        source: 'Resulullah (sav) buyurdu: "Kim bu istiğfarı günde üç defa söylerse, savaştan kaçmış dahi olsa günahları bağışlanır." (Ebû Dâvûd, Vitir 26)',
-        target: 100,
-      },
-    ]
-  },
-  {
-    title: 'Salavat-ı Şerifeler',
-    data: [
-      {
-        id: '10',
-        text: 'Allahumme salli ala seyyidina Muhammedin salaten tuncina biha min cemial ehvali vel-afat',
-        arabic: 'اللَّهُمَّ صَلِّ عَلَى سَيِّدِنَا مُحَمَّدٍ صَلَاةً تُنْجِينَا بِهَا مِنْ جَمِيعِ الْأَهْوَالِ وَالْآفَاتِ',
-        translation: 'Allah\'ım! Efendimiz Muhammed\'e öyle bir salat et ki, onunla bizi tüm korku ve belalardan kurtar.',
-        source: 'Ariflerden Şeyh Musa Efendi bir gemi yolculuğunda fırtınaya yakalandığında bu salavat kendisine öğretilmiştir ve tüm gemi halkı selâmetle kurtulmuştur.',
-        target: 11,
-      },
-    ]
-  }
-];
 
 const SectionHeader = ({ title, isExpanded, onPress }: { title: string, isExpanded: boolean, onPress: () => void }) => {
   const progress = useSharedValue(isExpanded ? 1 : 0);

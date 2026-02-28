@@ -22,6 +22,7 @@ import Animated, {
   withRepeat,
   runOnJS,
   LinearTransition,
+  Easing,
 } from 'react-native-reanimated';
 import { Colors } from '../constants/Colors';
 import { Link, useFocusEffect, useRouter } from 'expo-router';
@@ -218,14 +219,36 @@ export default function CounterScreen() {
     if (hapticsEnabled) {
       await Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning);
     }
-    await save({ ...zikir, count: 0 });
+    
+    if (isFinished) {
+      // If finished, start a brand NEW session
+      const newZikir = {
+        ...zikir,
+        id: Date.now().toString(),
+        count: 0
+      };
+      setZikir(newZikir);
+      await AsyncStorage.setItem('selected_zikir', JSON.stringify(newZikir));
+      await updateHistory(newZikir);
+    } else {
+      await save({ ...zikir, count: 0 });
+    }
   };
 
   const nextRound = async () => {
     if (hapticsEnabled) {
       await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
     }
-    await save({ ...zikir, count: 0 });
+    
+    // Create a new session for the next round
+    const newZikir = {
+      ...zikir,
+      id: Date.now().toString(),
+      count: 0
+    };
+    setZikir(newZikir);
+    await AsyncStorage.setItem('selected_zikir', JSON.stringify(newZikir));
+    await updateHistory(newZikir);
   };
 
   const toggleReminder = async (value: boolean) => {
@@ -285,6 +308,7 @@ export default function CounterScreen() {
     width: `${progressValue.value * 100}%`,
   }));
 
+
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <GestureDetector gesture={panGesture}>
@@ -330,6 +354,7 @@ export default function CounterScreen() {
 
           {/* Main Content Area */}
           <View style={styles.mainContent}>
+
             {/* Counter Section - Absolutely Centered */}
             <View style={styles.counterSection}>
               <Pressable
