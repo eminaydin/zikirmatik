@@ -1,11 +1,26 @@
 # Zikirmatik - Modern Dijital Tesbih
 
 [![App Store](https://img.shields.io/badge/App_Store-Sıraya_Alındı-007AFF?style=for-the-badge&logo=apple)](https://github.com/eminaydin/zikirmatik)
-[![License](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](LICENSE)
 
 Zikirmatik, manevi yolculuğunuzda size eşlik etmek için tasarlanmış, modern ve kullanımı kolay bir dijital tesbih uygulamasıdır. Sade tasarımı ve premium kullanıcı deneyimi ile zikirlerinizi her an, her yerde takip edebilirsiniz.
 
 [English Version Below](#english)
+
+---
+
+## 📸 Ekran Görüntüleri
+
+| Ana Ekran | Öneriler | Yeni Zikir | Geçmiş |
+| :---: | :---: | :---: | :---: |
+| ![Ana Ekran](assets/screenshots/mockup_1.png) | ![Öneriler](assets/screenshots/mockup_2.png) | ![Yeni Zikir](assets/screenshots/mockup_3.png) | ![Geçmiş](assets/screenshots/mockup_4.png) |
+
+---
+
+## 🕊️ Neden Zikirmatik?
+
+Zikir çekerken araya giren, maneviyatı ve odaklanmayı bozan gereksiz reklamlardan rahatsız olduğum için bu uygulamayı geliştirdim. 
+
+Zikirmatik **tamamen ücretsizdir** ve her zaman öyle kalacaktır. Uygulamamız **hiçbir şekilde kişisel veri toplamaz, kullanmaz ve hiçbir zaman da kullanmayacaktır.** Sizin de huzur içinde zikir çekebilmeniz için reklamsız, sade ve güvenli bir deneyim sunmaya devam edeceğiz.
 
 ---
 
@@ -18,14 +33,13 @@ Zikirmatik, manevi yolculuğunuzda size eşlik etmek için tasarlanmış, modern
 - **📳 Haptik Geri Bildirim:** Her sayımda gerçek bir tesbih hissi veren dokunsal geri bildirim.
 - **🌐 Çevrimdışı Çalışma:** İnternete bağlı olmasanız bile verileriniz cihazınızda güvenle saklanır.
 
-## 🛠️ Teknoloji Yığını
+## 🛠️ Kullanılan Teknolojiler
 
 - **Framework:** Expo & React Native
 - **Dil:** TypeScript
 - **Depolama:** AsyncStorage
-- **Stil:** React Native StyleSheet
 
-## 🚀 Kurulum (Geliştiriciler İçin)
+## 🚀 Kurulum 
 
 Projeyi yerel olarak çalıştırmak isterseniz:
 
@@ -33,7 +47,7 @@ Projeyi yerel olarak çalıştırmak isterseniz:
    ```bash
    git clone https://github.com/eminaydin/zikirmatik.git
    ```
-2. Bağımlılıkları yükleyin:
+2. Gerekli paketleri kurun:
    ```bash
    npm install
    ```
@@ -55,7 +69,17 @@ Bir sorunla karşılaştıysanız veya öneriniz varsa lütfen [Issues](https://
 <a name="english"></a>
 # Zikirmatik - Modern Digital Tasbih
 
-Zikirmatik is a modern and easy-to-use digital tasbih application designed to accompany you on your spiritual journey. With its simple design and premium user experience, you can track your dhikrs anytime, anywhere.
+Zikirmatik is a modern and easy-to-use digital tasbih application designed to accompany you on your spiritual journey.
+
+## 📸 Screenshots
+
+*(See imagery in the section above)*
+
+## 🕊️ Why Zikirmatik?
+
+I developed this app because I was frustrated with annoying ads that disrupt spiritual focus during dhikr.
+
+Zikirmatik is **completely free** and will always remain so. Our app **does not collect or use your personal data in any way, nor will it ever.** We will continue to provide an ad-free, simple, and secure experience so you can focus on your spirituality in peace.
 
 ## ✨ Features
 
