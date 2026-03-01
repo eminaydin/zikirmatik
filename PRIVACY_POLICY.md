@@ -25,3 +25,35 @@ Gizlilik Politikamızı zaman zaman güncelleyebiliriz. Herhangi bir değişikli
 ## 6. Bize Ulaşın
 Bu Gizlilik Politikası hakkında herhangi bir sorunuz varsa GitHub sayfamız üzerinden bize ulaşabilirsiniz:
 [https://github.com/eminaydin/zikirmatik](https://github.com/eminaydin/zikirmatik)
+
+---
+
+# Privacy Policy for Zikirmatik
+
+Last updated: March 01, 2026
+
+This Privacy Policy describes how Zikirmatik ("we", "our", or "us") handles information when you use our mobile application.
+
+## 1. Information Collection
+Zikirmatik is designed to be a privacy-focused application. 
+- **No Personal Data**: We do not collect, store, or transmit any personally identifiable information (PII).
+- **Local Storage**: All your dhikr history and settings are stored locally on your device. We do not have access to this data.
+- **No Cloud Sync**: We do not use any cloud servers to store your data.
+
+## 2. Information Usage
+Since we do not collect any data, we do not use, share, or sell any user information.
+
+## 3. Third-Party Services
+Zikirmatik is built using Expo and React Native. The app does not integrate with any third-party analytics or advertising services that collect data.
+
+## 4. Children's Privacy
+Our application does not collect any information from children. It is safe for use by people of all ages.
+
+## 5. Changes to This Privacy Policy
+We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page.
+
+## 6. Contact Us
+If you have any questions about this Privacy Policy, you can reach out via our GitHub repository:
+[https://github.com/eminaydin/zikirmatik](https://github.com/eminaydin/zikirmatik)
+
+
