@@ -1,0 +1,90 @@
+{
+    "common": {
+        "app_name": "Zikirmatik",
+        "save": "Speichern",
+        "cancel": "Abbrechen",
+        "ok": "OK",
+        "delete": "Löschen",
+        "reset": "Zurücksetzen",
+        "finished": "ABGESCHLOSSEN",
+        "version": "Zikirmatik v1.5",
+        "warning": "Warnung",
+        "yes_delete": "Ja, löschen"
+    },
+    "menu": {
+        "title": "MENÜ",
+        "new_zikir": "Neuen Dhikr hinzufügen",
+        "recommendations": "Dhikr-Vorschläge",
+        "history": "Mein Dhikr-Verlauf"
+    },
+    "home": {
+        "top_title": "GEBETSKETTE",
+        "reminder_modal_title": "Dhikr-Erinnerung",
+        "daily_notification": "Tägliche Benachrichtigung",
+        "daily_notification_sub": "Nehmen wir uns eine ruhige Zeit des Friedens für dich.",
+        "reminder_time_label": "Erinnerungszeit"
+    },
+    "history": {
+        "title": "Mein Dhikr-Verlauf",
+        "no_history": "Du hast noch keinen Dhikr-Verlauf.",
+        "session_date": "Datum",
+        "session_count": "Anzahl",
+        "ongoing_tab": "Laufend",
+        "finished_tab": "Abgeschlossen",
+        "clear_history": "Verlauf löschen",
+        "clear_confirm_title": "Verlauf löschen",
+        "clear_confirm_body": "Ihr gesamter Dhikr-Verlauf wird gelöscht. Diese Aktion kann nicht rückgängig gemacht werden. Bestätigen Sie?",
+        "status_ongoing": "Laufend",
+        "status_finished": "Abgeschlossen",
+        "empty_ongoing": "Noch keine laufenden Dhikrs.",
+        "empty_finished": "Noch keine abgeschlossenen Dhikrs."
+    },
+    "list": {
+        "title": "Dhikr-Vorschläge",
+        "add_success": "Dhikr erfolgreich hinzugefügt!",
+        "categories": {
+            "basic": "Grundlegende Dhikrs",
+            "protection": "Schutz & Frieden",
+            "healing": "Heilung & Reue",
+            "salavat": "Salawat",
+            "quran": "Koranische Bittgebete"
+        }
+    },
+    "settings": {
+        "title": "Neuen Dhikr hinzufügen",
+        "zikir_text_placeholder": "Dhikr-Text...",
+        "arabic_text_placeholder": "Arabischer Text (optional)",
+        "target_placeholder": "Zielanzahl",
+        "add_button": "Dhikr hinzufügen",
+        "save_start": "Speichern und Starten",
+        "hint": "Füge einen neuen Dhikr hinzu, um dein Ziel festzulegen und die App-Einstellungen zu verwalten.",
+        "label_text": "Dhikr-Text (Übersetzung / Phonetisch)",
+        "label_arabic": "Dhikr-Text (Arabisch - Optional)",
+        "label_target": "Zielanzahl",
+        "system_settings": "SYSTEMEINSTELLUNGEN",
+        "daily_reminder": "Tägliche Erinnerung",
+        "daily_reminder_sub": "Sendet eine Benachrichtigung, um dich an den Dhikr des Tages zu erinnern.",
+        "error_empty": "Bitte gib einen Dhikr-Text ein."
+    },
+    "recommendations": {
+        "12": {
+            "text": "Subhanallahi wal-hamdülillahi wa la ilaha illallahu vallahu akbar",
+            "translation": "Ehre sei Allah, Lob sei Ihm, es gibt keinen Gott außer Allah, und Allah ist der Größte.",
+            "source": "Muslim, Adab 12"
+        },
+        "15": {
+            "text": "La ilaha illallahu wahdahu la sharika lah, lahul-mulku wa lahul-hamdu wa huwa ala kulli shay'in qadir",
+            "translation": "Es gibt keinen Gott außer Allah, allein, ohne Partner. Sein ist das Reich, und Sein ist das Lob.",
+            "source": "Bukhari, Daavat 54"
+        },
+        "6": {
+            "text": "Subhanallahi wa bihamdihi adada khalqihi wa rida nafsihi wa zinata arshihi wa midada kalimatih",
+            "translation": "Ehre und Lob sei Allah, entsprechend der Zahl Seiner Geschöpfe, Seinem Wohlgefallen, dem Gewicht Seines Thrones und der Tinte Seiner Worte.",
+            "source": "Muslim, Dhikr 79"
+        }
+    },
+    "notifications": {
+        "daily_title": "Zeit für Frieden ✨",
+        "daily_body": "Herzen finden Ruhe nur im Gedenken an Allah. Wie wäre es mit einer kurzen Dhikr-Pause? 🌙"
+    }
+}

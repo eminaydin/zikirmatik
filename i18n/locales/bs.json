@@ -1,0 +1,90 @@
+{
+    "common": {
+        "app_name": "Zikirmatik",
+        "save": "Sačuvaj",
+        "cancel": "Odustani",
+        "ok": "U redu",
+        "delete": "Obriši",
+        "reset": "Resetuj",
+        "warning": "Upozorenje",
+        "yes_delete": "Da, obriši",
+        "finished": "ZAVRŠENO",
+        "version": "Zikirmatik v1.5"
+    },
+    "menu": {
+        "title": "MENI",
+        "new_zikir": "Dodaj novi zikr",
+        "recommendations": "Preporučeni zikrovi",
+        "history": "Moja historija zikra"
+    },
+    "home": {
+        "top_title": "ZIKIRMATIK",
+        "reminder_modal_title": "Podsjetnik na zikr",
+        "daily_notification": "Dnevna obavijest",
+        "daily_notification_sub": "Odvojimo vrijeme za mir i duhovnost.",
+        "reminder_time_label": "Vrijeme podsjetnika"
+    },
+    "history": {
+        "title": "Moja historija zikra",
+        "no_history": "Još uvijek nemate historiju zikra.",
+        "session_date": "Datum",
+        "session_count": "Broj",
+        "ongoing_tab": "U toku",
+        "finished_tab": "Završeni",
+        "clear_history": "Obriši historiju",
+        "clear_confirm_title": "Obriši historiju",
+        "clear_confirm_body": "Sva vaša historija zikra će biti obrisana. Ova radnja se ne može poništiti. Da li potvrđujete?",
+        "status_ongoing": "U toku",
+        "status_finished": "Završeno",
+        "empty_ongoing": "Još uvijek nema zikrova u toku.",
+        "empty_finished": "Još uvijek nema završenih zikrova."
+    },
+    "list": {
+        "title": "Preporučeni zikrovi",
+        "add_success": "Zikr uspješno dodan!",
+        "categories": {
+            "basic": "Osnovni zikrovi",
+            "protection": "Zaštita i mir",
+            "healing": "Lijek i istigfar",
+            "salavat": "Salavati",
+            "quran": "Kur'anske dove"
+        }
+    },
+    "settings": {
+        "title": "Dodaj novi zikr",
+        "zikir_text_placeholder": "Tekst zikra...",
+        "arabic_text_placeholder": "Arapski tekst (opcionalno)",
+        "target_placeholder": "Ciljani broj",
+        "add_button": "Dodaj zikr",
+        "save_start": "Sačuvaj i počni",
+        "hint": "Dodajte novi zikr da postavite cilj i upravljate postavkama aplikacije.",
+        "label_text": "Tekst zikra (Prevod / Izgovor)",
+        "label_arabic": "Tekst zikra (Arapski - Opcionalno)",
+        "label_target": "Ciljani broj",
+        "system_settings": "SISTEMSKE POSTAVKE",
+        "daily_reminder": "Dnevni podsjetnik",
+        "daily_reminder_sub": "Šalje obavijest da vas podsjeti na zikr dana.",
+        "error_empty": "Molimo unesite tekst zikra."
+    },
+    "recommendations": {
+        "12": {
+            "text": "Subhanallahi vel-hamdülillahi ve la ilahe illallahu vallahu ekber",
+            "translation": "Slava Allahu, hvala Allahu, nema boga osim Allaha i Allah je najveći.",
+            "source": "Muslim, Adab 12"
+        },
+        "15": {
+            "text": "La ilahe illallahu vahdehu la šerike leh, lehul-mülkü ve lehul-hamdü ve hüve ala külli šej'in kadir",
+            "translation": "Nema boga osim Allaha, Jedinog, koji nema ortaka. Njemu pripada vlast i Njemu pripada svaka hvala.",
+            "source": "Buhari, Daavat 54"
+        },
+        "6": {
+            "text": "Subhanallahi ve bihamdihi adede halkihi ve rida nefsihi ve zinete aršihi ve midade kelimatih",
+            "translation": "Slava Allahu i hvala Mu onoliko koliko ima Njegovih stvorenja, koliko je On zadovoljan, koliko je težak Njegov Arš i koliko ima tiska za Njegove riječi.",
+            "source": "Muslim, Zikir 79"
+        }
+    },
+    "notifications": {
+        "daily_title": "Vrijeme za mir ✨",
+        "daily_body": "A srca se doista, kad se Allah spomene, smiruju. Šta kažeš na kratku pauzu za zikr? 🌙"
+    }
+}

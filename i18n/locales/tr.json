@@ -1,0 +1,90 @@
+{
+    "common": {
+        "app_name": "Zikirmatik",
+        "save": "Kaydet",
+        "cancel": "Vazgeç",
+        "ok": "Tamam",
+        "delete": "Sil",
+        "reset": "Sıfırla",
+        "finished": "TAMAMLANDI",
+        "version": "Zikirmatik v1.5",
+        "warning": "Uyarı",
+        "yes_delete": "Evet, Sil"
+    },
+    "menu": {
+        "title": "MENÜ",
+        "new_zikir": "Yeni Zikir Ekle",
+        "recommendations": "Zikir Önerileri",
+        "history": "Zikir Geçmişim"
+    },
+    "home": {
+        "top_title": "ZİKİRMATİK",
+        "reminder_modal_title": "Zikir Hatırlatıcısı",
+        "daily_notification": "Günlük Bildirim",
+        "daily_notification_sub": "Sizin için sessiz bir huzur vakti ayıralım.",
+        "reminder_time_label": "Hatırlatma Saati"
+    },
+    "history": {
+        "title": "Zikir Geçmişim",
+        "no_history": "Henüz bir zikir geçmişiniz yok.",
+        "session_date": "Tarih",
+        "session_count": "Sayı",
+        "ongoing_tab": "Devam Edenler",
+        "finished_tab": "Tamamlananlar",
+        "clear_history": "Geçmişi Temizle",
+        "clear_confirm_title": "Geçmişi Temizle",
+        "clear_confirm_body": "Tüm zikir geçmişiniz silinecek. Bu işlem geri alınamaz. Onaylıyor musunuz?",
+        "status_ongoing": "Devam Ediyor",
+        "status_finished": "Tamamlandı",
+        "empty_ongoing": "Henüz devam eden bir zikir yok.",
+        "empty_finished": "Henüz tamamlanmış bir zikir yok."
+    },
+    "list": {
+        "title": "Zikir Önerileri",
+        "add_success": "Zikir başarıyla eklendi!",
+        "categories": {
+            "basic": "Temel Zikirler",
+            "protection": "Korunma ve Selamet",
+            "healing": "Şifa ve İstiğfar",
+            "salavat": "Salavat-ı Şerifeler",
+            "quran": "Kur'anî Dualar"
+        }
+    },
+    "settings": {
+        "title": "Yeni Zikir Ekle",
+        "zikir_text_placeholder": "Zikir metni...",
+        "arabic_text_placeholder": "Arapça metin (opsiyonel)",
+        "target_placeholder": "Hedef sayı",
+        "add_button": "Zikir Ekle",
+        "save_start": "Kaydet ve Başla",
+        "hint": "Yeni bir zikir ekleyerek hedefinizi belirleyebilir ve uygulama ayarlarını yönetebilirsiniz.",
+        "label_text": "Zikir Metni (Türkçe / Okunuş)",
+        "label_arabic": "Zikir Metni (Arapça - İsteğe Bağlı)",
+        "label_target": "Hedef Sayı",
+        "system_settings": "SİSTEM AYARLARI",
+        "daily_reminder": "Günlük Hatırlatıcı",
+        "daily_reminder_sub": "Günün zikrini hatırlatmak için bildirim gönderir.",
+        "error_empty": "Lütfen bir zikir metni girin."
+    },
+    "recommendations": {
+        "12": {
+            "text": "Subhanallahi vel-hamdülillahi ve la ilahe illallahu vallahu ekber",
+            "translation": "Allah'ı tenzih ederim, hamd O'nadır, O'ndan başka ilah yoktur ve Allah en büyüktür.",
+            "source": "Müslim, Âdâb 12"
+        },
+        "15": {
+            "text": "La ilahe illallahu vahdehu la şerike leh, lehü'l-mülkü ve lehü'l-hamdü ve hüve ala külli şey'in kadir",
+            "translation": "Allah'tan başka ilah yoktur, tektir, ortağı yoktur. Mülk O'nundur, hamd O'nadır.",
+            "source": "Buhari, Daavat 54"
+        },
+        "6": {
+            "text": "Subhanallahi ve bihamdihi adede halkihi ve rida nefsihi ve zinete arşihi ve midade kelimatih",
+            "translation": "Yarattıklarının sayısınca, kendisinin hoşnutluğunca, Arş'ının ağırlığınca ve kelimelerinin mürekkebince Allah'ı hamd ile tesbih ederim.",
+            "source": "Müslim, Zikir 79"
+        }
+    },
+    "notifications": {
+        "daily_title": "Huzur Vakti ✨",
+        "daily_body": "Kalpler ancak Allah'ı anmakla huzur bulur. Kısa bir zikir molasına ne dersin? 🌙"
+    }
+}

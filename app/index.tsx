@@ -30,6 +30,7 @@ import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNotifications } from '../hooks/useNotifications';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import { useTranslation } from 'react-i18next';
 
 const { width, height } = Dimensions.get('window');
 
@@ -54,6 +55,7 @@ import { GestureHandlerRootView, GestureDetector, Gesture } from 'react-native-g
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
 export default function CounterScreen() {
+  const { t } = useTranslation();
   const [zikir, setZikir] = useState<ZikirData>(DEFAULT_ZIKIR);
   const [hapticsEnabled, setHapticsEnabled] = useState(true);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -320,7 +322,7 @@ export default function CounterScreen() {
             </Pressable>
 
             <View style={styles.topBarCenter}>
-              <Text style={styles.topBarTitle}>ZİKİRMATİK</Text>
+              <Text style={styles.topBarTitle}>{t('home.top_title')}</Text>
               <Text style={styles.topBarCount}>
                 {zikir.count} / {zikir.target}
               </Text>
@@ -378,10 +380,10 @@ export default function CounterScreen() {
                     {isFinished ? (
                       <View style={styles.finishedContent}>
                         <Ionicons name="checkmark-circle" size={40} color="#10B981" style={{ marginBottom: 10 }} />
-                        <Text style={styles.mainCountFinished}>
+                         <Text style={styles.mainCountFinished}>
                           {zikir.count}
                         </Text>
-                        <Text style={styles.targetReachedText}>TAMAMLANDI</Text>
+                        <Text style={styles.targetReachedText}>{t('common.finished')}</Text>
                       </View>
                     ) : (
                       <Text style={styles.mainCount}>
@@ -474,7 +476,7 @@ export default function CounterScreen() {
           <Animated.View style={[styles.sidebar, sidebarStyle]}>
             <View style={styles.sidebarHeader}>
               <View>
-                <Text style={styles.sidebarTitleMain}>MENÜ</Text>
+                <Text style={styles.sidebarTitleMain}>{t('menu.title')}</Text>
                 <View style={styles.titleUnderline} />
               </View>
               <Pressable onPress={toggleSidebar} style={styles.closeButton}>
@@ -490,7 +492,7 @@ export default function CounterScreen() {
                 <View style={[styles.sidebarIconWrapper, { backgroundColor: 'rgba(234, 179, 8, 0.1)' }]}>
                   <Ionicons name="add-outline" size={22} color="#EAB308" />
                 </View>
-                <Text style={styles.sidebarItemText}>Yeni Zikir Ekle</Text>
+                <Text style={styles.sidebarItemText}>{t('menu.new_zikir')}</Text>
               </Pressable>
 
               <Pressable 
@@ -500,7 +502,7 @@ export default function CounterScreen() {
                 <View style={[styles.sidebarIconWrapper, { backgroundColor: 'rgba(20, 184, 166, 0.1)' }]}>
                   <Ionicons name="bookmarks-outline" size={20} color="#14B8A6" />
                 </View>
-                <Text style={styles.sidebarItemText}>Zikir Önerileri</Text>
+                <Text style={styles.sidebarItemText}>{t('menu.recommendations')}</Text>
               </Pressable>
 
               <Pressable 
@@ -510,14 +512,14 @@ export default function CounterScreen() {
                 <View style={[styles.sidebarIconWrapper, { backgroundColor: 'rgba(99, 102, 241, 0.1)' }]}>
                   <Ionicons name="time-outline" size={22} color="#6366F1" />
                 </View>
-                <Text style={styles.sidebarItemText}>Zikir Geçmişim</Text>
+                <Text style={styles.sidebarItemText}>{t('menu.history')}</Text>
               </Pressable>
 
               <View style={styles.sidebarDivider} />
             </View>
 
             <View style={styles.sidebarFooter}>
-              <Text style={styles.versionText}>Zikirmatik v1.5</Text>
+              <Text style={styles.versionText}>{t('common.version')}</Text>
             </View>
           </Animated.View>
 
@@ -534,7 +536,7 @@ export default function CounterScreen() {
               <Pressable style={styles.modalBg} onPress={() => setIsReminderModalVisible(false)} />
               <View style={styles.reminderCard}>
                 <View style={styles.reminderHeader}>
-                  <Text style={styles.reminderTitle}>Zikir Hatırlatıcısı</Text>
+                  <Text style={styles.reminderTitle}>{t('home.reminder_modal_title')}</Text>
                   <Pressable onPress={() => setIsReminderModalVisible(false)}>
                     <Ionicons name="close" size={24} color={Colors.dark.textSecondary} />
                   </Pressable>
@@ -543,8 +545,8 @@ export default function CounterScreen() {
                 <View style={styles.reminderContent}>
                   <View style={styles.reminderRow}>
                     <View>
-                      <Text style={styles.reminderLabel}>Günlük Bildirim</Text>
-                      <Text style={styles.reminderSubLabel}>Sizin için sessiz bir huzur vakti ayıralım.</Text>
+                      <Text style={styles.reminderLabel}>{t('home.daily_notification')}</Text>
+                      <Text style={styles.reminderSubLabel}>{t('home.daily_notification_sub')}</Text>
                     </View>
                     <Switch
                       value={reminderEnabled}
@@ -559,7 +561,7 @@ export default function CounterScreen() {
                       onPress={() => setShowTimePicker(true)}
                       style={styles.timeSelectBox}
                     >
-                      <Text style={styles.timeLabel}>Hatırlatma Saati</Text>
+                      <Text style={styles.timeLabel}>{t('home.reminder_time_label')}</Text>
                       <View style={styles.timeDisplay}>
                         <Text style={styles.timeValue}>
                           {reminderTime.getHours().toString().padStart(2, '0')}:
@@ -586,7 +588,7 @@ export default function CounterScreen() {
                   style={styles.doneButton}
                   onPress={() => setIsReminderModalVisible(false)}
                 >
-                  <Text style={styles.doneButtonText}>Tamam</Text>
+                  <Text style={styles.doneButtonText}>{t('common.ok')}</Text>
                 </Pressable>
               </View>
             </View>

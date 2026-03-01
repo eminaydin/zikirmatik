@@ -18,10 +18,12 @@ import { Switch, Dimensions } from 'react-native';
 import { useNotifications } from '../hooks/useNotifications';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { Ionicons } from '@expo/vector-icons';
+import { useTranslation } from 'react-i18next';
 
 const { width } = Dimensions.get('window');
 
 export default function SettingsScreen() {
+  const { t } = useTranslation();
   const [text, setText] = useState('');
   const [arabic, setArabic] = useState('');
   const [target, setTarget] = useState('33');
@@ -67,7 +69,7 @@ export default function SettingsScreen() {
   const handleSave = async () => {
     const trimmed = text.trim();
     if (!trimmed) {
-      Alert.alert('Uyarı', 'Lütfen bir zikir metni girin.');
+      Alert.alert(t('common.warning'), t('settings.error_empty'));
       return;
     }
 
@@ -111,11 +113,11 @@ export default function SettingsScreen() {
     >
       <ScrollView contentContainerStyle={styles.scroll} keyboardShouldPersistTaps="handled">
         <Text style={styles.hint}>
-          Yeni bir zikir ekleyerek hedefinizi belirleyebilir ve uygulama ayarlarını yönetebilirsiniz.
+          {t('settings.hint')}
         </Text>
 
         <View style={styles.section}>
-          <Text style={styles.label}>Zikir Metni (Türkçe / Okunuş)</Text>
+          <Text style={styles.label}>{t('settings.label_text')}</Text>
           <TextInput
             style={styles.input}
             placeholder="Örn: La İlahe İllallah"
@@ -127,7 +129,7 @@ export default function SettingsScreen() {
         </View>
 
         <View style={styles.section}>
-          <Text style={styles.label}>Zikir Metni (Arapça - İsteğe Bağlı)</Text>
+          <Text style={styles.label}>{t('settings.label_arabic')}</Text>
           <TextInput
             style={[styles.input, { textAlign: 'right', fontSize: 20 }]}
             placeholder="لَا إِلٰهَ إِلَّا اللّٰهُ"
@@ -139,7 +141,7 @@ export default function SettingsScreen() {
         </View>
 
         <View style={styles.section}>
-          <Text style={styles.label}>Hedef Sayı</Text>
+          <Text style={styles.label}>{t('settings.label_target')}</Text>
           <TextInput
             style={styles.input}
             placeholder="33"
@@ -153,12 +155,12 @@ export default function SettingsScreen() {
         <View style={styles.divider} />
 
         <View style={styles.section}>
-            <Text style={styles.sectionHeader}>SİSTEM AYARLARI</Text>
+            <Text style={styles.sectionHeader}>{t('settings.system_settings')}</Text>
             
             <View style={styles.settingRow}>
                 <View>
-                    <Text style={styles.settingLabel}>Günlük Hatırlatıcı</Text>
-                    <Text style={styles.settingSubLabel}>Günün zikrini hatırlatmak için bildirim gönderir.</Text>
+                    <Text style={styles.settingLabel}>{t('settings.daily_reminder')}</Text>
+                    <Text style={styles.settingSubLabel}>{t('settings.daily_reminder_sub')}</Text>
                 </View>
                 <Switch
                     value={reminderEnabled}
@@ -173,7 +175,7 @@ export default function SettingsScreen() {
                     onPress={() => setShowTimePicker(true)}
                     style={styles.timeSelectRow}
                 >
-                    <Text style={styles.settingLabel}>Hatırlatma Saati</Text>
+                    <Text style={styles.settingLabel}>{t('home.reminder_time_label')}</Text>
                     <View style={styles.timeBadge}>
                         <Text style={styles.timeText}>
                             {reminderTime.getHours().toString().padStart(2, '0')}:
@@ -205,7 +207,7 @@ export default function SettingsScreen() {
           onPress={handleSave}
           disabled={!text.trim()}
         >
-          <Text style={styles.buttonText}>Kaydet ve Başla</Text>
+          <Text style={styles.buttonText}>{t('settings.save_start')}</Text>
         </Pressable>
       </ScrollView>
     </KeyboardAvoidingView>
