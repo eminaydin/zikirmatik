@@ -14,7 +14,7 @@ export interface ZikirSection {
 
 export const CATEGORIZED_RECOMMENDATIONS: ZikirSection[] = [
     {
-        title: 'Temel Zikirler',
+        title: 'basic',
         data: [
             {
                 id: '12',
@@ -59,7 +59,7 @@ export const CATEGORIZED_RECOMMENDATIONS: ZikirSection[] = [
         ]
     },
     {
-        title: 'Korunma ve Selamet',
+        title: 'protection',
         data: [
             {
                 id: '1',
@@ -96,7 +96,7 @@ export const CATEGORIZED_RECOMMENDATIONS: ZikirSection[] = [
         ]
     },
     {
-        title: 'Şifa ve İstiğfar',
+        title: 'healing',
         data: [
             {
                 id: '7',
@@ -117,7 +117,7 @@ export const CATEGORIZED_RECOMMENDATIONS: ZikirSection[] = [
         ]
     },
     {
-        title: 'Salavat-ı Şerifeler',
+        title: 'salavat',
         data: [
             {
                 id: '10',
@@ -138,7 +138,7 @@ export const CATEGORIZED_RECOMMENDATIONS: ZikirSection[] = [
         ]
     },
     {
-        title: 'Kur\'anî Dualar',
+        title: 'quran',
         data: [
             {
                 id: '5',

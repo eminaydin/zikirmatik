@@ -1,0 +1,90 @@
+{
+    "common": {
+        "app_name": "Zikirmatik",
+        "save": "Save",
+        "cancel": "Cancel",
+        "ok": "OK",
+        "delete": "Delete",
+        "reset": "Reset",
+        "finished": "COMPLETED",
+        "version": "Zikirmatik v1.5",
+        "warning": "Warning",
+        "yes_delete": "Yes, Delete"
+    },
+    "menu": {
+        "title": "MENU",
+        "new_zikir": "Add New Dhikr",
+        "recommendations": "Dhikr Suggestions",
+        "history": "My Dhikr History"
+    },
+    "home": {
+        "top_title": "TASBIH COUNTER",
+        "reminder_modal_title": "Dhikr Reminder",
+        "daily_notification": "Daily Notification",
+        "daily_notification_sub": "Let's set a quiet time of peace for you.",
+        "reminder_time_label": "Reminder Time"
+    },
+    "history": {
+        "title": "My Dhikr History",
+        "no_history": "You don't have any dhikr history yet.",
+        "session_date": "Date",
+        "session_count": "Count",
+        "ongoing_tab": "Ongoing",
+        "finished_tab": "Completed",
+        "clear_history": "Clear History",
+        "clear_confirm_title": "Clear History",
+        "clear_confirm_body": "All your dhikr history will be deleted. This action cannot be undone. Do you confirm?",
+        "status_ongoing": "Ongoing",
+        "status_finished": "Completed",
+        "empty_ongoing": "No ongoing dhikrs yet.",
+        "empty_finished": "No completed dhikrs yet."
+    },
+    "list": {
+        "title": "Dhikr Suggestions",
+        "add_success": "Dhikr added successfully!",
+        "categories": {
+            "basic": "Basic Dhikrs",
+            "protection": "Protection & Peace",
+            "healing": "Healing & Repentance",
+            "salavat": "Salawat",
+            "quran": "Quranic Supplications"
+        }
+    },
+    "settings": {
+        "title": "Add New Dhikr",
+        "zikir_text_placeholder": "Dhikr text...",
+        "arabic_text_placeholder": "Arabic text (optional)",
+        "target_placeholder": "Target count",
+        "add_button": "Add Dhikr",
+        "save_start": "Save and Start",
+        "hint": "Add a new dhikr to set your goal and manage app settings.",
+        "label_text": "Dhikr Text (Translation / Phonetic)",
+        "label_arabic": "Dhikr Text (Arabic - Optional)",
+        "label_target": "Target Count",
+        "system_settings": "SYSTEM SETTINGS",
+        "daily_reminder": "Daily Reminder",
+        "daily_reminder_sub": "Sends a notification to remind you of the day's dhikr.",
+        "error_empty": "Please enter a dhikr text."
+    },
+    "recommendations": {
+        "12": {
+            "text": "Subhanallahi wal-hamdülillahi wa la ilaha illallahu vallahu akbar",
+            "translation": "Glory be to Allah, praise be to Him, there is no god but Allah, and Allah is the greatest.",
+            "source": "Muslim, Adab 12"
+        },
+        "15": {
+            "text": "La ilaha illallahu wahdahu la sharika lah, lahul-mulku wa lahul-hamdu wa huwa ala kulli shay'in qadir",
+            "translation": "There is no god but Allah, alone, without partner. His is the kingdom, and His is the praise.",
+            "source": "Bukhari, Daavat 54"
+        },
+        "6": {
+            "text": "Subhanallahi wa bihamdihi adada khalqihi wa rida nafsihi wa zinata arshihi wa midada kalimatih",
+            "translation": "Glory as well as praise be to Allah, equal to the number of His creatures, His pleasure, the weight of His Throne, and the ink of His words.",
+            "source": "Muslim, Dhikr 79"
+        }
+    },
+    "notifications": {
+        "daily_title": "Time for Peace ✨",
+        "daily_body": "Hearts find rest only in the remembrance of Allah. How about a short dhikr break? 🌙"
+    }
+}

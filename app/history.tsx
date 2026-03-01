@@ -14,6 +14,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Ionicons } from '@expo/vector-icons';
 import * as Haptics from 'expo-haptics';
 import { GestureHandlerRootView, Swipeable } from 'react-native-gesture-handler';
+import { useTranslation } from 'react-i18next';
 
 const { width, height } = Dimensions.get('window');
 
@@ -28,6 +29,7 @@ interface HistoryItem {
 }
 
 export default function HistoryScreen() {
+  const { t, i18n } = useTranslation();
   const [history, setHistory] = useState<HistoryItem[]>([]);
   const [activeTab, setActiveTab] = useState<'ongoing' | 'finished'>('ongoing');
   const router = useRouter();
@@ -51,12 +53,12 @@ export default function HistoryScreen() {
 
   const clearHistory = async () => {
     Alert.alert(
-      'Geçmişi Temizle',
-      'Tüm zikir geçmişiniz silinecek. Bu işlem geri alınamaz. Onaylıyor musunuz?',
+      t('history.clear_confirm_title'),
+      t('history.clear_confirm_body'),
       [
-        { text: 'Vazgeç', style: 'cancel' },
+        { text: t('common.cancel'), style: 'cancel' },
         { 
-          text: 'Evet, Sil', 
+          text: t('common.yes_delete'), 
           style: 'destructive',
           onPress: async () => {
             setHistory([]);
@@ -111,12 +113,12 @@ export default function HistoryScreen() {
                 {item.isFinished ? (
                   <View style={styles.statusBadge}>
                     <Ionicons name="checkmark-circle" size={12} color="#10B981" />
-                    <Text style={styles.statusText}>Tamamlandı</Text>
+                    <Text style={styles.statusText}>{t('history.status_finished')}</Text>
                   </View>
                 ) : (
                   <View style={[styles.statusBadge, { backgroundColor: '#EAB30815' }]}>
                     <Ionicons name="time" size={12} color="#EAB308" />
-                    <Text style={[styles.statusText, { color: '#EAB308' }]}>Devam Ediyor</Text>
+                    <Text style={[styles.statusText, { color: '#EAB308' }]}>{t('history.status_ongoing')}</Text>
                   </View>
                 )}
             </View>
@@ -127,7 +129,7 @@ export default function HistoryScreen() {
                 <Text style={styles.cardTarget}>/ {item.target || 33}</Text>
             </View>
           </View>
-          <Text style={styles.cardDate}>{new Date(item.date).toLocaleString('tr-TR')}</Text>
+          <Text style={styles.cardDate}>{new Date(item.date).toLocaleString(i18n.language === 'tr' ? 'tr-TR' : 'en-US')}</Text>
         </Pressable>
     </Swipeable>
   );
@@ -140,7 +142,7 @@ export default function HistoryScreen() {
     <GestureHandlerRootView style={{ flex: 1 }}>
       <Stack.Screen 
         options={{
-          headerTitle: 'Zikir Geçmişi',
+          headerTitle: t('history.title'),
           headerLeft: () => null,
         }}
       />
@@ -150,13 +152,13 @@ export default function HistoryScreen() {
             style={[styles.tab, activeTab === 'ongoing' && styles.tabActive]} 
             onPress={() => setActiveTab('ongoing')}
           >
-            <Text style={[styles.tabText, activeTab === 'ongoing' && styles.tabTextActive]}>Devam Edenler</Text>
+            <Text style={[styles.tabText, activeTab === 'ongoing' && styles.tabTextActive]}>{t('history.ongoing_tab')}</Text>
           </Pressable>
           <Pressable 
             style={[styles.tab, activeTab === 'finished' && styles.tabActive]} 
             onPress={() => setActiveTab('finished')}
           >
-            <Text style={[styles.tabText, activeTab === 'finished' && styles.tabTextActive]}>Tamamlananlar</Text>
+            <Text style={[styles.tabText, activeTab === 'finished' && styles.tabTextActive]}>{t('history.finished_tab')}</Text>
           </Pressable>
         </View>
 
@@ -170,7 +172,7 @@ export default function HistoryScreen() {
             />
             <Pressable style={styles.clearButton} onPress={clearHistory}>
               <Ionicons name="trash-outline" size={20} color="#EF4444" />
-              <Text style={styles.clearText}>Geçmişi Temizle</Text>
+              <Text style={styles.clearText}>{t('history.clear_history')}</Text>
             </Pressable>
           </View>
         ) : (
@@ -178,8 +180,8 @@ export default function HistoryScreen() {
             <Ionicons name="time-outline" size={64} color={Colors.dark.border} />
             <Text style={styles.emptyText}>
                 {activeTab === 'finished' 
-                    ? 'Henüz tamamlanmış bir zikir yok.' 
-                    : 'Henüz devam eden bir zikir yok.'}
+                    ? t('history.empty_finished') 
+                    : t('history.empty_ongoing')}
             </Text>
           </View>
         )}

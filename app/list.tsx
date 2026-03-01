@@ -22,6 +22,9 @@ import { useRouter } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Haptics from 'expo-haptics';
 import { Ionicons } from '@expo/vector-icons';
+import { Alert } from 'react-native';
+import { useTranslation } from 'react-i18next';
+import { ZikirItem, ZikirSection, CATEGORIZED_RECOMMENDATIONS } from '../constants/Recommendations';
 
 if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental) {
   UIManager.setLayoutAnimationEnabledExperimental(true);
@@ -29,6 +32,7 @@ if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental
 
 
 const AccordionItem = ({ item, index, isExpanded, onPress }: { item: ZikirItem, index: number, isExpanded: boolean, onPress: () => void }) => {
+  const { t } = useTranslation();
   const height = useSharedValue(0);
   const opacity = useSharedValue(0);
   const [measuredHeight, setMeasuredHeight] = useState<number | null>(null);
@@ -64,23 +68,23 @@ const AccordionItem = ({ item, index, isExpanded, onPress }: { item: ZikirItem, 
         }}
         style={{ position: 'absolute', width: '100%' }}
       >
-        <Pressable 
+        <Pressable
           style={[
             styles.card,
             index === 0 ? styles.cardFirst : styles.cardSubsequent
-          ]} 
+          ]}
           onPress={onPress}
         >
           <View style={styles.cardHeader}>
-            <Text style={styles.cardTitle}>{item.text}</Text>
+            <Text style={styles.cardTitle}>{t(`recommendations.${item.id}.text`, { defaultValue: item.text })}</Text>
             <Text style={styles.cardTarget}>{item.target}×</Text>
           </View>
           {item.arabic && (
             <Text style={styles.cardArabic}>{item.arabic}</Text>
           )}
-          <Text style={styles.cardTranslation}>{item.translation}</Text>
+          <Text style={styles.cardTranslation}>{t(`recommendations.${item.id}.translation`, { defaultValue: item.translation })}</Text>
           <View style={styles.cardFooter}>
-            <Text style={styles.cardSource}>📜 {item.source}</Text>
+            <Text style={styles.cardSource}>📜 {t(`recommendations.${item.id}.source`, { defaultValue: item.source })}</Text>
           </View>
         </Pressable>
       </View>
@@ -88,11 +92,12 @@ const AccordionItem = ({ item, index, isExpanded, onPress }: { item: ZikirItem, 
   );
 };
 
-import { ZikirItem, ZikirSection, CATEGORIZED_RECOMMENDATIONS } from '../constants/Recommendations';
+// Removed the old import for ZikirItem, ZikirSection, CATEGORIZED_RECOMMENDATIONS as it's now at the top
 
 
 const SectionHeader = ({ title, isExpanded, onPress }: { title: string, isExpanded: boolean, onPress: () => void }) => {
   const progress = useSharedValue(isExpanded ? 1 : 0);
+  const { t } = useTranslation(); // Use translation hook here
 
   useEffect(() => {
     progress.value = withTiming(isExpanded ? 1 : 0, { duration: 300 });
@@ -110,15 +115,15 @@ const SectionHeader = ({ title, isExpanded, onPress }: { title: string, isExpand
   }));
 
   return (
-    <AnimatedPressable 
-      style={[styles.sectionHeader, animatedStyle]} 
+    <AnimatedPressable
+      style={[styles.sectionHeader, animatedStyle]}
       onPress={onPress}
     >
-      <Animated.Text style={[styles.sectionTitle, textStyle]}>{title}</Animated.Text>
-      <Ionicons 
-        name={isExpanded ? "chevron-up" : "chevron-down"} 
-        size={20} 
-        color={isExpanded ? Colors.dark.primary : Colors.dark.textSecondary} 
+      <Animated.Text style={[styles.sectionTitle, textStyle]}>{t(`list.categories.${title}`)}</Animated.Text>
+      <Ionicons
+        name={isExpanded ? "chevron-up" : "chevron-down"}
+        size={20}
+        color={isExpanded ? Colors.dark.primary : Colors.dark.textSecondary}
       />
     </AnimatedPressable>
   );
@@ -127,8 +132,10 @@ const SectionHeader = ({ title, isExpanded, onPress }: { title: string, isExpand
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
 export default function ListScreen() {
+  const { t } = useTranslation();
   const router = useRouter();
-  const [expandedSection, setExpandedSection] = useState<string | null>('Temel Zikirler');
+  const [expandedSection, setExpandedSection] = useState<string | null>('basic');
+ // Initial state uses the raw key
 
   const toggleSection = (title: string) => {
     setExpandedSection(prev => prev === title ? null : title);
@@ -137,28 +144,25 @@ export default function ListScreen() {
   const selectZikir = async (item: ZikirItem) => {
     await Haptics.selectionAsync();
     const sessionId = Date.now().toString();
-    const newZikir = { 
+    const newZikir = {
         id: sessionId,
-        text: item.text, 
+        text: item.text,
         arabic: item.arabic,
-        target: item.target, 
-        count: 0 
+        target: item.target,
+        count: 0
     };
     await AsyncStorage.setItem('selected_zikir', JSON.stringify(newZikir));
-    
+
     try {
         const historyVal = await AsyncStorage.getItem('zikir_history');
         let history = historyVal ? JSON.parse(historyVal) : [];
         history.push({
-            id: sessionId,
-            text: item.text,
-            arabic: item.arabic,
-            count: 0,
-            target: item.target,
+            ...newZikir, // Use spread to include all properties from newZikir
             date: new Date().toISOString(),
             isFinished: false,
         });
         await AsyncStorage.setItem('zikir_history', JSON.stringify(history));
+        Alert.alert(t('common.ok'), t('list.add_success')); // Added Alert
     } catch (e) {
         console.error(e);
     }
