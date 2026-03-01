@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/icon.png" width="128" height="128" alt="Zikirmatik Logo">
+</p>
+
 # Zikirmatik - Modern Dijital Tesbih
 
 [![App Store](https://img.shields.io/badge/App_Store-Sıraya_Alındı-007AFF?style=for-the-badge&logo=apple)](https://github.com/eminaydin/zikirmatik)
