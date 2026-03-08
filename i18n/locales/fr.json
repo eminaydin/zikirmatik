@@ -1,159 +1,160 @@
 {
-    "common": {
-        "app_name": "Zikirmatik",
-        "save": "Enregistrer",
-        "cancel": "Annuler",
-        "ok": "OK",
-        "delete": "Supprimer",
-        "reset": "Réinitialiser",
-        "finished": "TERMINÉ",
-        "version": "Zikirmatik v1.5",
-        "warning": "Avertissement",
-        "yes_delete": "Oui, supprimer",
-        "language": "Langue",
-        "languages": {
-            "tr": "Türkçe",
-            "en": "English",
-            "de": "Deutsch",
-            "fr": "Français",
-            "ru": "Русский",
-            "bs": "Bosanski"
-        }
-    },
-    "menu": {
-        "title": "MENU",
-        "new_zikir": "Ajouter un nouveau Dhikr",
-        "recommendations": "Suggestions de Dhikr",
-        "history": "Mon historique de Dhikr"
-    },
-    "home": {
-        "top_title": "COMPTEUR DE TASBIH",
-        "reminder_modal_title": "Rappel de Dhikr",
-        "daily_notification": "Notification quotidienne",
-        "daily_notification_sub": "Prévoyons un moment de paix pour toi.",
-        "reminder_time_label": "Heure du rappel"
-    },
-    "history": {
-        "title": "Mon historique de Dhikr",
-        "no_history": "Tu n'as pas encore d'historique de dhikr.",
-        "session_date": "Date",
-        "session_count": "Compte",
-        "ongoing_tab": "En cours",
-        "finished_tab": "Terminés",
-        "clear_history": "Effacer l'historique",
-        "clear_confirm_title": "Effacer l'historique",
-        "clear_confirm_body": "Tout ton historique de dhikr sera supprimé. Cette action est irréversible. Confirmes-tu ?",
-        "status_ongoing": "En cours",
-        "status_finished": "Terminé",
-        "empty_ongoing": "Pas encore de dhikrs en cours.",
-        "empty_finished": "Pas encore de dhikrs terminés."
-    },
-    "list": {
-        "title": "Suggestions de Dhikr",
-        "add_success": "Dhikr ajouté avec succès !",
-        "categories": {
-            "basic": "Dhikrs de base",
-            "protection": "Protection & Paix",
-            "healing": "Guérison & Repentir",
-            "salavat": "Salawat",
-            "quran": "Supplications coraniques"
-        }
-    },
-    "settings": {
-        "title": "Ajouter un nouveau Dhikr",
-        "zikir_text_placeholder": "Texte du dhikr...",
-        "arabic_text_placeholder": "Texte arabe (optionnel)",
-        "target_placeholder": "Nombre cible",
-        "add_button": "Ajouter le Dhikr",
-        "save_start": "Enregistrer et Commencer",
-        "hint": "Ajoute un nouveau dhikr pour définir ton objectif et gérer les paramètres de l'application.",
-        "label_text": "Texte du Dhikr (Traduction / Phonétique)",
-        "label_arabic": "Texte du Dhikr (Arabe - Optionnel)",
-        "label_target": "Nombre Cible",
-        "system_settings": "PARAMÈTRES SYSTÈME",
-        "daily_reminder": "Rappel Quotidien",
-        "daily_reminder_sub": "Envoie une notification pour te rappeler le dhikr du jour.",
-        "error_empty": "S'il te plaît, entre un texte pour le dhikr."
-    },
-    "recommendations": {
-        "12": {
-            "text": "Subhanallahi wal-hamdoulillahi wa la ilaha illallahu vallahu akbar",
-            "translation": "Gloire à Allah, louange à Lui, il n'y a de dieu qu'Allah, et Allah est le plus grand.",
-            "source": "Mouslime, Adab 12"
-        },
-        "15": {
-            "text": "La ilaha illallahu wahdahu la sharika lah, lahul-moulkou wa lahul-hamdou wa houwa ala koulli shay'in qadir",
-            "translation": "Il n'y a de dieu qu'Allah, seul, sans associé. À Lui la royauté, à Lui la louange, et Il est Omnipotent.",
-            "source": "Boukhari, Daavat 54"
-        },
-        "6": {
-            "text": "Subhanallahi wa bihamdihi adada khalqihi wa rida nafsihi wa zinata arshihi wa midada kalimatih",
-            "translation": "Gloire et louange à Allah, autant de fois qu'il y a de Ses créatures, selon Son bon plaisir, le poids de Son Trône et l'encre de Ses paroles.",
-            "source": "Mouslime, Dhikr 79"
-        },
-        "1": {
-            "text": "La ilaha illa anta subhanaka inni kuntu minaz-zalimin",
-            "translation": "Nul n'est digne d'être adoré en dehors de Toi. Gloire et pureté à Toi ! J'ai été certes du nombre des injustes.",
-            "source": "Sourate Al-Anbiya, 87"
-        },
-        "4": {
-            "text": "Hasbunallahu wa ni'mal-wakil, ni'mal-mawla wa ni'man-nasir",
-            "translation": "Allah nous suffit; Il est notre meilleur garant. Quel excellent Maître et quel excellent Soutien.",
-            "source": "Sourate Al-Imran, 173"
-        },
-        "2": {
-            "text": "Hasbiyallahu la ilaha illa hu, alayhi tawakkaltu wa huwa rabbul-arshil-azim",
-            "translation": "Allah me suffit. Il n'y a de divinité que Lui. En Lui je place ma confiance et Il est l'Auguste Seigneur du Trône.",
-            "source": "Sourate At-Tawbah, 129"
-        },
-        "8": {
-            "text": "Ya Hayyu Ya Qayyum birahmatika astagithu, aslih li sha'ni kullahu wa la takilni ila nafsi tarfata ayn",
-            "translation": "Ô le Vivant, Ô Celui qui subsiste par Lui-même, par Ta miséricorde je demande Ton aide. Réforme toutes mes affaires et ne me laisse pas à moi-même, ne serait-ce que le temps d'un cillement.",
-            "source": "Tirmidhi, Daavat 91"
-        },
-        "7": {
-            "text": "Astaghfirullahal-azim alladhi la ilaha illa huwal-hayyul-qayyumu wa atubu ilayh",
-            "translation": "Je demande pardon à Allah le Magnifique, en dehors de qui il n'y a pas d'autre divinité, le Vivant, Celui qui subsiste par Lui-même, et je me repens à Lui.",
-            "source": "Abou Daoud, Witr 26"
-        },
-        "3": {
-            "text": "Rabbi inni massaniyad-durru wa anta arhamur-rahimin",
-            "translation": "Seigneur! Le mal m'a touché. Mais Toi, Tu es le plus miséricordieux des miséricordieux.",
-            "source": "Sourate Al-Anbiya, 83"
-        },
-        "10": {
-            "text": "Allahumme salli ala sayyidina Muhammadin salaten tunjina biha min jami'il-ahwali wal-afat",
-            "translation": "Ô Allah ! Prie sur notre seigneur Muhammad d'une prière par laquelle Tu nous sauves de toutes les terreurs et calamités.",
-            "source": "Salat al-Munjiyah"
-        },
-        "11": {
-            "text": "Allahumme salli salaten kamilatan wa sallim salaman tamman ala sayyidina Muhammadinil-ladhi tanhallo bihil-uqad",
-            "translation": "Ô Allah ! Accorde une bénédiction parfaite et une paix complète à notre seigneur Muhammad, par qui les nœuds sont dénoués.",
-            "source": "Salat al-Tafrijiyah"
-        },
-        "5": {
-            "text": "Rabbana atina fid-dunya hasanatan wa fil-akhirati hasanatan wa qina adhaban-nar",
-            "translation": "Notre Seigneur ! Donne-nous en ce monde le bien, et dans l'au-delà le bien, et préserve-nous du châtiment du Feu.",
-            "source": "Sourate Al-Baqarah, 201"
-        },
-        "14": {
-            "text": "Rabbi hab li min ladunka dhurriyatan tayyibatan innaka sami'ud-du'a",
-            "translation": "Seigneur! Accorde-moi, de Ta part, une bonne progéniture. Toi, Tu es Celui qui entend la prière.",
-            "source": "Sourate Al-Imran, 38"
-        },
-        "9": {
-            "text": "La ilaha illallahul-malikul-haqqul-mubin",
-            "translation": "Il n'y a de divinité qu'Allah, le Roi, la Vérité, l'Évident.",
-            "source": "Hadith"
-        },
-        "13": {
-            "text": "Ya Dhal-Jalali wal-Ikram",
-            "translation": "Ô Toi, Plein de Majesté et de Noblesse !",
-            "source": "Tirmidhi, Daavat 92"
-        }
-    },
-    "notifications": {
-        "daily_title": "Moment de paix ✨",
-        "daily_body": "Les cœurs ne s'apaisent que par l'évocation d'Allah. Que dirais-tu d'une petite pause dhikr ? 🌙"
+  "common": {
+    "app_name": "Zikirmatik",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "ok": "OK",
+    "delete": "Supprimer",
+    "reset": "Réinitialiser",
+    "finished": "TERMINÉ",
+    "version": "Zikirmatik v1.5",
+    "warning": "Avertissement",
+    "yes_delete": "Oui, supprimer",
+    "language": "Langue",
+    "languages": {
+      "tr": "Türkçe",
+      "en": "English",
+      "de": "Deutsch",
+      "fr": "Français",
+      "ru": "Русский",
+      "bs": "Bosanski"
     }
+  },
+  "menu": {
+    "title": "MENU",
+    "new_zikir": "Ajouter un nouveau Dhikr",
+    "recommendations": "Suggestions de Dhikr",
+    "history": "Mon historique de Dhikr",
+    "rate_app": "Évaluer l'application"
+  },
+  "home": {
+    "top_title": "COMPTEUR DE TASBIH",
+    "reminder_modal_title": "Rappel de Dhikr",
+    "daily_notification": "Notification quotidienne",
+    "daily_notification_sub": "Prévoyons un moment de paix pour toi.",
+    "reminder_time_label": "Heure du rappel"
+  },
+  "history": {
+    "title": "Mon historique de Dhikr",
+    "no_history": "Tu n'as pas encore d'historique de dhikr.",
+    "session_date": "Date",
+    "session_count": "Compte",
+    "ongoing_tab": "En cours",
+    "finished_tab": "Terminés",
+    "clear_history": "Effacer l'historique",
+    "clear_confirm_title": "Effacer l'historique",
+    "clear_confirm_body": "Tout ton historique de dhikr sera supprimé. Cette action est irréversible. Confirmes-tu ?",
+    "status_ongoing": "En cours",
+    "status_finished": "Terminé",
+    "empty_ongoing": "Pas encore de dhikrs en cours.",
+    "empty_finished": "Pas encore de dhikrs terminés."
+  },
+  "list": {
+    "title": "Suggestions de Dhikr",
+    "add_success": "Dhikr ajouté avec succès !",
+    "categories": {
+      "basic": "Dhikrs de base",
+      "protection": "Protection & Paix",
+      "healing": "Guérison & Repentir",
+      "salavat": "Salawat",
+      "quran": "Supplications coraniques"
+    }
+  },
+  "settings": {
+    "title": "Ajouter un nouveau Dhikr",
+    "zikir_text_placeholder": "Texte du dhikr...",
+    "arabic_text_placeholder": "Texte arabe (optionnel)",
+    "target_placeholder": "Nombre cible",
+    "add_button": "Ajouter le Dhikr",
+    "save_start": "Enregistrer et Commencer",
+    "hint": "Ajoute un nouveau dhikr pour définir ton objectif et gérer les paramètres de l'application.",
+    "label_text": "Texte du Dhikr (Traduction / Phonétique)",
+    "label_arabic": "Texte du Dhikr (Arabe - Optionnel)",
+    "label_target": "Nombre Cible",
+    "system_settings": "PARAMÈTRES SYSTÈME",
+    "daily_reminder": "Rappel Quotidien",
+    "daily_reminder_sub": "Envoie une notification pour te rappeler le dhikr du jour.",
+    "error_empty": "S'il te plaît, entre un texte pour le dhikr."
+  },
+  "recommendations": {
+    "12": {
+      "text": "Subhanallahi wal-hamdoulillahi wa la ilaha illallahu vallahu akbar",
+      "translation": "Gloire à Allah, louange à Lui, il n'y a de dieu qu'Allah, et Allah est le plus grand.",
+      "source": "Mouslime, Adab 12"
+    },
+    "15": {
+      "text": "La ilaha illallahu wahdahu la sharika lah, lahul-moulkou wa lahul-hamdou wa houwa ala koulli shay'in qadir",
+      "translation": "Il n'y a de dieu qu'Allah, seul, sans associé. À Lui la royauté, à Lui la louange, et Il est Omnipotent.",
+      "source": "Boukhari, Daavat 54"
+    },
+    "6": {
+      "text": "Subhanallahi wa bihamdihi adada khalqihi wa rida nafsihi wa zinata arshihi wa midada kalimatih",
+      "translation": "Gloire et louange à Allah, autant de fois qu'il y a de Ses créatures, selon Son bon plaisir, le poids de Son Trône et l'encre de Ses paroles.",
+      "source": "Mouslime, Dhikr 79"
+    },
+    "1": {
+      "text": "La ilaha illa anta subhanaka inni kuntu minaz-zalimin",
+      "translation": "Nul n'est digne d'être adoré en dehors de Toi. Gloire et pureté à Toi ! J'ai été certes du nombre des injustes.",
+      "source": "Sourate Al-Anbiya, 87"
+    },
+    "4": {
+      "text": "Hasbunallahu wa ni'mal-wakil, ni'mal-mawla wa ni'man-nasir",
+      "translation": "Allah nous suffit; Il est notre meilleur garant. Quel excellent Maître et quel excellent Soutien.",
+      "source": "Sourate Al-Imran, 173"
+    },
+    "2": {
+      "text": "Hasbiyallahu la ilaha illa hu, alayhi tawakkaltu wa huwa rabbul-arshil-azim",
+      "translation": "Allah me suffit. Il n'y a de divinité que Lui. En Lui je place ma confiance et Il est l'Auguste Seigneur du Trône.",
+      "source": "Sourate At-Tawbah, 129"
+    },
+    "8": {
+      "text": "Ya Hayyu Ya Qayyum birahmatika astagithu, aslih li sha'ni kullahu wa la takilni ila nafsi tarfata ayn",
+      "translation": "Ô le Vivant, Ô Celui qui subsiste par Lui-même, par Ta miséricorde je demande Ton aide. Réforme toutes mes affaires et ne me laisse pas à moi-même, ne serait-ce que le temps d'un cillement.",
+      "source": "Tirmidhi, Daavat 91"
+    },
+    "7": {
+      "text": "Astaghfirullahal-azim alladhi la ilaha illa huwal-hayyul-qayyumu wa atubu ilayh",
+      "translation": "Je demande pardon à Allah le Magnifique, en dehors de qui il n'y a pas d'autre divinité, le Vivant, Celui qui subsiste par Lui-même, et je me repens à Lui.",
+      "source": "Abou Daoud, Witr 26"
+    },
+    "3": {
+      "text": "Rabbi inni massaniyad-durru wa anta arhamur-rahimin",
+      "translation": "Seigneur! Le mal m'a touché. Mais Toi, Tu es le plus miséricordieux des miséricordieux.",
+      "source": "Sourate Al-Anbiya, 83"
+    },
+    "10": {
+      "text": "Allahumme salli ala sayyidina Muhammadin salaten tunjina biha min jami'il-ahwali wal-afat",
+      "translation": "Ô Allah ! Prie sur notre seigneur Muhammad d'une prière par laquelle Tu nous sauves de toutes les terreurs et calamités.",
+      "source": "Salat al-Munjiyah"
+    },
+    "11": {
+      "text": "Allahumme salli salaten kamilatan wa sallim salaman tamman ala sayyidina Muhammadinil-ladhi tanhallo bihil-uqad",
+      "translation": "Ô Allah ! Accorde une bénédiction parfaite et une paix complète à notre seigneur Muhammad, par qui les nœuds sont dénoués.",
+      "source": "Salat al-Tafrijiyah"
+    },
+    "5": {
+      "text": "Rabbana atina fid-dunya hasanatan wa fil-akhirati hasanatan wa qina adhaban-nar",
+      "translation": "Notre Seigneur ! Donne-nous en ce monde le bien, et dans l'au-delà le bien, et préserve-nous du châtiment du Feu.",
+      "source": "Sourate Al-Baqarah, 201"
+    },
+    "14": {
+      "text": "Rabbi hab li min ladunka dhurriyatan tayyibatan innaka sami'ud-du'a",
+      "translation": "Seigneur! Accorde-moi, de Ta part, une bonne progéniture. Toi, Tu es Celui qui entend la prière.",
+      "source": "Sourate Al-Imran, 38"
+    },
+    "9": {
+      "text": "La ilaha illallahul-malikul-haqqul-mubin",
+      "translation": "Il n'y a de divinité qu'Allah, le Roi, la Vérité, l'Évident.",
+      "source": "Hadith"
+    },
+    "13": {
+      "text": "Ya Dhal-Jalali wal-Ikram",
+      "translation": "Ô Toi, Plein de Majesté et de Noblesse !",
+      "source": "Tirmidhi, Daavat 92"
+    }
+  },
+  "notifications": {
+    "daily_title": "Moment de paix ✨",
+    "daily_body": "Les cœurs ne s'apaisent que par l'évocation d'Allah. Que dirais-tu d'une petite pause dhikr ? 🌙"
+  }
 }

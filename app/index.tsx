@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { useState, useCallback, useEffect } from 'react';
+import * as React from "react";
+import { useState, useCallback, useEffect } from "react";
 import {
   StyleSheet,
   Text,
@@ -11,8 +11,9 @@ import {
   Modal,
   Switch,
   Image,
-} from 'react-native';
-import * as Haptics from 'expo-haptics';
+} from "react-native";
+import * as Haptics from "expo-haptics";
+import * as StoreReview from "expo-store-review";
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
@@ -23,16 +24,16 @@ import Animated, {
   runOnJS,
   LinearTransition,
   Easing,
-} from 'react-native-reanimated';
-import { Colors } from '../constants/Colors';
-import { Link, useFocusEffect, useRouter } from 'expo-router';
-import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useNotifications } from '../hooks/useNotifications';
-import DateTimePicker from '@react-native-community/datetimepicker';
-import { useTranslation } from 'react-i18next';
+} from "react-native-reanimated";
+import { Colors } from "../constants/Colors";
+import { Link, useFocusEffect, useRouter } from "expo-router";
+import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useNotifications } from "../hooks/useNotifications";
+import DateTimePicker from "@react-native-community/datetimepicker";
+import { useTranslation } from "react-i18next";
 
-const { width, height } = Dimensions.get('window');
+const { width, height } = Dimensions.get("window");
 
 interface ZikirData {
   id: string; // Dynamic session ID
@@ -43,14 +44,18 @@ interface ZikirData {
 }
 
 const DEFAULT_ZIKIR: ZikirData = {
-  id: 'default',
-  text: 'Sübhanallah',
-  arabic: 'سُبْحَانَ اللَّهِ',
+  id: "default",
+  text: "Sübhanallah",
+  arabic: "سُبْحَانَ اللَّهِ",
   target: 33,
   count: 0,
 };
 
-import { GestureHandlerRootView, GestureDetector, Gesture } from 'react-native-gesture-handler';
+import {
+  GestureHandlerRootView,
+  GestureDetector,
+  Gesture,
+} from "react-native-gesture-handler";
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
@@ -63,41 +68,49 @@ export default function CounterScreen() {
   const [naturalTextHeight, setNaturalTextHeight] = useState(0);
   const [isReminderModalVisible, setIsReminderModalVisible] = useState(false);
   const [reminderEnabled, setReminderEnabled] = useState(false);
-  const [reminderTime, setReminderTime] = useState(new Date(new Date().setHours(20, 0, 0, 0)));
+  const [reminderTime, setReminderTime] = useState(
+    new Date(new Date().setHours(20, 0, 0, 0)),
+  );
   const [showTimePicker, setShowTimePicker] = useState(false);
 
-  const { scheduleDailyNotification, cancelAllNotifications } = useNotifications();
+  const { scheduleDailyNotification, cancelAllNotifications } =
+    useNotifications();
 
   // Constants for collision detection
   const COUNTER_TOP_MARGIN = height * 0.18;
-  const CIRCLE_RADIUS = (width * 0.70) / 2; // Slightly smaller visual radius
+  const CIRCLE_RADIUS = (width * 0.7) / 2; // Slightly smaller visual radius
   const COUNTER_CENTER_Y = height / 2 + COUNTER_TOP_MARGIN;
   const SAFE_Y_BOUNDARY = COUNTER_CENTER_Y - CIRCLE_RADIUS - 120; // Significant 120px buffer
 
   const scale = useSharedValue(1);
   const sidebarTranslateX = useSharedValue(-width);
   const sidebarOpacity = useSharedValue(0);
-  const progressValue = useSharedValue(zikir.target > 0 ? zikir.count / zikir.target : 0);
+  const progressValue = useSharedValue(
+    zikir.target > 0 ? zikir.count / zikir.target : 0,
+  );
   const router = useRouter();
 
   useEffect(() => {
-    progressValue.value = withTiming(zikir.target > 0 ? Math.min(zikir.count / zikir.target, 1) : 0, {
-      duration: 300,
-    });
+    progressValue.value = withTiming(
+      zikir.target > 0 ? Math.min(zikir.count / zikir.target, 1) : 0,
+      {
+        duration: 300,
+      },
+    );
     setIsTextExpanded(false); // Reset expansion when zikir changes
   }, [zikir.count, zikir.target, zikir.text]);
 
   useFocusEffect(
     useCallback(() => {
-      AsyncStorage.getItem('selected_zikir').then((value) => {
+      AsyncStorage.getItem("selected_zikir").then((value) => {
         if (value) setZikir(JSON.parse(value));
       });
-      AsyncStorage.getItem('haptics_enabled').then((val) => {
-        if (val !== null) setHapticsEnabled(val === 'true');
+      AsyncStorage.getItem("haptics_enabled").then((val) => {
+        if (val !== null) setHapticsEnabled(val === "true");
       });
 
       // Load reminder settings
-      AsyncStorage.getItem('notification_time').then((val) => {
+      AsyncStorage.getItem("notification_time").then((val) => {
         if (val) {
           const { hour, minute } = JSON.parse(val);
           const date = new Date();
@@ -108,45 +121,47 @@ export default function CounterScreen() {
           setReminderEnabled(false);
         }
       });
-    }, [])
+    }, []),
   );
 
   const toggleSidebar = useCallback(() => {
     const nextState = !isSidebarOpen;
     setIsSidebarOpen(nextState);
-    sidebarTranslateX.value = withTiming(nextState ? 0 : -width, { duration: 250 });
+    sidebarTranslateX.value = withTiming(nextState ? 0 : -width, {
+      duration: 250,
+    });
     sidebarOpacity.value = withTiming(nextState ? 1 : 0, { duration: 250 });
   }, [isSidebarOpen]);
 
   const panGesture = Gesture.Pan()
-    .onStart((_)=> {
+    .onStart((_) => {
       // No context needed for simple swipe
     })
     .onUpdate((event) => {
-        const startX = isSidebarOpen ? 0 : -width;
-        const nextX = startX + event.translationX;
-        
-        if (nextX <= 0) {
-            sidebarTranslateX.value = nextX;
-            sidebarOpacity.value = 1 + nextX / width;
-        }
+      const startX = isSidebarOpen ? 0 : -width;
+      const nextX = startX + event.translationX;
+
+      if (nextX <= 0) {
+        sidebarTranslateX.value = nextX;
+        sidebarOpacity.value = 1 + nextX / width;
+      }
     })
     .onEnd((event) => {
-        if (event.translationX > 100 || event.velocityX > 500) {
-            sidebarTranslateX.value = withTiming(0, { duration: 200 });
-            sidebarOpacity.value = withTiming(1, { duration: 200 });
-            runOnJS(setIsSidebarOpen)(true);
-        } else {
-            sidebarTranslateX.value = withTiming(-width, { duration: 200 });
-            sidebarOpacity.value = withTiming(0, { duration: 200 });
-            runOnJS(setIsSidebarOpen)(false);
-        }
+      if (event.translationX > 100 || event.velocityX > 500) {
+        sidebarTranslateX.value = withTiming(0, { duration: 200 });
+        sidebarOpacity.value = withTiming(1, { duration: 200 });
+        runOnJS(setIsSidebarOpen)(true);
+      } else {
+        sidebarTranslateX.value = withTiming(-width, { duration: 200 });
+        sidebarOpacity.value = withTiming(0, { duration: 200 });
+        runOnJS(setIsSidebarOpen)(false);
+      }
     });
 
   const toggleHaptics = async () => {
     const newState = !hapticsEnabled;
     setHapticsEnabled(newState);
-    await AsyncStorage.setItem('haptics_enabled', newState.toString());
+    await AsyncStorage.setItem("haptics_enabled", newState.toString());
     if (newState) {
       await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
     }
@@ -154,17 +169,17 @@ export default function CounterScreen() {
 
   const save = async (data: ZikirData) => {
     setZikir(data);
-    await AsyncStorage.setItem('selected_zikir', JSON.stringify(data));
+    await AsyncStorage.setItem("selected_zikir", JSON.stringify(data));
     updateHistory(data);
   };
 
   const updateHistory = async (data: ZikirData) => {
     try {
-      const historyVal = await AsyncStorage.getItem('zikir_history');
+      const historyVal = await AsyncStorage.getItem("zikir_history");
       let history = historyVal ? JSON.parse(historyVal) : [];
-      
+
       const index = history.findIndex((h: any) => h.id === data.id);
-      
+
       if (index !== -1) {
         // Update existing specific session
         history[index] = {
@@ -188,7 +203,7 @@ export default function CounterScreen() {
         });
       }
 
-      await AsyncStorage.setItem('zikir_history', JSON.stringify(history));
+      await AsyncStorage.setItem("zikir_history", JSON.stringify(history));
     } catch (e) {
       console.error(e);
     }
@@ -202,15 +217,31 @@ export default function CounterScreen() {
     if (hapticsEnabled) {
       await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     }
-    
+
     scale.value = withSequence(
       withTiming(0.97, { duration: 60 }),
-      withSpring(1, { damping: 20, stiffness: 400 })
+      withSpring(1, { damping: 20, stiffness: 400 }),
     );
 
     const newCount = zikir.count + 1;
-    if (newCount === zikir.target && hapticsEnabled) {
-      await Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+    if (newCount === zikir.target) {
+      if (hapticsEnabled) {
+        await Haptics.notificationAsync(
+          Haptics.NotificationFeedbackType.Success,
+        );
+      }
+
+      try {
+        const hasRated = await AsyncStorage.getItem("has_rated_app");
+        if (!hasRated) {
+          if (await StoreReview.hasAction()) {
+            await StoreReview.requestReview();
+            await AsyncStorage.setItem("has_rated_app", "true");
+          }
+        }
+      } catch (e) {
+        console.log("Error requesting review", e);
+      }
     }
 
     await save({ ...zikir, count: newCount });
@@ -220,16 +251,16 @@ export default function CounterScreen() {
     if (hapticsEnabled) {
       await Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning);
     }
-    
+
     if (isFinished) {
       // If finished, start a brand NEW session
       const newZikir = {
         ...zikir,
         id: Date.now().toString(),
-        count: 0
+        count: 0,
       };
       setZikir(newZikir);
-      await AsyncStorage.setItem('selected_zikir', JSON.stringify(newZikir));
+      await AsyncStorage.setItem("selected_zikir", JSON.stringify(newZikir));
       await updateHistory(newZikir);
     } else {
       await save({ ...zikir, count: 0 });
@@ -240,33 +271,39 @@ export default function CounterScreen() {
     if (hapticsEnabled) {
       await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
     }
-    
+
     // Create a new session for the next round
     const newZikir = {
       ...zikir,
       id: Date.now().toString(),
-      count: 0
+      count: 0,
     };
     setZikir(newZikir);
-    await AsyncStorage.setItem('selected_zikir', JSON.stringify(newZikir));
+    await AsyncStorage.setItem("selected_zikir", JSON.stringify(newZikir));
     await updateHistory(newZikir);
   };
 
   const toggleReminder = async (value: boolean) => {
     setReminderEnabled(value);
     if (value) {
-      await scheduleDailyNotification(reminderTime.getHours(), reminderTime.getMinutes());
+      await scheduleDailyNotification(
+        reminderTime.getHours(),
+        reminderTime.getMinutes(),
+      );
     } else {
       await cancelAllNotifications();
     }
   };
 
   const onTimeChange = async (event: any, selectedDate?: Date) => {
-    setShowTimePicker(Platform.OS === 'ios');
+    setShowTimePicker(Platform.OS === "ios");
     if (selectedDate) {
       setReminderTime(selectedDate);
       if (reminderEnabled) {
-        await scheduleDailyNotification(selectedDate.getHours(), selectedDate.getMinutes());
+        await scheduleDailyNotification(
+          selectedDate.getHours(),
+          selectedDate.getMinutes(),
+        );
       }
     }
   };
@@ -278,7 +315,7 @@ export default function CounterScreen() {
       pulseValue.value = withRepeat(
         withTiming(1.1, { duration: 1500 }),
         -1,
-        true
+        true,
       );
     } else {
       pulseValue.value = 1;
@@ -300,13 +337,12 @@ export default function CounterScreen() {
 
   const overlayStyle = useAnimatedStyle(() => ({
     opacity: sidebarOpacity.value,
-    display: sidebarOpacity.value === 0 ? 'none' : 'flex' as any,
+    display: sidebarOpacity.value === 0 ? "none" : ("flex" as any),
   }));
 
   const progressAnimationStyle = useAnimatedStyle(() => ({
     width: `${progressValue.value * 100}%`,
   }));
-
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
@@ -315,37 +351,56 @@ export default function CounterScreen() {
           {/* Top Bar - Integrated look */}
           <View style={styles.topBar}>
             <Pressable onPress={toggleSidebar} style={styles.topBarIcon}>
-              <Ionicons name="menu-outline" size={24} color={Colors.dark.primary} />
+              <Ionicons
+                name="menu-outline"
+                size={24}
+                color={Colors.dark.primary}
+              />
             </Pressable>
 
             <View style={styles.topBarCenter}>
-              <Text style={styles.topBarTitle}>{t('home.top_title')}</Text>
+              <Text style={styles.topBarTitle}>{t("home.top_title")}</Text>
               <Text style={styles.topBarCount}>
                 {zikir.count} / {zikir.target}
               </Text>
             </View>
-            
+
             <View style={styles.topBarRight}>
               <Pressable onPress={resetCount} style={styles.topBarIconSmall}>
                 <Ionicons name="refresh" size={18} color="#EF4444" />
               </Pressable>
 
-              <Pressable onPress={toggleHaptics} style={[styles.topBarIconSmall, { marginLeft: 12 }]}>
-                <MaterialCommunityIcons 
-                  name={hapticsEnabled ? "vibrate" : "vibrate-off"} 
-                  size={20} 
-                  color={isFinished ? '#10B981' : (hapticsEnabled ? Colors.dark.primary : Colors.dark.textSecondary)} 
+              <Pressable
+                onPress={toggleHaptics}
+                style={[styles.topBarIconSmall, { marginLeft: 12 }]}
+              >
+                <MaterialCommunityIcons
+                  name={hapticsEnabled ? "vibrate" : "vibrate-off"}
+                  size={20}
+                  color={
+                    isFinished
+                      ? "#10B981"
+                      : hapticsEnabled
+                        ? Colors.dark.primary
+                        : Colors.dark.textSecondary
+                  }
                 />
               </Pressable>
 
-              <Pressable 
-                onPress={() => setIsReminderModalVisible(true)} 
+              <Pressable
+                onPress={() => setIsReminderModalVisible(true)}
                 style={[styles.topBarIconSmall, { marginLeft: 8 }]}
               >
-                <Ionicons 
-                  name={reminderEnabled ? "notifications" : "notifications-outline"} 
-                  size={18} 
-                  color={reminderEnabled ? Colors.dark.primary : Colors.dark.textSecondary} 
+                <Ionicons
+                  name={
+                    reminderEnabled ? "notifications" : "notifications-outline"
+                  }
+                  size={18}
+                  color={
+                    reminderEnabled
+                      ? Colors.dark.primary
+                      : Colors.dark.textSecondary
+                  }
                 />
               </Pressable>
             </View>
@@ -353,7 +408,6 @@ export default function CounterScreen() {
 
           {/* Main Content Area */}
           <View style={styles.mainContent}>
-
             {/* Counter Section - Absolutely Centered */}
             <View style={styles.counterSection}>
               <Pressable
@@ -370,23 +424,33 @@ export default function CounterScreen() {
                   ]}
                 >
                   {isFinished && (
-                    <Animated.View 
-                      style={[styles.finishedGlow, finishedGlowStyle]} 
+                    <Animated.View
+                      style={[styles.finishedGlow, finishedGlowStyle]}
                     />
                   )}
-                  <View style={[styles.innerCircle, isFinished && styles.innerCircleFinished]}>
+                  <View
+                    style={[
+                      styles.innerCircle,
+                      isFinished && styles.innerCircleFinished,
+                    ]}
+                  >
                     {isFinished ? (
                       <View style={styles.finishedContent}>
-                        <Ionicons name="checkmark-circle" size={40} color="#10B981" style={{ marginBottom: 10 }} />
-                         <Text style={styles.mainCountFinished}>
+                        <Ionicons
+                          name="checkmark-circle"
+                          size={40}
+                          color="#10B981"
+                          style={{ marginBottom: 10 }}
+                        />
+                        <Text style={styles.mainCountFinished}>
                           {zikir.count}
                         </Text>
-                        <Text style={styles.targetReachedText}>{t('common.finished')}</Text>
+                        <Text style={styles.targetReachedText}>
+                          {t("common.finished")}
+                        </Text>
                       </View>
                     ) : (
-                      <Text style={styles.mainCount}>
-                        {zikir.count}
-                      </Text>
+                      <Text style={styles.mainCount}>{zikir.count}</Text>
                     )}
                   </View>
                 </Animated.View>
@@ -394,24 +458,29 @@ export default function CounterScreen() {
             </View>
 
             {/* Hidden measurement view to get natural height */}
-            <View 
-              style={[styles.zikirDisplay, { opacity: 0, position: 'absolute', zIndex: -1 }]}
+            <View
+              style={[
+                styles.zikirDisplay,
+                { opacity: 0, position: "absolute", zIndex: -1 },
+              ]}
               pointerEvents="none"
             >
-              <View 
+              <View
                 style={styles.zikirContentContainer}
                 onLayout={(e) => {
                   const h = e.nativeEvent.layout.height;
                   if (h > 0) setNaturalTextHeight(h);
                 }}
               >
-                {zikir.arabic && <Text style={styles.arabicTextDisplay}>{zikir.arabic}</Text>}
+                {zikir.arabic && (
+                  <Text style={styles.arabicTextDisplay}>{zikir.arabic}</Text>
+                )}
                 <Text style={styles.zikirTextDisplay}>{zikir.text}</Text>
               </View>
             </View>
 
             {/* Zikir Display - Floating Top */}
-            <AnimatedPressable 
+            <AnimatedPressable
               layout={LinearTransition.duration(300)}
               onPress={() => {
                 if (naturalTextHeight > SAFE_Y_BOUNDARY) {
@@ -421,103 +490,199 @@ export default function CounterScreen() {
               style={[
                 styles.zikirDisplay,
                 isTextExpanded && styles.zikirDisplayExpanded,
-                isFinished && { borderColor: '#10B981' }
+                isFinished && { borderColor: "#10B981" },
               ]}
             >
               <View style={styles.zikirContentContainer}>
                 {zikir.arabic && (
-                  <Text 
-                    style={[styles.arabicTextDisplay, isFinished && { color: '#10B981' }]}
-                    numberOfLines={isTextExpanded || naturalTextHeight <= SAFE_Y_BOUNDARY ? 0 : 1}
+                  <Text
+                    style={[
+                      styles.arabicTextDisplay,
+                      isFinished && { color: "#10B981" },
+                    ]}
+                    numberOfLines={
+                      isTextExpanded || naturalTextHeight <= SAFE_Y_BOUNDARY
+                        ? 0
+                        : 1
+                    }
                   >
                     {zikir.arabic}
                   </Text>
                 )}
-                <Text 
+                <Text
                   style={styles.zikirTextDisplay}
-                  numberOfLines={isTextExpanded || naturalTextHeight <= SAFE_Y_BOUNDARY ? 0 : 2}
+                  numberOfLines={
+                    isTextExpanded || naturalTextHeight <= SAFE_Y_BOUNDARY
+                      ? 0
+                      : 2
+                  }
                 >
                   {zikir.text}
                 </Text>
-                
+
                 <View style={styles.progressContainer}>
                   <View style={styles.progressTrack}>
                     <Animated.View
                       style={[
                         styles.progressActive,
                         progressAnimationStyle,
-                        isFinished && { backgroundColor: '#10B981' },
+                        isFinished && { backgroundColor: "#10B981" },
                       ]}
                     />
                   </View>
                 </View>
 
                 {naturalTextHeight > SAFE_Y_BOUNDARY && (
-                  <Animated.View style={[
-                    styles.expandHint,
-                    { transform: [{ rotate: isTextExpanded ? '180deg' : '0deg' }] }
-                  ]}>
-                    <Ionicons name="chevron-down" size={14} color={isFinished ? '#10B981' : Colors.dark.primary} />
+                  <Animated.View
+                    style={[
+                      styles.expandHint,
+                      {
+                        transform: [
+                          { rotate: isTextExpanded ? "180deg" : "0deg" },
+                        ],
+                      },
+                    ]}
+                  >
+                    <Ionicons
+                      name="chevron-down"
+                      size={14}
+                      color={isFinished ? "#10B981" : Colors.dark.primary}
+                    />
                   </Animated.View>
                 )}
               </View>
             </AnimatedPressable>
           </View>
 
-
           {/* Sidebar Overlay */}
           <Animated.View style={[styles.overlay, overlayStyle]}>
-            <Pressable style={styles.overlayPressable} onPress={toggleSidebar} />
+            <Pressable
+              style={styles.overlayPressable}
+              onPress={toggleSidebar}
+            />
           </Animated.View>
 
           {/* Sidebar Content */}
           <Animated.View style={[styles.sidebar, sidebarStyle]}>
             <View style={styles.sidebarHeader}>
               <View>
-                <Text style={styles.sidebarTitleMain}>{t('menu.title')}</Text>
+                <Text style={styles.sidebarTitleMain}>{t("menu.title")}</Text>
                 <View style={styles.titleUnderline} />
               </View>
               <Pressable onPress={toggleSidebar} style={styles.closeButton}>
-                <Ionicons name="close" size={24} color={Colors.dark.textSecondary} />
+                <Ionicons
+                  name="close"
+                  size={24}
+                  color={Colors.dark.textSecondary}
+                />
               </Pressable>
             </View>
 
             <View style={styles.sidebarContent}>
-              <Pressable 
-                style={({ pressed }) => [styles.sidebarItem, pressed && styles.sidebarItemPressed]} 
-                onPress={() => { router.push('/settings'); toggleSidebar(); }}
+              <Pressable
+                style={({ pressed }) => [
+                  styles.sidebarItem,
+                  pressed && styles.sidebarItemPressed,
+                ]}
+                onPress={() => {
+                  router.push("/settings");
+                  toggleSidebar();
+                }}
               >
-                <View style={[styles.sidebarIconWrapper, { backgroundColor: 'rgba(234, 179, 8, 0.1)' }]}>
+                <View
+                  style={[
+                    styles.sidebarIconWrapper,
+                    { backgroundColor: "rgba(234, 179, 8, 0.1)" },
+                  ]}
+                >
                   <Ionicons name="add-outline" size={22} color="#EAB308" />
                 </View>
-                <Text style={styles.sidebarItemText}>{t('menu.new_zikir')}</Text>
+                <Text style={styles.sidebarItemText}>
+                  {t("menu.new_zikir")}
+                </Text>
               </Pressable>
 
-              <Pressable 
-                style={({ pressed }) => [styles.sidebarItem, pressed && styles.sidebarItemPressed]} 
-                onPress={() => { router.push('/list'); toggleSidebar(); }}
+              <Pressable
+                style={({ pressed }) => [
+                  styles.sidebarItem,
+                  pressed && styles.sidebarItemPressed,
+                ]}
+                onPress={() => {
+                  router.push("/list");
+                  toggleSidebar();
+                }}
               >
-                <View style={[styles.sidebarIconWrapper, { backgroundColor: 'rgba(20, 184, 166, 0.1)' }]}>
-                  <Ionicons name="bookmarks-outline" size={20} color="#14B8A6" />
+                <View
+                  style={[
+                    styles.sidebarIconWrapper,
+                    { backgroundColor: "rgba(20, 184, 166, 0.1)" },
+                  ]}
+                >
+                  <Ionicons
+                    name="bookmarks-outline"
+                    size={20}
+                    color="#14B8A6"
+                  />
                 </View>
-                <Text style={styles.sidebarItemText}>{t('menu.recommendations')}</Text>
+                <Text style={styles.sidebarItemText}>
+                  {t("menu.recommendations")}
+                </Text>
               </Pressable>
 
-              <Pressable 
-                style={({ pressed }) => [styles.sidebarItem, pressed && styles.sidebarItemPressed]} 
-                onPress={() => { router.push('/history'); toggleSidebar(); }}
+              <Pressable
+                style={({ pressed }) => [
+                  styles.sidebarItem,
+                  pressed && styles.sidebarItemPressed,
+                ]}
+                onPress={() => {
+                  router.push("/history");
+                  toggleSidebar();
+                }}
               >
-                <View style={[styles.sidebarIconWrapper, { backgroundColor: 'rgba(99, 102, 241, 0.1)' }]}>
+                <View
+                  style={[
+                    styles.sidebarIconWrapper,
+                    { backgroundColor: "rgba(99, 102, 241, 0.1)" },
+                  ]}
+                >
                   <Ionicons name="time-outline" size={22} color="#6366F1" />
                 </View>
-                <Text style={styles.sidebarItemText}>{t('menu.history')}</Text>
+                <Text style={styles.sidebarItemText}>{t("menu.history")}</Text>
+              </Pressable>
+
+              <Pressable
+                style={({ pressed }) => [
+                  styles.sidebarItem,
+                  pressed && styles.sidebarItemPressed,
+                ]}
+                onPress={async () => {
+                  toggleSidebar();
+                  try {
+                    if (await StoreReview.hasAction()) {
+                      await StoreReview.requestReview();
+                      await AsyncStorage.setItem("has_rated_app", "true");
+                    }
+                  } catch (e) {
+                    console.log("Error requesting review", e);
+                  }
+                }}
+              >
+                <View
+                  style={[
+                    styles.sidebarIconWrapper,
+                    { backgroundColor: "rgba(236, 72, 153, 0.1)" },
+                  ]}
+                >
+                  <Ionicons name="star-outline" size={20} color="#EC4899" />
+                </View>
+                <Text style={styles.sidebarItemText}>{t("menu.rate_app")}</Text>
               </Pressable>
 
               <View style={styles.sidebarDivider} />
             </View>
 
             <View style={styles.sidebarFooter}>
-              <Text style={styles.versionText}>{t('common.version')}</Text>
+              <Text style={styles.versionText}>{t("common.version")}</Text>
             </View>
           </Animated.View>
 
@@ -531,41 +696,66 @@ export default function CounterScreen() {
             onRequestClose={() => setIsReminderModalVisible(false)}
           >
             <View style={styles.modalOverlay}>
-              <Pressable style={styles.modalBg} onPress={() => setIsReminderModalVisible(false)} />
+              <Pressable
+                style={styles.modalBg}
+                onPress={() => setIsReminderModalVisible(false)}
+              />
               <View style={styles.reminderCard}>
                 <View style={styles.reminderHeader}>
-                  <Text style={styles.reminderTitle}>{t('home.reminder_modal_title')}</Text>
+                  <Text style={styles.reminderTitle}>
+                    {t("home.reminder_modal_title")}
+                  </Text>
                   <Pressable onPress={() => setIsReminderModalVisible(false)}>
-                    <Ionicons name="close" size={24} color={Colors.dark.textSecondary} />
+                    <Ionicons
+                      name="close"
+                      size={24}
+                      color={Colors.dark.textSecondary}
+                    />
                   </Pressable>
                 </View>
 
                 <View style={styles.reminderContent}>
                   <View style={styles.reminderRow}>
                     <View>
-                      <Text style={styles.reminderLabel}>{t('home.daily_notification')}</Text>
-                      <Text style={styles.reminderSubLabel}>{t('home.daily_notification_sub')}</Text>
+                      <Text style={styles.reminderLabel}>
+                        {t("home.daily_notification")}
+                      </Text>
+                      <Text style={styles.reminderSubLabel}>
+                        {t("home.daily_notification_sub")}
+                      </Text>
                     </View>
                     <Switch
                       value={reminderEnabled}
                       onValueChange={toggleReminder}
-                      trackColor={{ false: '#334155', true: Colors.dark.primary }}
-                      thumbColor={reminderEnabled ? '#FFF' : '#94A3B8'}
+                      trackColor={{
+                        false: "#334155",
+                        true: Colors.dark.primary,
+                      }}
+                      thumbColor={reminderEnabled ? "#FFF" : "#94A3B8"}
                     />
                   </View>
 
                   {reminderEnabled && (
-                    <Pressable 
+                    <Pressable
                       onPress={() => setShowTimePicker(true)}
                       style={styles.timeSelectBox}
                     >
-                      <Text style={styles.timeLabel}>{t('home.reminder_time_label')}</Text>
+                      <Text style={styles.timeLabel}>
+                        {t("home.reminder_time_label")}
+                      </Text>
                       <View style={styles.timeDisplay}>
                         <Text style={styles.timeValue}>
-                          {reminderTime.getHours().toString().padStart(2, '0')}:
-                          {reminderTime.getMinutes().toString().padStart(2, '0')}
+                          {reminderTime.getHours().toString().padStart(2, "0")}:
+                          {reminderTime
+                            .getMinutes()
+                            .toString()
+                            .padStart(2, "0")}
                         </Text>
-                        <Ionicons name="chevron-forward" size={16} color={Colors.dark.primary} />
+                        <Ionicons
+                          name="chevron-forward"
+                          size={16}
+                          color={Colors.dark.primary}
+                        />
                       </View>
                     </Pressable>
                   )}
@@ -575,18 +765,18 @@ export default function CounterScreen() {
                       value={reminderTime}
                       mode="time"
                       is24Hour={true}
-                      display={Platform.OS === 'ios' ? 'spinner' : 'default'}
+                      display={Platform.OS === "ios" ? "spinner" : "default"}
                       onChange={onTimeChange}
                       textColor="#FFF"
                     />
                   )}
                 </View>
 
-                <Pressable 
+                <Pressable
                   style={styles.doneButton}
                   onPress={() => setIsReminderModalVisible(false)}
                 >
-                  <Text style={styles.doneButtonText}>{t('common.ok')}</Text>
+                  <Text style={styles.doneButtonText}>{t("common.ok")}</Text>
                 </Pressable>
               </View>
             </View>
@@ -603,54 +793,54 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.dark.background,
   },
   topBar: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingTop: Platform.OS === 'ios' ? 60 : 40, // Increased back to account for StatusBar since header is gone
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    paddingTop: Platform.OS === "ios" ? 60 : 40, // Increased back to account for StatusBar since header is gone
     paddingHorizontal: 20,
     paddingBottom: 10,
   },
   topBarCenter: {
-    position: 'absolute',
+    position: "absolute",
     left: 70,
     right: 140,
-    top: Platform.OS === 'ios' ? 60 : 40,
-    alignItems: 'center',
-    justifyContent: 'center',
+    top: Platform.OS === "ios" ? 60 : 40,
+    alignItems: "center",
+    justifyContent: "center",
     zIndex: 0,
   },
   topBarIcon: {
     width: 44,
     height: 44,
     borderRadius: 14,
-    backgroundColor: 'rgba(255, 255, 255, 0.05)',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "rgba(255, 255, 255, 0.05)",
+    alignItems: "center",
+    justifyContent: "center",
     zIndex: 10,
   },
   topBarIconSmall: {
     width: 38,
     height: 38,
     borderRadius: 12,
-    backgroundColor: 'rgba(255, 255, 255, 0.05)',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "rgba(255, 255, 255, 0.05)",
+    alignItems: "center",
+    justifyContent: "center",
     zIndex: 10,
   },
   topBarRight: {
-    flexDirection: 'row',
+    flexDirection: "row",
   },
   topBarTitle: {
     fontSize: 9,
-    fontWeight: '900',
+    fontWeight: "900",
     color: Colors.dark.textSecondary,
     letterSpacing: 1.5,
     marginBottom: 2,
-    textTransform: 'uppercase',
+    textTransform: "uppercase",
   },
   topBarCount: {
     fontSize: 14,
-    fontWeight: '800',
+    fontWeight: "800",
     color: Colors.dark.text,
   },
   mainContent: {
@@ -658,83 +848,83 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   zikirDisplay: {
-    position: 'absolute',
+    position: "absolute",
     top: 5,
     left: 20,
     right: 20,
-    backgroundColor: 'rgba(30, 41, 59, 0.7)',
+    backgroundColor: "rgba(30, 41, 59, 0.7)",
     borderRadius: 24,
     borderWidth: 1,
-    borderColor: 'rgba(255, 255, 255, 0.1)',
+    borderColor: "rgba(255, 255, 255, 0.1)",
     zIndex: 20,
-    overflow: 'hidden',
+    overflow: "hidden",
   },
   zikirDisplayExpanded: {
-    backgroundColor: 'rgba(15, 23, 42, 0.95)',
+    backgroundColor: "rgba(15, 23, 42, 0.95)",
     borderColor: Colors.dark.primary,
   },
   zikirContentContainer: {
     padding: 16,
-    alignItems: 'center',
+    alignItems: "center",
   },
   arabicTextDisplay: {
     fontSize: 28,
     color: Colors.dark.primary,
-    textAlign: 'center',
-    fontFamily: Platform.OS === 'ios' ? 'Traditional Arabic' : 'serif',
+    textAlign: "center",
+    fontFamily: Platform.OS === "ios" ? "Traditional Arabic" : "serif",
     lineHeight: 40,
     marginBottom: 4,
   },
   zikirTextDisplay: {
     fontSize: 16,
-    fontWeight: '700',
+    fontWeight: "700",
     color: Colors.dark.text,
-    textAlign: 'center',
+    textAlign: "center",
     letterSpacing: 0.5,
     marginBottom: 12,
   },
   progressContainer: {
-    width: '100%',
+    width: "100%",
     height: 4,
     marginTop: 4,
   },
   expandHint: {
-    position: 'absolute',
+    position: "absolute",
     bottom: 2,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
   progressTrack: {
-    width: '100%',
-    height: '100%',
-    backgroundColor: 'rgba(255, 255, 255, 0.05)',
+    width: "100%",
+    height: "100%",
+    backgroundColor: "rgba(255, 255, 255, 0.05)",
     borderRadius: 2,
-    overflow: 'hidden',
+    overflow: "hidden",
   },
   progressActive: {
-    height: '100%',
+    height: "100%",
     backgroundColor: Colors.dark.primary,
     borderRadius: 2,
   },
   counterSection: {
     ...StyleSheet.absoluteFillObject,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     paddingTop: height * 0.18, // Moved lower
   },
   touchArea: {
     width: width,
     height: width * 0.85,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
   outerCircle: {
-    width: width * 0.70,
-    height: width * 0.70,
-    borderRadius: (width * 0.70) / 2,
-    backgroundColor: 'transparent',
-    alignItems: 'center',
-    justifyContent: 'center',
+    width: width * 0.7,
+    height: width * 0.7,
+    borderRadius: (width * 0.7) / 2,
+    backgroundColor: "transparent",
+    alignItems: "center",
+    justifyContent: "center",
     borderWidth: 8,
     borderColor: Colors.dark.primary,
     shadowColor: Colors.dark.primary,
@@ -747,95 +937,95 @@ const styles = StyleSheet.create({
     width: width * 0.62,
     height: width * 0.62,
     borderRadius: (width * 0.62) / 2,
-    backgroundColor: '#0F172A',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#0F172A",
+    alignItems: "center",
+    justifyContent: "center",
   },
   circleFinished: {
-    backgroundColor: 'rgba(16, 185, 129, 0.02)',
-    borderColor: '#10B981',
-    shadowColor: '#10B981',
+    backgroundColor: "rgba(16, 185, 129, 0.02)",
+    borderColor: "#10B981",
+    shadowColor: "#10B981",
     shadowOpacity: 0.8,
     shadowRadius: 40,
     elevation: 20,
   },
   finishedGlow: {
-    position: 'absolute',
+    position: "absolute",
     width: width * 0.72,
     height: width * 0.72,
     borderRadius: (width * 0.72) / 2,
     borderWidth: 1.5,
-    borderColor: 'rgba(16, 185, 129, 0.4)',
+    borderColor: "rgba(16, 185, 129, 0.4)",
   },
   innerCircleFinished: {
-    backgroundColor: '#0F172A',
+    backgroundColor: "#0F172A",
     borderWidth: 1,
-    borderColor: 'rgba(16, 185, 129, 0.15)',
+    borderColor: "rgba(16, 185, 129, 0.15)",
   },
   finishedContent: {
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
   targetReachedText: {
     fontSize: 10,
-    fontWeight: '900',
-    color: '#10B981',
+    fontWeight: "900",
+    color: "#10B981",
     letterSpacing: 4,
     marginTop: 8,
     opacity: 0.9,
   },
   mainCount: {
     fontSize: 110,
-    fontWeight: '900',
+    fontWeight: "900",
     color: Colors.dark.text,
     includeFontPadding: false,
   },
   mainCountFinished: {
     fontSize: 85,
-    fontWeight: '900',
-    color: '#F8FAFC',
-    textShadowColor: 'rgba(16, 185, 129, 0.6)',
+    fontWeight: "900",
+    color: "#F8FAFC",
+    textShadowColor: "rgba(16, 185, 129, 0.6)",
     textShadowOffset: { width: 0, height: 0 },
     textShadowRadius: 15,
   },
-  
+
   // Sidebar Styles
   overlay: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+    backgroundColor: "rgba(0, 0, 0, 0.7)",
     zIndex: 100,
   },
   overlayPressable: {
     flex: 1,
   },
   sidebar: {
-    position: 'absolute',
+    position: "absolute",
     left: 0,
     top: 0,
     bottom: 0,
     width: width * 0.8,
-    backgroundColor: '#0F172A',
+    backgroundColor: "#0F172A",
     zIndex: 101,
     borderRightWidth: 1,
-    borderRightColor: 'rgba(255, 255, 255, 0.05)',
-    shadowColor: '#000',
+    borderRightColor: "rgba(255, 255, 255, 0.05)",
+    shadowColor: "#000",
     shadowOffset: { width: 4, height: 0 },
     shadowOpacity: 0.5,
     shadowRadius: 20,
     elevation: 25,
-    paddingTop: Platform.OS === 'ios' ? 60 : 40,
+    paddingTop: Platform.OS === "ios" ? 60 : 40,
   },
   sidebarHeader: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
     paddingHorizontal: 24,
     marginBottom: 40,
   },
   sidebarTitleMain: {
     fontSize: 24,
-    fontWeight: '900',
-    color: '#F8FAFC',
+    fontWeight: "900",
+    color: "#F8FAFC",
     letterSpacing: 1,
   },
   titleUnderline: {
@@ -849,97 +1039,97 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     borderRadius: 20,
-    backgroundColor: 'rgba(255, 255, 255, 0.05)',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "rgba(255, 255, 255, 0.05)",
+    alignItems: "center",
+    justifyContent: "center",
   },
   sidebarContent: {
     flex: 1,
     paddingHorizontal: 16,
   },
   sidebarItem: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     padding: 14,
     borderRadius: 16,
     marginBottom: 8,
-    backgroundColor: 'transparent',
+    backgroundColor: "transparent",
   },
   sidebarItemPressed: {
-    backgroundColor: 'rgba(255, 255, 255, 0.05)',
+    backgroundColor: "rgba(255, 255, 255, 0.05)",
   },
   sidebarIconWrapper: {
     width: 42,
     height: 42,
     borderRadius: 14,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     marginRight: 16,
   },
   sidebarItemText: {
     fontSize: 16,
-    fontWeight: '700',
-    color: '#E2E8F0',
+    fontWeight: "700",
+    color: "#E2E8F0",
   },
   sidebarDivider: {
     height: 1,
-    backgroundColor: 'rgba(255, 255, 255, 0.05)',
+    backgroundColor: "rgba(255, 255, 255, 0.05)",
     marginVertical: 20,
     marginHorizontal: 12,
   },
   sidebarFooter: {
     padding: 30,
-    alignItems: 'center',
+    alignItems: "center",
     borderTopWidth: 1,
-    borderTopColor: 'rgba(255, 255, 255, 0.05)',
+    borderTopColor: "rgba(255, 255, 255, 0.05)",
   },
   versionText: {
     color: Colors.dark.textSecondary,
     fontSize: 13,
-    fontWeight: '600',
+    fontWeight: "600",
   },
-  
+
   // Reminder Modal Styles
   modalOverlay: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "rgba(0, 0, 0, 0.7)",
   },
   modalBg: {
     ...StyleSheet.absoluteFillObject,
   },
   reminderCard: {
     width: width * 0.85,
-    backgroundColor: '#1E293B',
+    backgroundColor: "#1E293B",
     borderRadius: 24,
     padding: 24,
     borderWidth: 1,
-    borderColor: 'rgba(255, 255, 255, 0.1)',
+    borderColor: "rgba(255, 255, 255, 0.1)",
   },
   reminderHeader: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
     marginBottom: 20,
   },
   reminderTitle: {
     fontSize: 20,
-    fontWeight: '800',
+    fontWeight: "800",
     color: Colors.dark.text,
   },
   reminderContent: {
     marginBottom: 24,
   },
   reminderRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
     marginBottom: 20,
   },
   reminderLabel: {
     fontSize: 16,
-    fontWeight: '600',
+    fontWeight: "600",
     color: Colors.dark.text,
     marginBottom: 4,
   },
@@ -949,27 +1139,27 @@ const styles = StyleSheet.create({
     width: width * 0.5,
   },
   timeSelectBox: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    backgroundColor: 'rgba(234, 179, 8, 0.05)',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    backgroundColor: "rgba(234, 179, 8, 0.05)",
     padding: 16,
     borderRadius: 16,
     borderWidth: 1,
-    borderColor: 'rgba(234, 179, 8, 0.2)',
+    borderColor: "rgba(234, 179, 8, 0.2)",
   },
   timeLabel: {
     fontSize: 14,
-    fontWeight: '600',
+    fontWeight: "600",
     color: Colors.dark.textSecondary,
   },
   timeDisplay: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
   },
   timeValue: {
     fontSize: 18,
-    fontWeight: '800',
+    fontWeight: "800",
     color: Colors.dark.primary,
     marginRight: 6,
   },
@@ -977,14 +1167,14 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.dark.primary,
     paddingVertical: 14,
     borderRadius: 14,
-    alignItems: 'center',
+    alignItems: "center",
   },
   doneButtonText: {
-    color: '#0F172A',
+    color: "#0F172A",
     fontSize: 16,
-    fontWeight: '700',
+    fontWeight: "700",
   },
   footerNote: {
-    display: 'none',
+    display: "none",
   },
 });
