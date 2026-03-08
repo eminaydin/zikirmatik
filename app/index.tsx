@@ -204,9 +204,8 @@ export default function CounterScreen() {
     }
     
     scale.value = withSequence(
-      withTiming(0.95, { duration: 50 }),
-      withSpring(1.05, { damping: 10, stiffness: 500 }),
-      withSpring(1, { damping: 15, stiffness: 300 })
+      withTiming(0.97, { duration: 60 }),
+      withSpring(1, { damping: 20, stiffness: 400 })
     );
 
     const newCount = zikir.count + 1;
@@ -288,8 +287,6 @@ export default function CounterScreen() {
 
   const animatedStyle = useAnimatedStyle(() => ({
     transform: [{ scale: scale.value * (isFinished ? pulseValue.value : 1) }],
-    shadowRadius: withTiming(isFinished ? 40 : (scale.value > 1 ? 30 : 20), { duration: 100 }),
-    shadowOpacity: withTiming(isFinished ? 0.8 : (scale.value > 1 ? 0.5 : 0.3), { duration: 100 }),
   }));
 
   const finishedGlowStyle = useAnimatedStyle(() => ({
@@ -363,6 +360,7 @@ export default function CounterScreen() {
                 onPress={handlePress}
                 style={styles.touchArea}
                 disabled={isFinished}
+                android_ripple={null}
               >
                 <Animated.View
                   style={[
@@ -725,8 +723,8 @@ const styles = StyleSheet.create({
     paddingTop: height * 0.18, // Moved lower
   },
   touchArea: {
-    width: width * 0.8,
-    height: width * 0.8,
+    width: width,
+    height: width * 0.85,
     alignItems: 'center',
     justifyContent: 'center',
   },
