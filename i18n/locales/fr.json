@@ -22,7 +22,8 @@
     "menu": {
         "new_zikir": "Ajouter un nouveau Dhikr",
         "recommendations": "Suggestions de Dhikr",
-        "history": "Mon historique de Dhikr",
+        "history": "Mon historique",
+        "stats": "Statistiques",
         "rate_app": "Évaluer l'application"
     },
     "home": {
@@ -154,5 +155,15 @@
     "notifications": {
         "daily_title": "Moment de paix ✨",
         "daily_body": "Les cœurs ne s'apaisent que par l'évocation d'Allah. Que dirais-tu d'une petite pause dhikr ? 🌙"
+    },
+    "stats": {
+        "title": "Statistiques",
+        "total_zikir": "Total Dhikr",
+        "completed_zikirs": "Dhikrs terminés",
+        "daily_activity": "Activité quotidienne",
+        "no_data": "Aucune donnée disponible pour le moment.",
+        "today": "Aujourd'hui",
+        "last_7_days": "7 derniers jours",
+        "motivation": "La régularité est la clé ! Le dhikr régulier apaise le cœur."
     }
 }

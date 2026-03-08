@@ -23,6 +23,7 @@
         "new_zikir": "Dodaj novi zikr",
         "recommendations": "Preporučeni zikrovi",
         "history": "Moja historija zikra",
+        "stats": "Statistika",
         "rate_app": "Ocijeni aplikaciju"
     },
     "home": {
@@ -154,5 +155,14 @@
     "notifications": {
         "daily_title": "Vrijeme za mir ✨",
         "daily_body": "A srca se doista, kad se Allah spomene, smiruju. Šta kažeš na kratku pauzu za zikr? 🌙"
+    },
+    "stats": {
+        "title": "Statistika",
+        "total_zikir": "Ukupno zikra",
+        "completed_zikirs": "Završeni zikrovi",
+        "daily_activity": "Dnevna aktivnost",
+        "no_data": "Još uvijek nema podataka.",
+        "today": "Danas",
+        "last_7_days": "Posljednjih 7 dana"
     }
 }

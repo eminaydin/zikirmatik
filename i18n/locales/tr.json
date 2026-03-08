@@ -23,7 +23,8 @@
         "new_zikir": "Yeni Zikir Ekle",
         "recommendations": "Zikir Önerileri",
         "history": "Zikir Geçmişim",
-        "rate_app": "Uygulamayı Değerlendir"
+        "stats": "İstatistikler",
+        "rate_app": "Uygulamayı Puanla"
     },
     "home": {
         "reminder_modal_title": "Zikir Hatırlatıcısı",
@@ -154,5 +155,14 @@
     "notifications": {
         "daily_title": "Huzur Vakti ✨",
         "daily_body": "Kalpler ancak Allah'ı anmakla huzur bulur. Kısa bir zikir molasına ne dersin? 🌙"
+    },
+    "stats": {
+        "title": "İstatistikler",
+        "total_zikir": "Toplam Zikir",
+        "completed_zikirs": "Tamamlanan Zikirler",
+        "daily_activity": "Günlük Aktivite",
+        "no_data": "Henüz veri bulunmuyor.",
+        "today": "Bugün",
+        "last_7_days": "Son 7 Gün"
     }
 }
