@@ -7,7 +7,16 @@
         "delete": "Obriši",
         "reset": "Resetuj",
         "warning": "Upozorenje",
-        "yes_delete": "Da, obriši",
+        "yes_delete": "Da, izbriši",
+        "language": "Jezik",
+        "languages": {
+            "tr": "Türkçe",
+            "en": "English",
+            "de": "Deutsch",
+            "fr": "Français",
+            "ru": "Русский",
+            "bs": "Bosanski"
+        },
         "finished": "ZAVRŠENO",
         "version": "Zikirmatik v1.5"
     },
@@ -81,6 +90,66 @@
             "text": "Subhanallahi ve bihamdihi adede halkihi ve rida nefsihi ve zinete aršihi ve midade kelimatih",
             "translation": "Slava Allahu i hvala Mu onoliko koliko ima Njegovih stvorenja, koliko je On zadovoljan, koliko je težak Njegov Arš i koliko ima tiska za Njegove riječi.",
             "source": "Muslim, Zikir 79"
+        },
+        "1": {
+            "text": "La ilahe illa ente subhaneke inni kuntu minez-zalimin",
+            "translation": "Nema boga osim Tebe, hvaljen neka si Ti, a ja sam se zaista prema sebi ogriješio.",
+            "source": "Sura Al-Anbija, 87"
+        },
+        "4": {
+            "text": "Hasbunallahu ve ni'mel vekil, ni'mel mevla ve ni'men-nasir",
+            "translation": "Dovoljan nam je Allah i divan je On zaštitnik! Divan li je Gospodar ve divan li je pomagač.",
+            "source": "Sura Ali-Imran, 173"
+        },
+        "2": {
+            "text": "Hasbijallahu la ilahe illa hu, alejhi tevekkeltü ve hüve rabbül-aršil-azim",
+            "translation": "Dovoljan mi je Allah! Nema boga osim Njega. U Njega se uzdam i On je Gospodar Arša velikoga.",
+            "source": "Sura At-Tevba, 129"
+        },
+        "8": {
+            "text": "Ja Hajju Ja Kajjumu bi-rahmetike estegisu, aslih li še'ni kullehu ve la tekilni ila nefsi tarfete ajn",
+            "translation": "O Živi, o Vječni, Tvojom milošću tražim pomoć. Popravi sve moje prilike i ne prepuštaj me samom sebi ni koliko treptaj oka.",
+            "source": "Tirmizi, Daavat 91"
+        },
+        "7": {
+            "text": "Estagfirullahel-azim el-lezi la ilahe illa huvel-hajjul-kajjumu ve etubü ilejh",
+            "translation": "Tražim oprosta od Allaha Velikog, osim Kojeg drugog boga nema, Živog i Vječnog, i Njemu se klatim.",
+            "source": "Ebu Davud, Vitr 26"
+        },
+        "3": {
+            "text": "Rabbi inni messenijed-durru ve ente erhamur-rahimin",
+            "translation": "Gospodaru moj! Mene je ova nevolja snašla, a Ti si od milostivih najmilostiviji.",
+            "source": "Sura Al-Anbija, 83"
+        },
+        "10": {
+            "text": "Allahumme salli ala sejjidina Muhammedin salaten tuncina biha min džemial ehvali vel-afat",
+            "translation": "Allahu moj! Blagoslovi našeg prvaka Muhammeda onim blagoslovom kojim ćeš nas spasiti svih strahota i nedaća.",
+            "source": "Salatun-Tundžina"
+        },
+        "11": {
+            "text": "Allahumme salli salaten kamileten ve sellim selamen tammen ala sejjidina Muhammedinillezi tenhallu bihil ukad",
+            "translation": "Allahu moj! Podari savršen blagoslov i potpuni mir našem prvaku Muhammedu, onome čijim se posredstvom čvorovi razrješuju.",
+            "source": "Salatun-Tefridžijja"
+        },
+        "5": {
+            "text": "Rabbena atina fid-dunja haseneten ve fil-ahireti haseneten ve kina azaben-nar",
+            "translation": "Gospodaru naš! Podari nam na ovome svijetu dobro i na onome svijetu dobro i sačuvaj nas patnje u vatri.",
+            "source": "Sura El-Bekara, 201"
+        },
+        "14": {
+            "text": "Rabbi heb li min ledunke zurrijeten tajjibeten inneke semi'ud-dua",
+            "translation": "Gospodaru moj! Podari mi od Sebe čisto potomstvo. Zaista Ti uslišavaš dove.",
+            "source": "Sura Ali-Imran, 38"
+        },
+        "9": {
+            "text": "La ilahe illallahül-melikül-hakkul-mübin",
+            "translation": "Nema boga osim Allaha, Vladara, Istinitog, Jasnog.",
+            "source": "Hadis"
+        },
+        "13": {
+            "text": "Ja Zel Dželali vel Ikram",
+            "translation": "O Vlasniče veličine i plemenitosti!",
+            "source": "Tirmizi, Daavat 92"
         }
     },
     "notifications": {

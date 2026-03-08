@@ -2,8 +2,10 @@ import React from 'react';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import '../i18n';
+import { useTranslation } from 'react-i18next';
 
 export default function RootLayout() {
+  const { t } = useTranslation();
   return (
     <>
       <StatusBar style="light" />
@@ -24,18 +26,15 @@ export default function RootLayout() {
         <Stack.Screen name="index" options={{ title: 'Zikirmatik', headerShown:false }} />
         <Stack.Screen
           name="list"
-          options={{ title: 'Tesbih Önerileri', presentation: 'modal' }}
+          options={{ title: t('list.title'), presentation: 'modal' }}
         />
         <Stack.Screen
           name="settings"
-          options={{ title: 'Yeni Zikir Ekle', presentation: 'modal' }}
+          options={{ title: t('settings.title'), presentation: 'modal' }}
         />
         <Stack.Screen
           name="history"
-          options={{ 
-            title: 'Zikir Geçmişi',
-            headerTitleAlign: 'center',
-          }}
+          options={{ title: t('history.title') }}
         />
       </Stack>
     </>

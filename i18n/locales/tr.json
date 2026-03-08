@@ -9,7 +9,16 @@
         "finished": "TAMAMLANDI",
         "version": "Zikirmatik v1.5",
         "warning": "Uyarı",
-        "yes_delete": "Evet, Sil"
+        "yes_delete": "Evet, Sil",
+        "language": "Dil",
+        "languages": {
+            "tr": "Türkçe",
+            "en": "English",
+            "de": "Deutsch",
+            "fr": "Français",
+            "ru": "Русский",
+            "bs": "Bosanski"
+        }
     },
     "menu": {
         "title": "MENÜ",
@@ -81,6 +90,66 @@
             "text": "Subhanallahi ve bihamdihi adede halkihi ve rida nefsihi ve zinete arşihi ve midade kelimatih",
             "translation": "Yarattıklarının sayısınca, kendisinin hoşnutluğunca, Arş'ının ağırlığınca ve kelimelerinin mürekkebince Allah'ı hamd ile tesbih ederim.",
             "source": "Müslim, Zikir 79"
+        },
+        "1": {
+            "text": "La ilahe illa ente subhaneke inni kuntu minez-zalimin",
+            "translation": "Senden başka ilah yoktur. Seni eksikliklerden tenzih ederim, ben zalimlerden oldum.",
+            "source": "Enbiya Suresi, 87"
+        },
+        "4": {
+            "text": "Hasbunallahu ve ni'mel vekil, ni'mel mevla ve ni'men-nasir",
+            "translation": "Allah bize yeter, O ne güzel vekildir. Ne güzel mevla ve ne güzel yardımcıdır.",
+            "source": "Âl-i İmrân Suresi, 173"
+        },
+        "2": {
+            "text": "Hasbiyallahu la ilahe illa hu, aleyhi tevekkeltü ve hüve rabbü'l-arşi'l-azim",
+            "translation": "Bana Allah yeter. O'ndan başka ilah yoktur. Ben O'na tevekkül ettim ve O, büyük Arş'ın Rabbidir.",
+            "source": "Tevbe Suresi, 129"
+        },
+        "8": {
+            "text": "Ya Hayyu Ya Kayyum bi-rahmetike estegisu, aslih li şe'ni kullehu ve la tekilni ila nefsi tarfete ayn",
+            "translation": "Ey Hayy ve Kayyum olan Allah'ım! Senin rahmetinden yardım dilerim. İşlerimi düzelt ve beni nefsime bırakma.",
+            "source": "Tirmizi, Daavat 91"
+        },
+        "7": {
+            "text": "Estağfirullahe'l-azim el-lezi la ilahe illa huve'l-hayyu'l-kayyumu ve etubü ileyh",
+            "translation": "Kendisinden başka ilah olmayan, Hayy ve Kayyum olan Azim Allah'tan mağfiret dilerim.",
+            "source": "Ebû Dâvûd, Vitir 26"
+        },
+        "3": {
+            "text": "Rabbi inni messeniye'd-durru ve ente erhamu'r-rahimin",
+            "translation": "Rabbim! Şüphesiz bu dert beni sardı; sen ise merhametlilerin en merhametlisisin.",
+            "source": "Enbiya Suresi, 83"
+        },
+        "10": {
+            "text": "Allahumme salli ala seyyidina Muhammedin salaten tuncina biha min cemial ehvali vel-afat",
+            "translation": "Allah'ım! Efendimiz Muhammed'e öyle bir salat et ki, onunla bizi tüm korku ve belalardan kurtar.",
+            "source": "Salat-ı Münciye"
+        },
+        "11": {
+            "text": "Allahumme salli salaten kamileten ve sellim selamen tammen ala seyyidina Muhammedinillezi tenhallu bihil ukad",
+            "translation": "Allah'ım! Efendimiz Muhammed'e kâmil bir salât ve tam bir selâm eyle ki, onun hürmetine düğümler çözülsün.",
+            "source": "Salat-ı Tefriciye"
+        },
+        "5": {
+            "text": "Rabbena atina fid-dunya haseneten ve fil-ahireti haseneten ve kina azaben-nar",
+            "translation": "Rabbimiz! Bize dünyada da iyilik ver, ahirette de iyilik ver ve bizi ateş azabından koru.",
+            "source": "Bakara Suresi, 201"
+        },
+        "14": {
+            "text": "Rabbi heb li min ledunke zurriyeten tayyibeten inneke semi'ud-dua",
+            "translation": "Rabbim! Bana katından temiz bir nesil bahşet. Şüphesiz sen duayı hakkıyla işitensin.",
+            "source": "Âl-i İmrân Suresi, 38"
+        },
+        "9": {
+            "text": "La ilahe illallahü'l-melikü'l-hakku'l-mübin",
+            "translation": "Mülk sahibi, hak ve varlığı apaçık olan Allah'tan başka ilah yoktur.",
+            "source": "Hadis-i Şerif"
+        },
+        "13": {
+            "text": "Ya Zel Celali vel İkram",
+            "translation": "Ey Celal ve İkram sahibi olan Allah'ım!",
+            "source": "Tirmizi, Daavat 92"
         }
     },
     "notifications": {

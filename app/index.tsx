@@ -614,9 +614,9 @@ const styles = StyleSheet.create({
   },
   topBarCenter: {
     position: 'absolute',
-    left: 0,
-    right: 0,
-    top: Platform.OS === 'ios' ? 60 : 40, // Matches topBar paddingTop
+    left: 70,
+    right: 140,
+    top: Platform.OS === 'ios' ? 60 : 40,
     alignItems: 'center',
     justifyContent: 'center',
     zIndex: 0,
@@ -643,11 +643,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   topBarTitle: {
-    fontSize: 10,
+    fontSize: 9,
     fontWeight: '900',
     color: Colors.dark.textSecondary,
-    letterSpacing: 2,
-    marginBottom: 4,
+    letterSpacing: 1.5,
+    marginBottom: 2,
+    textTransform: 'uppercase',
   },
   topBarCount: {
     fontSize: 14,

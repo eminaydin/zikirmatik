@@ -139,14 +139,14 @@ export default function HistoryScreen() {
   );
 
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
+    <View style={styles.container}>
       <Stack.Screen 
         options={{
           headerTitle: t('history.title'),
-          headerLeft: () => null,
+          headerTitleAlign: 'center',
         }}
       />
-      <View style={styles.container}>
+      <GestureHandlerRootView style={{ flex: 1 }}>
         <View style={styles.tabBar}>
           <Pressable 
             style={[styles.tab, activeTab === 'ongoing' && styles.tabActive]} 
@@ -185,8 +185,8 @@ export default function HistoryScreen() {
             </Text>
           </View>
         )}
-      </View>
-    </GestureHandlerRootView>
+      </GestureHandlerRootView>
+    </View>
   );
 }
 

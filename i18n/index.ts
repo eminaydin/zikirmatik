@@ -22,12 +22,21 @@ const resources = {
 i18n
     .use(initReactI18next)
     .init({
-        resources,
+        resources: resources as any, // Cast to any to avoid complex type mismatch with locale JSONs
         lng: Localization.getLocales()[0].languageCode ?? 'tr',
         fallbackLng: 'tr',
         interpolation: {
             escapeValue: false,
         },
     });
+
+// Initializing language from storage if exists
+// This is a simple fire-and-forget for now, better handled with a custom detector if needed
+import AsyncStorage from '@react-native-async-storage/async-storage';
+AsyncStorage.getItem('user_language').then((lng) => {
+    if (lng) {
+        i18n.changeLanguage(lng);
+    }
+});
 
 export default i18n;

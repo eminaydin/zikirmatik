@@ -76,15 +76,15 @@ const AccordionItem = ({ item, index, isExpanded, onPress }: { item: ZikirItem, 
           onPress={onPress}
         >
           <View style={styles.cardHeader}>
-            <Text style={styles.cardTitle}>{t(`recommendations.${item.id}.text`, { defaultValue: item.text })}</Text>
+            <Text style={styles.cardTitle}>{t(`recommendations.${item.id}.text`)}</Text>
             <Text style={styles.cardTarget}>{item.target}×</Text>
           </View>
           {item.arabic && (
             <Text style={styles.cardArabic}>{item.arabic}</Text>
           )}
-          <Text style={styles.cardTranslation}>{t(`recommendations.${item.id}.translation`, { defaultValue: item.translation })}</Text>
+          <Text style={styles.cardTranslation}>{t(`recommendations.${item.id}.translation`)}</Text>
           <View style={styles.cardFooter}>
-            <Text style={styles.cardSource}>📜 {t(`recommendations.${item.id}.source`, { defaultValue: item.source })}</Text>
+            <Text style={styles.cardSource}>📜 {t(`recommendations.${item.id}.source`)}</Text>
           </View>
         </Pressable>
       </View>
@@ -146,7 +146,7 @@ export default function ListScreen() {
     const sessionId = Date.now().toString();
     const newZikir = {
         id: sessionId,
-        text: item.text,
+        text: t(`recommendations.${item.id}.text`),
         arabic: item.arabic,
         target: item.target,
         count: 0

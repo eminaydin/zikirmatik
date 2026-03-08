@@ -9,7 +9,16 @@
         "finished": "ABGESCHLOSSEN",
         "version": "Zikirmatik v1.5",
         "warning": "Warnung",
-        "yes_delete": "Ja, löschen"
+        "yes_delete": "Ja, löschen",
+        "language": "Sprache",
+        "languages": {
+            "tr": "Türkçe",
+            "en": "English",
+            "de": "Deutsch",
+            "fr": "Français",
+            "ru": "Русский",
+            "bs": "Bosanski"
+        }
     },
     "menu": {
         "title": "MENÜ",
@@ -81,6 +90,66 @@
             "text": "Subhanallahi wa bihamdihi adada khalqihi wa rida nafsihi wa zinata arshihi wa midada kalimatih",
             "translation": "Ehre und Lob sei Allah, entsprechend der Zahl Seiner Geschöpfe, Seinem Wohlgefallen, dem Gewicht Seines Thrones und der Tinte Seiner Worte.",
             "source": "Muslim, Dhikr 79"
+        },
+        "1": {
+            "text": "La ilaha illa anta subhanaka inni kuntu minaz-zalimin",
+            "translation": "Es gibt keinen Gott außer Dir. Ehre sei Dir! Ich bin gewiss einer der Ungerechten gewesen.",
+            "source": "Sure Al-Anbiya, 87"
+        },
+        "4": {
+            "text": "Hasbunallahu wa ni'mal-wakil, ni'mal-mawla wa ni'man-nasir",
+            "translation": "Allah genügt uns, und Er ist der beste Sachwalter. Was für ein wunderbarer Beschützer und was für ein wunderbarer Helfer.",
+            "source": "Sure Al-Imran, 173"
+        },
+        "2": {
+            "text": "Hasbiyallahu la ilaha illa hu, alayhi tawakkaltu wa huwa rabbul-arshil-azim",
+            "translation": "Allah genügt mir. Es gibt keinen Gott außer Ihm. Auf Ihn vertraue ich, und Er ist der Herr des Gewaltigen Throns.",
+            "source": "Sure At-Tawbah, 129"
+        },
+        "8": {
+            "text": "Ya Hayyu Ya Qayyum birahmatika astagithu, aslih li sha'ni kullahu wa la takilni ila nafsi tarfata ayn",
+            "translation": "O Lebendiger, O Beständiger, durch Deine Barmherzigkeit suche ich Hilfe. Ordne alle meine Angelegenheiten und überlasse mich nicht mir selbst, auch nicht für einen Augenblick.",
+            "source": "Tirmidhi, Daavat 91"
+        },
+        "7": {
+            "text": "Astaghfirullahal-azim alladhi la ilaha illa huwal-hayyul-qayyumu wa atubu ilayh",
+            "translation": "Ich bitte Allah den Allmächtigen um Vergebung, außer dem es keinen Gott gibt, den Lebendigen, den Beständigen, und ich bereue vor Ihm.",
+            "source": "Abu Dawood, Witr 26"
+        },
+        "3": {
+            "text": "Rabbi inni massaniyad-durru wa anta arhamur-rahimin",
+            "translation": "Mein Herr! Wahrlich, Unheil hat mich getroffen, und Du bist der Barmherzigste der Barmherzigen.",
+            "source": "Sure Al-Anbiya, 83"
+        },
+        "10": {
+            "text": "Allahumme salli ala sayyidina Muhammadin salaten tunjina biha min jami'il-ahwali wal-afat",
+            "translation": "O Allah! Segne unseren Herrn Muhammad mit einem Gebet, durch das Du uns von allen Schrecken und Katastrophen rettest.",
+            "source": "Salat-ı Munjiyah"
+        },
+        "11": {
+            "text": "Allahumme salli salaten kamilatan wa sallim salaman tamman ala sayyidina Muhammadinil-ladhi tanhallo bihil-uqad",
+            "translation": "O Allah! Schenke unserem Herrn Muhammad einen vollkommenen Segen und einen vollständigen Frieden, durch den Knoten gelöst werden.",
+            "source": "Salat-ı Tafrijiyah"
+        },
+        "5": {
+            "text": "Rabbana atina fid-dunya hasanatan wa fil-akhirati hasanatan wa qina adhaban-nar",
+            "translation": "Unser Herr! Gib uns in dieser Welt Gutes und im Jenseits Gutes und bewahre uns vor der Strafe des Feuers.",
+            "source": "Sure Al-Baqarah, 201"
+        },
+        "14": {
+            "text": "Rabbi hab li min ladunka dhurriyatan tayyibatan innaka sami'ud-du'a",
+            "translation": "Mein Herr! Schenke mir von Dir aus gute Nachkommenschaft. Wahrlich, Du bist der Erhörer des Gebets.",
+            "source": "Sure Al-Imran, 38"
+        },
+        "9": {
+            "text": "La ilaha illallahul-malikul-haqqul-mubin",
+            "translation": "Es gibt keinen Gott außer Allah, dem König, der Wahrheit, dem Offenkundigen.",
+            "source": "Hadith"
+        },
+        "13": {
+            "text": "Ya Dhal-Jalali wal-Ikram",
+            "translation": "O Herr der Majestät und der Ehre!",
+            "source": "Tirmidhi, Daavat 92"
         }
     },
     "notifications": {
