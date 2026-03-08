@@ -30,19 +30,19 @@
         "top_title": "ZİKİRMATİK",
         "reminder_modal_title": "Zikir Hatırlatıcısı",
         "daily_notification": "Günlük Bildirim",
-        "daily_notification_sub": "Sizin için sessiz bir huzur vakti ayıralım.",
+        "daily_notification_sub": "Senin için sessiz bir huzur vakti ayıralım.",
         "reminder_time_label": "Hatırlatma Saati"
     },
     "history": {
         "title": "Zikir Geçmişim",
-        "no_history": "Henüz bir zikir geçmişiniz yok.",
+        "no_history": "Henüz bir zikir geçmişin yok.",
         "session_date": "Tarih",
         "session_count": "Sayı",
         "ongoing_tab": "Devam Edenler",
         "finished_tab": "Tamamlananlar",
         "clear_history": "Geçmişi Temizle",
         "clear_confirm_title": "Geçmişi Temizle",
-        "clear_confirm_body": "Tüm zikir geçmişiniz silinecek. Bu işlem geri alınamaz. Onaylıyor musunuz?",
+        "clear_confirm_body": "Tüm zikir geçmişin silinecek. Bu işlem geri alınamaz. Onaylıyor musun?",
         "status_ongoing": "Devam Ediyor",
         "status_finished": "Tamamlandı",
         "empty_ongoing": "Henüz devam eden bir zikir yok.",
@@ -66,14 +66,14 @@
         "target_placeholder": "Hedef sayı",
         "add_button": "Zikir Ekle",
         "save_start": "Kaydet ve Başla",
-        "hint": "Yeni bir zikir ekleyerek hedefinizi belirleyebilir ve uygulama ayarlarını yönetebilirsiniz.",
+        "hint": "Yeni bir zikir ekleyerek hedefini belirleyebilir ve uygulama ayarlarını yönetebilirsin.",
         "label_text": "Zikir Metni (Türkçe / Okunuş)",
         "label_arabic": "Zikir Metni (Arapça - İsteğe Bağlı)",
         "label_target": "Hedef Sayı",
         "system_settings": "SİSTEM AYARLARI",
         "daily_reminder": "Günlük Hatırlatıcı",
         "daily_reminder_sub": "Günün zikrini hatırlatmak için bildirim gönderir.",
-        "error_empty": "Lütfen bir zikir metni girin."
+        "error_empty": "Lütfen bir zikir metni gir."
     },
     "recommendations": {
         "12": {
@@ -83,7 +83,7 @@
         },
         "15": {
             "text": "La ilahe illallahu vahdehu la şerike leh, lehü'l-mülkü ve lehü'l-hamdü ve hüve ala külli şey'in kadir",
-            "translation": "Allah'tan başka ilah yoktur, tektir, ortağı yoktur. Mülk O'nundur, hamd O'nadır.",
+            "translation": "Allah'tan başka ilah yoktur, tektir, ortağı yoktur. Mülk O'nundur, hamd O'nadır ve O her şeye kadirdir.",
             "source": "Buhari, Daavat 54"
         },
         "6": {
@@ -108,7 +108,7 @@
         },
         "8": {
             "text": "Ya Hayyu Ya Kayyum bi-rahmetike estegisu, aslih li şe'ni kullehu ve la tekilni ila nefsi tarfete ayn",
-            "translation": "Ey Hayy ve Kayyum olan Allah'ım! Senin rahmetinden yardım dilerim. İşlerimi düzelt ve beni nefsime bırakma.",
+            "translation": "Ey Hayy ve Kayyum olan Allah'ım! Senin rahmetinden yardım dilerim. Tüm işlerimi düzelt ve beni bir göz kırpımı kadar bile nefsime bırakma.",
             "source": "Tirmizi, Daavat 91"
         },
         "7": {

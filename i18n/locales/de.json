@@ -42,7 +42,7 @@
         "finished_tab": "Abgeschlossen",
         "clear_history": "Verlauf löschen",
         "clear_confirm_title": "Verlauf löschen",
-        "clear_confirm_body": "Ihr gesamter Dhikr-Verlauf wird gelöscht. Diese Aktion kann nicht rückgängig gemacht werden. Bestätigen Sie?",
+        "clear_confirm_body": "Dein gesamter Dhikr-Verlauf wird gelöscht. Diese Aktion kann nicht rückgängig gemacht werden. Bestätigst du?",
         "status_ongoing": "Laufend",
         "status_finished": "Abgeschlossen",
         "empty_ongoing": "Noch keine laufenden Dhikrs.",
@@ -83,7 +83,7 @@
         },
         "15": {
             "text": "La ilaha illallahu wahdahu la sharika lah, lahul-mulku wa lahul-hamdu wa huwa ala kulli shay'in qadir",
-            "translation": "Es gibt keinen Gott außer Allah, allein, ohne Partner. Sein ist das Reich, und Sein ist das Lob.",
+            "translation": "Es gibt keinen Gott außer Allah, allein, ohne Partner. Sein ist die Herrschaft, Sein ist das Lob, und Er ist allmächtig.",
             "source": "Bukhari, Daavat 54"
         },
         "6": {
