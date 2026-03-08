@@ -33,6 +33,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNotifications } from "../hooks/useNotifications";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { useTranslation } from "react-i18next";
+import Constants from "expo-constants";
 
 const { width, height } = Dimensions.get("window");
 
@@ -725,7 +726,9 @@ export default function CounterScreen() {
             </View>
 
             <View style={styles.sidebarFooter}>
-              <Text style={styles.versionText}>{t("common.version")}</Text>
+              <Text style={styles.versionText}>
+                v{Constants.expoConfig?.version || "1.0.0"}
+              </Text>
             </View>
           </Animated.View>
 
@@ -1112,9 +1115,10 @@ const styles = StyleSheet.create({
     borderTopColor: "rgba(255, 255, 255, 0.05)",
   },
   versionText: {
-    color: Colors.dark.textSecondary,
-    fontSize: 13,
-    fontWeight: "600",
+    color: "rgba(255, 255, 255, 0.2)",
+    fontSize: 12,
+    fontWeight: "400",
+    letterSpacing: 2,
   },
 
   // Reminder Modal Styles

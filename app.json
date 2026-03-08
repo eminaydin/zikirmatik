@@ -24,15 +24,20 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "plugins": [
-      "expo-router",
-      "expo-font"
-    ],
+    "plugins": ["expo-router", "expo-font"],
     "extra": {
       "router": {},
       "eas": {
         "projectId": "f4e1fabc-5478-40b5-8655-f35c6d05a724"
       }
+    },
+    "locales": {
+      "en": "./app_icon_locales/en.json",
+      "tr": "./app_icon_locales/tr.json",
+      "de": "./app_icon_locales/de.json",
+      "fr": "./app_icon_locales/fr.json",
+      "ru": "./app_icon_locales/ru.json",
+      "bs": "./app_icon_locales/bs.json"
     }
   }
 }
