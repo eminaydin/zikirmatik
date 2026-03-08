@@ -1,160 +1,158 @@
 {
-  "common": {
-    "app_name": "Zikirmatik",
-    "save": "Sačuvaj",
-    "cancel": "Odustani",
-    "ok": "U redu",
-    "delete": "Obriši",
-    "reset": "Resetuj",
-    "warning": "Upozorenje",
-    "yes_delete": "Da, izbriši",
-    "language": "Jezik",
-    "languages": {
-      "tr": "Türkçe",
-      "en": "English",
-      "de": "Deutsch",
-      "fr": "Français",
-      "ru": "Русский",
-      "bs": "Bosanski"
+    "common": {
+        "app_name": "Zikirmatik",
+        "save": "Sačuvaj",
+        "cancel": "Odustani",
+        "ok": "U redu",
+        "delete": "Obriši",
+        "reset": "Resetuj",
+        "warning": "Upozorenje",
+        "yes_delete": "Da, izbriši",
+        "language": "Jezik",
+        "languages": {
+            "tr": "Türkçe",
+            "en": "English",
+            "de": "Deutsch",
+            "fr": "Français",
+            "ru": "Русский",
+            "bs": "Bosanski"
+        },
+        "finished": "ZAVRŠENO"
     },
-    "finished": "ZAVRŠENO"
-  },
-  "menu": {
-    "title": "MENI",
-    "new_zikir": "Dodaj novi zikr",
-    "recommendations": "Preporučeni zikrovi",
-    "history": "Moja historija zikra",
-    "rate_app": "Ocijeni aplikaciju"
-  },
-  "home": {
-    "top_title": "ZIKIRMATIK",
-    "reminder_modal_title": "Podsjetnik na zikr",
-    "daily_notification": "Dnevna obavijest",
-    "daily_notification_sub": "Odvojimo vrijeme za mir i duhovnost.",
-    "reminder_time_label": "Vrijeme podsjetnika"
-  },
-  "history": {
-    "title": "Moja historija zikra",
-    "no_history": "Još uvijek nemaš historiju zikra.",
-    "session_date": "Datum",
-    "session_count": "Broj",
-    "ongoing_tab": "U toku",
-    "finished_tab": "Završeni",
-    "clear_history": "Obriši historiju",
-    "clear_confirm_title": "Obriši historiju",
-    "clear_confirm_body": "Sva tvoja historija zikra će biti obrisana. Ova radnja se ne može poništiti. Da li potvrđuješ?",
-    "status_ongoing": "U toku",
-    "status_finished": "Završeno",
-    "empty_ongoing": "Još uvijek nema zikrova u toku.",
-    "empty_finished": "Još uvijek nema završenih zikrova."
-  },
-  "list": {
-    "title": "Preporučeni zikrovi",
-    "add_success": "Zikr uspješno dodan!",
-    "categories": {
-      "basic": "Osnovni zikrovi",
-      "protection": "Zaštita i mir",
-      "healing": "Lijek i istigfar",
-      "salavat": "Salavati",
-      "quran": "Kur'anske dove"
+    "menu": {
+        "new_zikir": "Dodaj novi zikr",
+        "recommendations": "Preporučeni zikrovi",
+        "history": "Moja historija zikra",
+        "rate_app": "Ocijeni aplikaciju"
+    },
+    "home": {
+        "reminder_modal_title": "Podsjetnik na zikr",
+        "daily_notification": "Dnevna obavijest",
+        "daily_notification_sub": "Odvojimo vrijeme za mir i duhovnost.",
+        "reminder_time_label": "Vrijeme podsjetnika"
+    },
+    "history": {
+        "title": "Moja historija zikra",
+        "no_history": "Još uvijek nemaš historiju zikra.",
+        "session_date": "Datum",
+        "session_count": "Broj",
+        "ongoing_tab": "U toku",
+        "finished_tab": "Završeni",
+        "clear_history": "Obriši historiju",
+        "clear_confirm_title": "Obriši historiju",
+        "clear_confirm_body": "Sva tvoja historija zikra će biti obrisana. Ova radnja se ne može poništiti. Da li potvrđuješ?",
+        "status_ongoing": "U toku",
+        "status_finished": "Završeno",
+        "empty_ongoing": "Još uvijek nema zikrova u toku.",
+        "empty_finished": "Još uvijek nema završenih zikrova."
+    },
+    "list": {
+        "title": "Preporučeni zikrovi",
+        "add_success": "Zikr uspješno dodan!",
+        "categories": {
+            "basic": "Osnovni zikrovi",
+            "protection": "Zaštita i mir",
+            "healing": "Lijek i istigfar",
+            "salavat": "Salavati",
+            "quran": "Kur'anske dove"
+        }
+    },
+    "settings": {
+        "title": "Dodaj novi zikr",
+        "zikir_text_placeholder": "Tekst zikra...",
+        "zikir_text_placeholder_example": "Npr: La ilahe illallah",
+        "arabic_text_placeholder": "Arapski tekst (opcionalno)",
+        "target_placeholder": "Ciljani broj",
+        "add_button": "Dodaj zikr",
+        "save_start": "Sačuvaj i počni",
+        "hint": "Dodaj novi zikr da postaviš cilj i upravljaš postavkama aplikacije.",
+        "label_text": "Tekst zikra (Prevod / Izgovor)",
+        "label_arabic": "Tekst zikra (Arapski - Opcionalno)",
+        "label_target": "Ciljani broj",
+        "system_settings": "SISTEMSKE POSTAVKE",
+        "daily_reminder": "Dnevni podsjetnik",
+        "daily_reminder_sub": "Šalje obavijest da te podsjeti na zikr dana.",
+        "error_empty": "Molim te unesi tekst zikra."
+    },
+    "recommendations": {
+        "12": {
+            "text": "Subhanallahi vel-hamdülillahi ve la ilahe illallahu vallahu ekber",
+            "translation": "Slava Allahu, hvala Allahu, nema boga osim Allaha i Allah je najveći.",
+            "source": "Muslim, Adab 12"
+        },
+        "15": {
+            "text": "La ilahe illallahu vahdehu la šerike leh, lehul-mülkü ve lehul-hamdü ve hüve ala külli šej'in kadir",
+            "translation": "Nema boga osim Allaha, Jedinog, koji nema ortaka. Njemu pripada vlast, Njemu pripada svaka hvala i On je svemoguć.",
+            "source": "Buhari, Daavat 54"
+        },
+        "6": {
+            "text": "Subhanallahi ve bihamdihi adede halkihi ve rida nefsihi ve zinete aršihi ve midade kelimatih",
+            "translation": "Slava Allahu i hvala Mu onoliko koliko ima Njegovih stvorenja, koliko je On zadovoljan, koliko je težak Njegov Arš i koliko ima tiska za Njegove riječi.",
+            "source": "Muslim, Zikir 79"
+        },
+        "1": {
+            "text": "La ilahe illa ente subhaneke inni kuntu minez-zalimin",
+            "translation": "Nema boga osim Tebe, hvaljen neka si Ti, a ja sam se zaista prema sebi ogriješio.",
+            "source": "Sura Al-Anbija, 87"
+        },
+        "4": {
+            "text": "Hasbunallahu ve ni'mel vekil, ni'mel mevla ve ni'men-nasir",
+            "translation": "Dovoljan nam je Allah i divan je On zaštitnik! Divan li je Gospodar ve divan li je pomagač.",
+            "source": "Sura Ali-Imran, 173"
+        },
+        "2": {
+            "text": "Hasbijallahu la ilahe illa hu, alejhi tevekkeltü ve hüve rabbül-aršil-azim",
+            "translation": "Dovoljan mi je Allah! Nema boga osim Njega. U Njega se uzdam i On je Gospodar Arša velikoga.",
+            "source": "Sura At-Tevba, 129"
+        },
+        "8": {
+            "text": "Ja Hajju Ja Kajjumu bi-rahmetike estegisu, aslih li še'ni kullehu ve la tekilni ila nefsi tarfete ajn",
+            "translation": "O Živi, o Vječni, Tvojom milošću tražim pomoć. Popravi sve moje prilike i ne prepuštaj me samom sebi ni koliko treptaj oka.",
+            "source": "Tirmizi, Daavat 91"
+        },
+        "7": {
+            "text": "Estagfirullahel-azim el-lezi la ilahe illa huvel-hajjul-kajjumu ve etubü ilejh",
+            "translation": "Tražim oprosta od Allaha Velikog, osim Kojeg drugog boga nema, Živog i Vječnog, i Njemu se klatim.",
+            "source": "Ebu Davud, Vitr 26"
+        },
+        "3": {
+            "text": "Rabbi inni messenijed-durru ve ente erhamur-rahimin",
+            "translation": "Gospodaru moj! Mene je ova nevolja snašla, a Ti si od milostivih najmilostiviji.",
+            "source": "Sura Al-Anbija, 83"
+        },
+        "10": {
+            "text": "Allahumme salli ala sejjidina Muhammedin salaten tuncina biha min džemial ehvali vel-afat",
+            "translation": "Allahu moj! Blagoslovi našeg prvaka Muhammeda onim blagoslovom kojim ćeš nas spasiti svih strahota i nedaća.",
+            "source": "Salatun-Tundžina"
+        },
+        "11": {
+            "text": "Allahumme salli salaten kamileten ve sellim selamen tammen ala sejjidina Muhammedinillezi tenhallu bihil ukad",
+            "translation": "Allahu moj! Podari savršen blagoslov i potpuni mir našem prvaku Muhammedu, onome čijim se posredstvom čvorovi razrješuju.",
+            "source": "Salatun-Tefridžijja"
+        },
+        "5": {
+            "text": "Rabbena atina fid-dunja haseneten ve fil-ahireti haseneten ve kina azaben-nar",
+            "translation": "Gospodaru naš! Podari nam na ovome svijetu dobro i na onome svijetu dobro i sačuvaj nas patnje u vatri.",
+            "source": "Sura El-Bekara, 201"
+        },
+        "14": {
+            "text": "Rabbi heb li min ledunke zurrijeten tajjibeten inneke semi'ud-dua",
+            "translation": "Gospodaru moj! Podari mi od Sebe čisto potomstvo. Zaista Ti uslišavaš dove.",
+            "source": "Sura Ali-Imran, 38"
+        },
+        "9": {
+            "text": "La ilahe illallahül-melikül-hakkul-mübin",
+            "translation": "Nema boga osim Allaha, Vladara, Istinitog, Jasnog.",
+            "source": "Hadis"
+        },
+        "13": {
+            "text": "Ja Zel Dželali vel Ikram",
+            "translation": "O Vlasniče veličine i plemenitosti!",
+            "source": "Tirmizi, Daavat 92"
+        }
+    },
+    "notifications": {
+        "daily_title": "Vrijeme za mir ✨",
+        "daily_body": "A srca se doista, kad se Allah spomene, smiruju. Šta kažeš na kratku pauzu za zikr? 🌙"
     }
-  },
-  "settings": {
-    "title": "Dodaj novi zikr",
-    "zikir_text_placeholder": "Tekst zikra...",
-    "zikir_text_placeholder_example": "Npr: La ilahe illallah",
-    "arabic_text_placeholder": "Arapski tekst (opcionalno)",
-    "target_placeholder": "Ciljani broj",
-    "add_button": "Dodaj zikr",
-    "save_start": "Sačuvaj i počni",
-    "hint": "Dodaj novi zikr da postaviš cilj i upravljaš postavkama aplikacije.",
-    "label_text": "Tekst zikra (Prevod / Izgovor)",
-    "label_arabic": "Tekst zikra (Arapski - Opcionalno)",
-    "label_target": "Ciljani broj",
-    "system_settings": "SISTEMSKE POSTAVKE",
-    "daily_reminder": "Dnevni podsjetnik",
-    "daily_reminder_sub": "Šalje obavijest da te podsjeti na zikr dana.",
-    "error_empty": "Molim te unesi tekst zikra."
-  },
-  "recommendations": {
-    "12": {
-      "text": "Subhanallahi vel-hamdülillahi ve la ilahe illallahu vallahu ekber",
-      "translation": "Slava Allahu, hvala Allahu, nema boga osim Allaha i Allah je najveći.",
-      "source": "Muslim, Adab 12"
-    },
-    "15": {
-      "text": "La ilahe illallahu vahdehu la šerike leh, lehul-mülkü ve lehul-hamdü ve hüve ala külli šej'in kadir",
-      "translation": "Nema boga osim Allaha, Jedinog, koji nema ortaka. Njemu pripada vlast, Njemu pripada svaka hvala i On je svemoguć.",
-      "source": "Buhari, Daavat 54"
-    },
-    "6": {
-      "text": "Subhanallahi ve bihamdihi adede halkihi ve rida nefsihi ve zinete aršihi ve midade kelimatih",
-      "translation": "Slava Allahu i hvala Mu onoliko koliko ima Njegovih stvorenja, koliko je On zadovoljan, koliko je težak Njegov Arš i koliko ima tiska za Njegove riječi.",
-      "source": "Muslim, Zikir 79"
-    },
-    "1": {
-      "text": "La ilahe illa ente subhaneke inni kuntu minez-zalimin",
-      "translation": "Nema boga osim Tebe, hvaljen neka si Ti, a ja sam se zaista prema sebi ogriješio.",
-      "source": "Sura Al-Anbija, 87"
-    },
-    "4": {
-      "text": "Hasbunallahu ve ni'mel vekil, ni'mel mevla ve ni'men-nasir",
-      "translation": "Dovoljan nam je Allah i divan je On zaštitnik! Divan li je Gospodar ve divan li je pomagač.",
-      "source": "Sura Ali-Imran, 173"
-    },
-    "2": {
-      "text": "Hasbijallahu la ilahe illa hu, alejhi tevekkeltü ve hüve rabbül-aršil-azim",
-      "translation": "Dovoljan mi je Allah! Nema boga osim Njega. U Njega se uzdam i On je Gospodar Arša velikoga.",
-      "source": "Sura At-Tevba, 129"
-    },
-    "8": {
-      "text": "Ja Hajju Ja Kajjumu bi-rahmetike estegisu, aslih li še'ni kullehu ve la tekilni ila nefsi tarfete ajn",
-      "translation": "O Živi, o Vječni, Tvojom milošću tražim pomoć. Popravi sve moje prilike i ne prepuštaj me samom sebi ni koliko treptaj oka.",
-      "source": "Tirmizi, Daavat 91"
-    },
-    "7": {
-      "text": "Estagfirullahel-azim el-lezi la ilahe illa huvel-hajjul-kajjumu ve etubü ilejh",
-      "translation": "Tražim oprosta od Allaha Velikog, osim Kojeg drugog boga nema, Živog i Vječnog, i Njemu se klatim.",
-      "source": "Ebu Davud, Vitr 26"
-    },
-    "3": {
-      "text": "Rabbi inni messenijed-durru ve ente erhamur-rahimin",
-      "translation": "Gospodaru moj! Mene je ova nevolja snašla, a Ti si od milostivih najmilostiviji.",
-      "source": "Sura Al-Anbija, 83"
-    },
-    "10": {
-      "text": "Allahumme salli ala sejjidina Muhammedin salaten tuncina biha min džemial ehvali vel-afat",
-      "translation": "Allahu moj! Blagoslovi našeg prvaka Muhammeda onim blagoslovom kojim ćeš nas spasiti svih strahota i nedaća.",
-      "source": "Salatun-Tundžina"
-    },
-    "11": {
-      "text": "Allahumme salli salaten kamileten ve sellim selamen tammen ala sejjidina Muhammedinillezi tenhallu bihil ukad",
-      "translation": "Allahu moj! Podari savršen blagoslov i potpuni mir našem prvaku Muhammedu, onome čijim se posredstvom čvorovi razrješuju.",
-      "source": "Salatun-Tefridžijja"
-    },
-    "5": {
-      "text": "Rabbena atina fid-dunja haseneten ve fil-ahireti haseneten ve kina azaben-nar",
-      "translation": "Gospodaru naš! Podari nam na ovome svijetu dobro i na onome svijetu dobro i sačuvaj nas patnje u vatri.",
-      "source": "Sura El-Bekara, 201"
-    },
-    "14": {
-      "text": "Rabbi heb li min ledunke zurrijeten tajjibeten inneke semi'ud-dua",
-      "translation": "Gospodaru moj! Podari mi od Sebe čisto potomstvo. Zaista Ti uslišavaš dove.",
-      "source": "Sura Ali-Imran, 38"
-    },
-    "9": {
-      "text": "La ilahe illallahül-melikül-hakkul-mübin",
-      "translation": "Nema boga osim Allaha, Vladara, Istinitog, Jasnog.",
-      "source": "Hadis"
-    },
-    "13": {
-      "text": "Ja Zel Dželali vel Ikram",
-      "translation": "O Vlasniče veličine i plemenitosti!",
-      "source": "Tirmizi, Daavat 92"
-    }
-  },
-  "notifications": {
-    "daily_title": "Vrijeme za mir ✨",
-    "daily_body": "A srca se doista, kad se Allah spomene, smiruju. Šta kažeš na kratku pauzu za zikr? 🌙"
-  }
 }

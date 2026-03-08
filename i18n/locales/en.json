@@ -20,14 +20,12 @@
         }
     },
     "menu": {
-        "title": "MENU",
         "new_zikir": "Add New Dhikr",
         "recommendations": "Dhikr Suggestions",
         "history": "My Dhikr History",
         "rate_app": "Rate App"
     },
     "home": {
-        "top_title": "TASBIH COUNTER",
         "reminder_modal_title": "Dhikr Reminder",
         "daily_notification": "Daily Notification",
         "daily_notification_sub": "Let's set a quiet time of peace for you.",

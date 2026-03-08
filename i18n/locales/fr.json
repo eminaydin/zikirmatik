@@ -20,14 +20,12 @@
         }
     },
     "menu": {
-        "title": "MENU",
         "new_zikir": "Ajouter un nouveau Dhikr",
         "recommendations": "Suggestions de Dhikr",
         "history": "Mon historique de Dhikr",
         "rate_app": "Évaluer l'application"
     },
     "home": {
-        "top_title": "COMPTEUR DE TASBIH",
         "reminder_modal_title": "Rappel de Dhikr",
         "daily_notification": "Notification quotidienne",
         "daily_notification_sub": "Prévoyons un moment de paix pour toi.",

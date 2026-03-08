@@ -580,7 +580,9 @@ export default function CounterScreen() {
           <Animated.View style={[styles.sidebar, sidebarStyle]}>
             <View style={styles.sidebarHeader}>
               <View>
-                <Text style={styles.sidebarTitleMain}>{t("menu.title")}</Text>
+                <Text style={styles.sidebarTitleMain}>
+                  {t("common.app_name")}
+                </Text>
                 <View style={styles.titleUnderline} />
               </View>
               <Pressable onPress={toggleSidebar} style={styles.closeButton}>

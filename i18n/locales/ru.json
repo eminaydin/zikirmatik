@@ -20,14 +20,12 @@
         }
     },
     "menu": {
-        "title": "МЕНЮ",
         "new_zikir": "Добавить новый зикр",
         "recommendations": "Рекомендации зикров",
         "history": "История зикров",
         "rate_app": "Оценить приложение"
     },
     "home": {
-        "top_title": "ЗИКИРМАТИК",
         "reminder_modal_title": "Напоминание о зикре",
         "daily_notification": "Ежедневное уведомление",
         "daily_notification_sub": "Давай выделим время для твоего спокойствия.",

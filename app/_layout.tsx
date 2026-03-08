@@ -25,7 +25,7 @@ export default function RootLayout() {
       >
         <Stack.Screen
           name="index"
-          options={{ title: "Zikirmatik", headerShown: false }}
+          options={{ title: t("common.app_name"), headerShown: false }}
         />
         <Stack.Screen
           name="list"

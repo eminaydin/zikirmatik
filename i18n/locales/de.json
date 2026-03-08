@@ -20,14 +20,12 @@
         }
     },
     "menu": {
-        "title": "MENÜ",
         "new_zikir": "Neuen Dhikr hinzufügen",
         "recommendations": "Dhikr-Vorschläge",
         "history": "Mein Dhikr-Verlauf",
         "rate_app": "App bewerten"
     },
     "home": {
-        "top_title": "GEBETSKETTE",
         "reminder_modal_title": "Dhikr-Erinnerung",
         "daily_notification": "Tägliche Benachrichtigung",
         "daily_notification_sub": "Nehmen wir uns eine ruhige Zeit des Friedens für dich.",
