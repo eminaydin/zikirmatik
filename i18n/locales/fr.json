@@ -63,6 +63,7 @@
   "settings": {
     "title": "Ajouter un nouveau Dhikr",
     "zikir_text_placeholder": "Texte du dhikr...",
+    "zikir_text_placeholder_example": "Ex: La ilaha illallah",
     "arabic_text_placeholder": "Texte arabe (optionnel)",
     "target_placeholder": "Nombre cible",
     "add_button": "Ajouter le Dhikr",

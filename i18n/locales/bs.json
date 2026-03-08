@@ -63,6 +63,7 @@
   "settings": {
     "title": "Dodaj novi zikr",
     "zikir_text_placeholder": "Tekst zikra...",
+    "zikir_text_placeholder_example": "Npr: La ilahe illallah",
     "arabic_text_placeholder": "Arapski tekst (opcionalno)",
     "target_placeholder": "Ciljani broj",
     "add_button": "Dodaj zikr",

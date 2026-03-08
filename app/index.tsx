@@ -45,7 +45,7 @@ interface ZikirData {
 
 const DEFAULT_ZIKIR: ZikirData = {
   id: "default",
-  text: "Sübhanallah",
+  text: "Subhanallah",
   arabic: "سُبْحَانَ اللَّهِ",
   target: 33,
   count: 0,

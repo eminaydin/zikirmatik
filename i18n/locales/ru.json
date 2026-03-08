@@ -63,6 +63,7 @@
   "settings": {
     "title": "Добавить новый зикр",
     "zikir_text_placeholder": "Текст зикра...",
+    "zikir_text_placeholder_example": "Напр: Ля иляха илляллах",
     "arabic_text_placeholder": "Арабский текст (опционально)",
     "target_placeholder": "Целевое число",
     "add_button": "Добавить зикр",
