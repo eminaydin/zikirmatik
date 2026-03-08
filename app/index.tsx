@@ -671,6 +671,27 @@ export default function CounterScreen() {
                   styles.sidebarItem,
                   pressed && styles.sidebarItemPressed,
                 ]}
+                onPress={() => {
+                  router.push("/stats");
+                  toggleSidebar();
+                }}
+              >
+                <View
+                  style={[
+                    styles.sidebarIconWrapper,
+                    { backgroundColor: "rgba(139, 92, 246, 0.1)" },
+                  ]}
+                >
+                  <Ionicons name="stats-chart-outline" size={20} color="#8B5CF6" />
+                </View>
+                <Text style={styles.sidebarItemText}>{t("menu.stats")}</Text>
+              </Pressable>
+
+              <Pressable
+                style={({ pressed }) => [
+                  styles.sidebarItem,
+                  pressed && styles.sidebarItemPressed,
+                ]}
                 onPress={async () => {
                   toggleSidebar();
                   try {

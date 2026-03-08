@@ -36,6 +36,7 @@ export default function RootLayout() {
           options={{ title: t("settings.title"), presentation: "modal" }}
         />
         <Stack.Screen name="history" options={{ title: t("history.title") }} />
+        <Stack.Screen name="stats" options={{ title: t("stats.title") }} />
       </Stack>
     </>
   );
