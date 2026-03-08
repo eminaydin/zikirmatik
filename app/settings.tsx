@@ -106,24 +106,6 @@ export default function SettingsScreen() {
     }
   };
 
-  const changeLanguage = async (lng: string) => {
-    try {
-      await i18n.changeLanguage(lng);
-      await AsyncStorage.setItem("user_language", lng);
-    } catch (error) {
-      console.error("Error changing language:", error);
-    }
-  };
-
-  const languages = [
-    { code: "tr", label: t("common.languages.tr"), flag: "🇹🇷" },
-    { code: "en", label: t("common.languages.en"), flag: "🇺🇸" },
-    { code: "de", label: t("common.languages.de"), flag: "🇩🇪" },
-    { code: "fr", label: t("common.languages.fr"), flag: "🇫🇷" },
-    { code: "ru", label: t("common.languages.ru"), flag: "🇷🇺" },
-    { code: "bs", label: t("common.languages.bs"), flag: "🇧🇦" },
-  ];
-
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -224,37 +206,6 @@ export default function SettingsScreen() {
           )}
 
           <View style={styles.divider} />
-
-          <Text style={[styles.sectionHeader, { marginTop: 10 }]}>
-            {t("common.language").toUpperCase()}
-          </Text>
-          <ScrollView
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            style={styles.langList}
-          >
-            {languages.map((lang) => (
-              <Pressable
-                key={lang.code}
-                onPress={() => changeLanguage(lang.code)}
-                style={[
-                  styles.langItem,
-                  i18n.language.startsWith(lang.code) && styles.langItemActive,
-                ]}
-              >
-                <Text style={styles.langFlag}>{lang.flag}</Text>
-                <Text
-                  style={[
-                    styles.langLabel,
-                    i18n.language.startsWith(lang.code) &&
-                      styles.langLabelActive,
-                  ]}
-                >
-                  {lang.label}
-                </Text>
-              </Pressable>
-            ))}
-          </ScrollView>
         </View>
 
         <Pressable
@@ -379,37 +330,5 @@ const styles = StyleSheet.create({
     color: "#8B5CF6",
     fontSize: 14,
     fontWeight: "600",
-  },
-  langList: {
-    marginTop: 12,
-    flexDirection: "row",
-  },
-  langItem: {
-    paddingHorizontal: 16,
-    paddingVertical: 10,
-    borderRadius: 12,
-    backgroundColor: "#1F2937",
-    marginRight: 10,
-    alignItems: "center",
-    borderWidth: 1,
-    borderColor: "#374151",
-    flexDirection: "row",
-    gap: 8,
-  },
-  langItemActive: {
-    backgroundColor: "#8B5CF615",
-    borderColor: "#8B5CF6",
-  },
-  langFlag: {
-    fontSize: 18,
-  },
-  langLabel: {
-    color: "#9CA3AF",
-    fontSize: 14,
-    fontWeight: "500",
-  },
-  langLabelActive: {
-    color: "#8B5CF6",
-    fontWeight: "700",
   },
 });

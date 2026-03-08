@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -7,16 +7,19 @@ import {
   Pressable,
   Alert,
   Dimensions,
-} from 'react-native';
-import { Colors } from '../constants/Colors';
-import { useRouter, useFocusEffect, Stack } from 'expo-router';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Ionicons } from '@expo/vector-icons';
-import * as Haptics from 'expo-haptics';
-import { GestureHandlerRootView, Swipeable } from 'react-native-gesture-handler';
-import { useTranslation } from 'react-i18next';
+} from "react-native";
+import { Colors } from "../constants/Colors";
+import { useRouter, useFocusEffect, Stack } from "expo-router";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Ionicons } from "@expo/vector-icons";
+import * as Haptics from "expo-haptics";
+import {
+  GestureHandlerRootView,
+  Swipeable,
+} from "react-native-gesture-handler";
+import { useTranslation } from "react-i18next";
 
-const { width, height } = Dimensions.get('window');
+const { width, height } = Dimensions.get("window");
 
 interface HistoryItem {
   id: string;
@@ -31,58 +34,63 @@ interface HistoryItem {
 export default function HistoryScreen() {
   const { t, i18n } = useTranslation();
   const [history, setHistory] = useState<HistoryItem[]>([]);
-  const [activeTab, setActiveTab] = useState<'ongoing' | 'finished'>('ongoing');
+  const [activeTab, setActiveTab] = useState<"ongoing" | "finished">("ongoing");
   const router = useRouter();
 
   useFocusEffect(
     React.useCallback(() => {
-      AsyncStorage.getItem('zikir_history').then((val) => {
+      AsyncStorage.getItem("zikir_history").then((val) => {
         if (val) {
           setHistory(JSON.parse(val).reverse());
         }
       });
-    }, [])
+    }, []),
   );
 
   const deleteItem = async (id: string) => {
-    const updatedHistory = history.filter(item => item.id !== id);
+    const updatedHistory = history.filter((item) => item.id !== id);
     setHistory(updatedHistory);
-    await AsyncStorage.setItem('zikir_history', JSON.stringify([...updatedHistory].reverse()));
+    await AsyncStorage.setItem(
+      "zikir_history",
+      JSON.stringify([...updatedHistory].reverse()),
+    );
     await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
   };
 
   const clearHistory = async () => {
     Alert.alert(
-      t('history.clear_confirm_title'),
-      t('history.clear_confirm_body'),
+      t("history.clear_confirm_title"),
+      t("history.clear_confirm_body"),
       [
-        { text: t('common.cancel'), style: 'cancel' },
-        { 
-          text: t('common.yes_delete'), 
-          style: 'destructive',
+        { text: t("common.cancel"), style: "cancel" },
+        {
+          text: t("common.yes_delete"),
+          style: "destructive",
           onPress: async () => {
             setHistory([]);
-            await AsyncStorage.removeItem('zikir_history');
-            await Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
-          }
+            await AsyncStorage.removeItem("zikir_history");
+            await Haptics.notificationAsync(
+              Haptics.NotificationFeedbackType.Success,
+            );
+          },
         },
-      ]
+      ],
     );
   };
 
   const selectItem = async (item: HistoryItem) => {
     if (item.isFinished) return;
-    
+
     await Haptics.selectionAsync();
     const activeZikir = {
-        id: item.id, // Pass the existing ID
-        text: item.text,
-        arabic: item.arabic,
-        count: item.count,
-        target: item.target,
+      id: item.id, // Pass the existing ID
+      text: item.text,
+      arabic: item.arabic,
+      count: item.count,
+      target: item.target,
     };
-    await AsyncStorage.setItem('selected_zikir', JSON.stringify(activeZikir));
-    router.push('/');
+    await AsyncStorage.setItem("selected_zikir", JSON.stringify(activeZikir));
+    router.push("/");
   };
 
   const renderRightActions = (id: string) => (
@@ -93,72 +101,103 @@ export default function HistoryScreen() {
 
   const renderItem = ({ item }: { item: HistoryItem }) => (
     <Swipeable
-        renderRightActions={() => renderRightActions(item.id)}
-        onSwipeableWillOpen={(direction) => {
-          if (direction === 'right') {
-            deleteItem(item.id);
-          }
-        }}
-        friction={1.5}
-        rightThreshold={width * 0.5}
-        overshootRight={false}
+      renderRightActions={() => renderRightActions(item.id)}
+      onSwipeableWillOpen={(direction) => {
+        if (direction === "right") {
+          deleteItem(item.id);
+        }
+      }}
+      friction={1.5}
+      rightThreshold={width * 0.5}
+      overshootRight={false}
     >
-        <Pressable 
-            style={[styles.card, item.isFinished && styles.cardFinished]}
-            onPress={() => selectItem(item)}
-        >
-          <View style={styles.cardHeader}>
-            <View style={{ flex: 1 }}>
-                <Text style={styles.cardTitle} numberOfLines={2}>{item.text}</Text>
-                {item.isFinished ? (
-                  <View style={styles.statusBadge}>
-                    <Ionicons name="checkmark-circle" size={12} color="#10B981" />
-                    <Text style={styles.statusText}>{t('history.status_finished')}</Text>
-                  </View>
-                ) : (
-                  <View style={[styles.statusBadge, { backgroundColor: '#EAB30815' }]}>
-                    <Ionicons name="time" size={12} color="#EAB308" />
-                    <Text style={[styles.statusText, { color: '#EAB308' }]}>{t('history.status_ongoing')}</Text>
-                  </View>
-                )}
-            </View>
-            <View style={styles.countContainer}>
-                <Text style={[styles.cardCount, item.isFinished && { color: '#10B981' }]}>
-                    {item.count}
+      <Pressable
+        style={[styles.card, item.isFinished && styles.cardFinished]}
+        onPress={() => selectItem(item)}
+      >
+        <View style={styles.cardHeader}>
+          <View style={{ flex: 1 }}>
+            <Text style={styles.cardTitle} numberOfLines={2}>
+              {item.text}
+            </Text>
+            {item.isFinished ? (
+              <View style={styles.statusBadge}>
+                <Ionicons name="checkmark-circle" size={12} color="#10B981" />
+                <Text style={styles.statusText}>
+                  {t("history.status_finished")}
                 </Text>
-                <Text style={styles.cardTarget}>/ {item.target || 33}</Text>
-            </View>
+              </View>
+            ) : (
+              <View
+                style={[styles.statusBadge, { backgroundColor: "#EAB30815" }]}
+              >
+                <Ionicons name="time" size={12} color="#EAB308" />
+                <Text style={[styles.statusText, { color: "#EAB308" }]}>
+                  {t("history.status_ongoing")}
+                </Text>
+              </View>
+            )}
           </View>
-          <Text style={styles.cardDate}>{new Date(item.date).toLocaleString(i18n.language === 'tr' ? 'tr-TR' : 'en-US')}</Text>
-        </Pressable>
+          <View style={styles.countContainer}>
+            <Text
+              style={[
+                styles.cardCount,
+                item.isFinished && { color: "#10B981" },
+              ]}
+            >
+              {item.count}
+            </Text>
+            <Text style={styles.cardTarget}>/ {item.target || 33}</Text>
+          </View>
+        </View>
+        <Text style={styles.cardDate}>
+          {new Date(item.date).toLocaleString(
+            i18n.language === "tr" ? "tr-TR" : "en-US",
+          )}
+        </Text>
+      </Pressable>
     </Swipeable>
   );
 
-  const filteredHistory = history.filter(item => 
-    activeTab === 'finished' ? item.isFinished : !item.isFinished
+  const filteredHistory = history.filter((item) =>
+    activeTab === "finished" ? item.isFinished : !item.isFinished,
   );
 
   return (
     <View style={styles.container}>
-      <Stack.Screen 
+      <Stack.Screen
         options={{
-          headerTitle: t('history.title'),
-          headerTitleAlign: 'center',
+          headerTitle: t("history.title"),
+          headerTitleAlign: "center",
         }}
       />
       <GestureHandlerRootView style={{ flex: 1 }}>
         <View style={styles.tabBar}>
-          <Pressable 
-            style={[styles.tab, activeTab === 'ongoing' && styles.tabActive]} 
-            onPress={() => setActiveTab('ongoing')}
+          <Pressable
+            style={[styles.tab, activeTab === "ongoing" && styles.tabActive]}
+            onPress={() => setActiveTab("ongoing")}
           >
-            <Text style={[styles.tabText, activeTab === 'ongoing' && styles.tabTextActive]}>{t('history.ongoing_tab')}</Text>
+            <Text
+              style={[
+                styles.tabText,
+                activeTab === "ongoing" && styles.tabTextActive,
+              ]}
+            >
+              {t("history.ongoing_tab")}
+            </Text>
           </Pressable>
-          <Pressable 
-            style={[styles.tab, activeTab === 'finished' && styles.tabActive]} 
-            onPress={() => setActiveTab('finished')}
+          <Pressable
+            style={[styles.tab, activeTab === "finished" && styles.tabActive]}
+            onPress={() => setActiveTab("finished")}
           >
-            <Text style={[styles.tabText, activeTab === 'finished' && styles.tabTextActive]}>{t('history.finished_tab')}</Text>
+            <Text
+              style={[
+                styles.tabText,
+                activeTab === "finished" && styles.tabTextActive,
+              ]}
+            >
+              {t("history.finished_tab")}
+            </Text>
           </Pressable>
         </View>
 
@@ -172,16 +211,20 @@ export default function HistoryScreen() {
             />
             <Pressable style={styles.clearButton} onPress={clearHistory}>
               <Ionicons name="trash-outline" size={20} color="#EF4444" />
-              <Text style={styles.clearText}>{t('history.clear_history')}</Text>
+              <Text style={styles.clearText}>{t("history.clear_history")}</Text>
             </Pressable>
           </View>
         ) : (
           <View style={styles.empty}>
-            <Ionicons name="time-outline" size={64} color={Colors.dark.border} />
+            <Ionicons
+              name="time-outline"
+              size={64}
+              color={Colors.dark.border}
+            />
             <Text style={styles.emptyText}>
-                {activeTab === 'finished' 
-                    ? t('history.empty_finished') 
-                    : t('history.empty_ongoing')}
+              {activeTab === "finished"
+                ? t("history.empty_finished")
+                : t("history.empty_ongoing")}
             </Text>
           </View>
         )}
@@ -196,26 +239,26 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.dark.background,
   },
   tabBar: {
-    flexDirection: 'row',
+    flexDirection: "row",
     padding: 16,
     gap: 12,
   },
   tab: {
     flex: 1,
     paddingVertical: 12,
-    alignItems: 'center',
+    alignItems: "center",
     borderRadius: 12,
     backgroundColor: Colors.dark.surface,
     borderWidth: 1,
     borderColor: Colors.dark.border,
   },
   tabActive: {
-    backgroundColor: Colors.dark.primary + '15',
+    backgroundColor: Colors.dark.primary + "15",
     borderColor: Colors.dark.primary,
   },
   tabText: {
     color: Colors.dark.textSecondary,
-    fontWeight: '600',
+    fontWeight: "600",
     fontSize: 14,
   },
   tabTextActive: {
@@ -234,37 +277,37 @@ const styles = StyleSheet.create({
     borderColor: Colors.dark.border,
   },
   cardFinished: {
-    borderColor: '#10B98133',
-    backgroundColor: '#10B98108',
+    borderColor: "#10B98133",
+    backgroundColor: "#10B98108",
   },
   deleteAction: {
-    backgroundColor: '#EF4444',
-    justifyContent: 'center',
-    alignItems: 'center',
+    backgroundColor: "#EF4444",
+    justifyContent: "center",
+    alignItems: "center",
     width: 80,
     borderRadius: 16,
     marginBottom: 12,
     marginLeft: 12,
   },
   cardHeader: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'flex-start',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "flex-start",
     marginBottom: 12,
   },
   cardTitle: {
     fontSize: 16,
-    fontWeight: '700',
+    fontWeight: "700",
     color: Colors.dark.text,
     marginBottom: 6,
   },
   countContainer: {
-    alignItems: 'flex-end',
+    alignItems: "flex-end",
     marginLeft: 12,
   },
   cardCount: {
     fontSize: 20,
-    fontWeight: '800',
+    fontWeight: "800",
     color: Colors.dark.primary,
   },
   cardTarget: {
@@ -273,20 +316,20 @@ const styles = StyleSheet.create({
     marginTop: -2,
   },
   statusBadge: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#10B98115',
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#10B98115",
     paddingHorizontal: 8,
     paddingVertical: 4,
     borderRadius: 6,
-    alignSelf: 'flex-start',
+    alignSelf: "flex-start",
   },
   statusText: {
     fontSize: 11,
-    fontWeight: '700',
-    color: '#10B981',
+    fontWeight: "700",
+    color: "#10B981",
     marginLeft: 4,
-    textTransform: 'uppercase',
+    textTransform: "uppercase",
   },
   cardDate: {
     fontSize: 11,
@@ -295,38 +338,38 @@ const styles = StyleSheet.create({
   },
   empty: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     padding: 32,
   },
   emptyText: {
     color: Colors.dark.textSecondary,
     fontSize: 16,
     marginTop: 16,
-    textAlign: 'center',
+    textAlign: "center",
   },
   clearButton: {
-    position: 'absolute',
+    position: "absolute",
     bottom: 24,
     left: 24,
     right: 24,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
     backgroundColor: Colors.dark.surface,
     paddingVertical: 14,
     borderRadius: 16,
     borderWidth: 1,
-    borderColor: '#EF444433',
-    shadowColor: '#000',
+    borderColor: "#EF444433",
+    shadowColor: "#000",
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.2,
     shadowRadius: 8,
     elevation: 4,
   },
   clearText: {
-    color: '#EF4444',
-    fontWeight: '700',
+    color: "#EF4444",
+    fontWeight: "700",
     fontSize: 15,
     marginLeft: 8,
   },

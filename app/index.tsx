@@ -11,6 +11,7 @@ import {
   Modal,
   Switch,
   Image,
+  ScrollView,
 } from "react-native";
 import * as Haptics from "expo-haptics";
 import * as StoreReview from "expo-store-review";
@@ -60,7 +61,7 @@ import {
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
 export default function CounterScreen() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [zikir, setZikir] = useState<ZikirData>(DEFAULT_ZIKIR);
   const [hapticsEnabled, setHapticsEnabled] = useState(true);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -123,6 +124,24 @@ export default function CounterScreen() {
       });
     }, []),
   );
+
+  const changeLanguage = async (lng: string) => {
+    try {
+      await i18n.changeLanguage(lng);
+      await AsyncStorage.setItem("user_language", lng);
+    } catch (error) {
+      console.error("Error changing language:", error);
+    }
+  };
+
+  const languages = [
+    { code: "tr", label: t("common.languages.tr"), flag: "🇹🇷" },
+    { code: "en", label: t("common.languages.en"), flag: "🇺🇸" },
+    { code: "de", label: t("common.languages.de"), flag: "🇩🇪" },
+    { code: "fr", label: t("common.languages.fr"), flag: "🇫🇷" },
+    { code: "ru", label: t("common.languages.ru"), flag: "🇷🇺" },
+    { code: "bs", label: t("common.languages.bs"), flag: "🇧🇦" },
+  ];
 
   const toggleSidebar = useCallback(() => {
     const nextState = !isSidebarOpen;
@@ -358,13 +377,6 @@ export default function CounterScreen() {
               />
             </Pressable>
 
-            <View style={styles.topBarCenter}>
-              <Text style={styles.topBarTitle}>{t("home.top_title")}</Text>
-              <Text style={styles.topBarCount}>
-                {zikir.count} / {zikir.target}
-              </Text>
-            </View>
-
             <View style={styles.topBarRight}>
               <Pressable onPress={resetCount} style={styles.topBarIconSmall}>
                 <Ionicons name="refresh" size={18} color="#EF4444" />
@@ -378,11 +390,9 @@ export default function CounterScreen() {
                   name={hapticsEnabled ? "vibrate" : "vibrate-off"}
                   size={20}
                   color={
-                    isFinished
-                      ? "#10B981"
-                      : hapticsEnabled
-                        ? Colors.dark.primary
-                        : Colors.dark.textSecondary
+                    hapticsEnabled
+                      ? Colors.dark.primary
+                      : Colors.dark.textSecondary
                   }
                 />
               </Pressable>
@@ -450,7 +460,10 @@ export default function CounterScreen() {
                         </Text>
                       </View>
                     ) : (
-                      <Text style={styles.mainCount}>{zikir.count}</Text>
+                      <View style={{ alignItems: "center" }}>
+                        <Text style={styles.mainCount}>{zikir.count}</Text>
+                        <Text style={styles.targetCount}>/ {zikir.target}</Text>
+                      </View>
                     )}
                   </View>
                 </Animated.View>
@@ -679,6 +692,36 @@ export default function CounterScreen() {
               </Pressable>
 
               <View style={styles.sidebarDivider} />
+
+              <View style={{ padding: 20, paddingTop: 0 }}>
+                <Text style={[styles.sectionHeader, { marginBottom: 12 }]}>
+                  {t("common.language").toUpperCase()}
+                </Text>
+                <View style={styles.langGrid}>
+                  {languages.map((lang) => (
+                    <Pressable
+                      key={lang.code}
+                      onPress={() => changeLanguage(lang.code)}
+                      style={[
+                        styles.langItem,
+                        i18n.language.startsWith(lang.code) &&
+                          styles.langItemActive,
+                      ]}
+                    >
+                      <Text style={styles.langFlag}>{lang.flag}</Text>
+                      <Text
+                        style={[
+                          styles.langLabel,
+                          i18n.language.startsWith(lang.code) &&
+                            styles.langLabelActive,
+                        ]}
+                      >
+                        {lang.label}
+                      </Text>
+                    </Pressable>
+                  ))}
+                </View>
+              </View>
             </View>
 
             <View style={styles.sidebarFooter}>
@@ -800,15 +843,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingBottom: 10,
   },
-  topBarCenter: {
-    position: "absolute",
-    left: 70,
-    right: 140,
-    top: Platform.OS === "ios" ? 60 : 40,
-    alignItems: "center",
-    justifyContent: "center",
-    zIndex: 0,
-  },
   topBarIcon: {
     width: 44,
     height: 44,
@@ -830,19 +864,7 @@ const styles = StyleSheet.create({
   topBarRight: {
     flexDirection: "row",
   },
-  topBarTitle: {
-    fontSize: 9,
-    fontWeight: "900",
-    color: Colors.dark.textSecondary,
-    letterSpacing: 1.5,
-    marginBottom: 2,
-    textTransform: "uppercase",
-  },
-  topBarCount: {
-    fontSize: 14,
-    fontWeight: "800",
-    color: Colors.dark.text,
-  },
+
   mainContent: {
     flex: 1,
     paddingHorizontal: 20,
@@ -979,6 +1001,12 @@ const styles = StyleSheet.create({
     fontWeight: "900",
     color: Colors.dark.text,
     includeFontPadding: false,
+  },
+  targetCount: {
+    fontSize: 24,
+    fontWeight: "700",
+    color: Colors.dark.textSecondary,
+    marginTop: -5,
   },
   mainCountFinished: {
     fontSize: 85,
@@ -1176,5 +1204,47 @@ const styles = StyleSheet.create({
   },
   footerNote: {
     display: "none",
+  },
+  sectionHeader: {
+    color: Colors.dark.primary,
+    fontSize: 12,
+    fontWeight: "800",
+    letterSpacing: 2,
+    marginBottom: 20,
+  },
+  langGrid: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "space-between",
+    rowGap: 10,
+  },
+  langItem: {
+    width: "48%", // Allow 2 columns
+    paddingHorizontal: 12,
+    paddingVertical: 12,
+    borderRadius: 12,
+    backgroundColor: "#1F2937",
+    alignItems: "center",
+    justifyContent: "flex-start",
+    borderWidth: 1,
+    borderColor: "#374151",
+    flexDirection: "row",
+    gap: 10,
+  },
+  langItemActive: {
+    backgroundColor: "#8B5CF615",
+    borderColor: "#8B5CF6",
+  },
+  langFlag: {
+    fontSize: 18,
+  },
+  langLabel: {
+    color: "#9CA3AF",
+    fontSize: 14,
+    fontWeight: "500",
+  },
+  langLabelActive: {
+    color: "#8B5CF6",
+    fontWeight: "700",
   },
 });
