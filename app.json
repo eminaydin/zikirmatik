@@ -2,13 +2,14 @@
   "expo": {
     "name": "Zikirmatik",
     "slug": "zikirmatik",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
     "scheme": "zikirmatik",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "dark",
     "ios": {
       "bundleIdentifier": "com.emindev.zikirmatik",
+      "buildNumber": "2",
       "supportsTablet": false,
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
@@ -16,6 +17,7 @@
     },
     "android": {
       "package": "com.emindev.zikirmatik",
+      "versionCode": 2,
       "adaptiveIcon": {
         "backgroundColor": "#0F172A",
         "foregroundImage": "./assets/icon.png"
@@ -33,6 +35,14 @@
       "eas": {
         "projectId": "f4e1fabc-5478-40b5-8655-f35c6d05a724"
       }
+    },
+    "locales": {
+      "en": "./app_icon_locales/en.json",
+      "tr": "./app_icon_locales/tr.json",
+      "de": "./app_icon_locales/de.json",
+      "fr": "./app_icon_locales/fr.json",
+      "ru": "./app_icon_locales/ru.json",
+      "bs": "./app_icon_locales/bs.json"
     }
   }
 }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import {
   StyleSheet,
   Text,
@@ -7,7 +7,7 @@ import {
   Pressable,
   Platform,
   UIManager,
-} from 'react-native';
+} from "react-native";
 import Animated, {
   FadeIn,
   FadeOut,
@@ -16,19 +16,39 @@ import Animated, {
   useSharedValue,
   useAnimatedStyle,
   withTiming,
-} from 'react-native-reanimated';
-import { Colors } from '../constants/Colors';
-import { useRouter } from 'expo-router';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import * as Haptics from 'expo-haptics';
-import { Ionicons } from '@expo/vector-icons';
+} from "react-native-reanimated";
+import { Colors } from "../constants/Colors";
+import { useRouter } from "expo-router";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import * as Haptics from "expo-haptics";
+import { Ionicons } from "@expo/vector-icons";
+import { Alert } from "react-native";
+import { useTranslation } from "react-i18next";
+import {
+  ZikirItem,
+  ZikirSection,
+  CATEGORIZED_RECOMMENDATIONS,
+} from "../constants/Recommendations";
 
-if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental) {
+if (
+  Platform.OS === "android" &&
+  UIManager.setLayoutAnimationEnabledExperimental
+) {
   UIManager.setLayoutAnimationEnabledExperimental(true);
 }
 
-
-const AccordionItem = ({ item, index, isExpanded, onPress }: { item: ZikirItem, index: number, isExpanded: boolean, onPress: () => void }) => {
+const AccordionItem = ({
+  item,
+  index,
+  isExpanded,
+  onPress,
+}: {
+  item: ZikirItem;
+  index: number;
+  isExpanded: boolean;
+  onPress: () => void;
+}) => {
+  const { t } = useTranslation();
   const height = useSharedValue(0);
   const opacity = useSharedValue(0);
   const [measuredHeight, setMeasuredHeight] = useState<number | null>(null);
@@ -46,12 +66,12 @@ const AccordionItem = ({ item, index, isExpanded, onPress }: { item: ZikirItem, 
   const animatedStyle = useAnimatedStyle(() => ({
     height: height.value,
     opacity: opacity.value,
-    overflow: 'hidden',
+    overflow: "hidden",
   }));
 
   return (
     <Animated.View style={animatedStyle}>
-      <View 
+      <View
         onLayout={(e) => {
           const h = e.nativeEvent.layout.height;
           if (h > 0 && h !== measuredHeight) {
@@ -62,25 +82,29 @@ const AccordionItem = ({ item, index, isExpanded, onPress }: { item: ZikirItem, 
             }
           }
         }}
-        style={{ position: 'absolute', width: '100%' }}
+        style={{ position: "absolute", width: "100%" }}
       >
-        <Pressable 
+        <Pressable
           style={[
             styles.card,
-            index === 0 ? styles.cardFirst : styles.cardSubsequent
-          ]} 
+            index === 0 ? styles.cardFirst : styles.cardSubsequent,
+          ]}
           onPress={onPress}
         >
           <View style={styles.cardHeader}>
-            <Text style={styles.cardTitle}>{item.text}</Text>
+            <Text style={styles.cardTitle}>
+              {t(`recommendations.${item.id}.text`)}
+            </Text>
             <Text style={styles.cardTarget}>{item.target}×</Text>
           </View>
-          {item.arabic && (
-            <Text style={styles.cardArabic}>{item.arabic}</Text>
-          )}
-          <Text style={styles.cardTranslation}>{item.translation}</Text>
+          {item.arabic && <Text style={styles.cardArabic}>{item.arabic}</Text>}
+          <Text style={styles.cardTranslation}>
+            {t(`recommendations.${item.id}.translation`)}
+          </Text>
           <View style={styles.cardFooter}>
-            <Text style={styles.cardSource}>📜 {item.source}</Text>
+            <Text style={styles.cardSource}>
+              📜 {t(`recommendations.${item.id}.source`)}
+            </Text>
           </View>
         </Pressable>
       </View>
@@ -88,11 +112,19 @@ const AccordionItem = ({ item, index, isExpanded, onPress }: { item: ZikirItem, 
   );
 };
 
-import { ZikirItem, ZikirSection, CATEGORIZED_RECOMMENDATIONS } from '../constants/Recommendations';
+// Removed the old import for ZikirItem, ZikirSection, CATEGORIZED_RECOMMENDATIONS as it's now at the top
 
-
-const SectionHeader = ({ title, isExpanded, onPress }: { title: string, isExpanded: boolean, onPress: () => void }) => {
+const SectionHeader = ({
+  title,
+  isExpanded,
+  onPress,
+}: {
+  title: string;
+  isExpanded: boolean;
+  onPress: () => void;
+}) => {
   const progress = useSharedValue(isExpanded ? 1 : 0);
+  const { t } = useTranslation(); // Use translation hook here
 
   useEffect(() => {
     progress.value = withTiming(isExpanded ? 1 : 0, { duration: 300 });
@@ -110,15 +142,17 @@ const SectionHeader = ({ title, isExpanded, onPress }: { title: string, isExpand
   }));
 
   return (
-    <AnimatedPressable 
-      style={[styles.sectionHeader, animatedStyle]} 
+    <AnimatedPressable
+      style={[styles.sectionHeader, animatedStyle]}
       onPress={onPress}
     >
-      <Animated.Text style={[styles.sectionTitle, textStyle]}>{title}</Animated.Text>
-      <Ionicons 
-        name={isExpanded ? "chevron-up" : "chevron-down"} 
-        size={20} 
-        color={isExpanded ? Colors.dark.primary : Colors.dark.textSecondary} 
+      <Animated.Text style={[styles.sectionTitle, textStyle]}>
+        {t(`list.categories.${title}`)}
+      </Animated.Text>
+      <Ionicons
+        name={isExpanded ? "chevron-up" : "chevron-down"}
+        size={20}
+        color={isExpanded ? Colors.dark.primary : Colors.dark.textSecondary}
       />
     </AnimatedPressable>
   );
@@ -127,58 +161,66 @@ const SectionHeader = ({ title, isExpanded, onPress }: { title: string, isExpand
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
 export default function ListScreen() {
+  const { t } = useTranslation();
   const router = useRouter();
-  const [expandedSection, setExpandedSection] = useState<string | null>('Temel Zikirler');
+  const [expandedSection, setExpandedSection] = useState<string | null>(
+    "basic",
+  );
+  // Initial state uses the raw key
 
   const toggleSection = (title: string) => {
-    setExpandedSection(prev => prev === title ? null : title);
+    setExpandedSection((prev) => (prev === title ? null : title));
   };
 
   const selectZikir = async (item: ZikirItem) => {
     await Haptics.selectionAsync();
     const sessionId = Date.now().toString();
-    const newZikir = { 
-        id: sessionId,
-        text: item.text, 
-        arabic: item.arabic,
-        target: item.target, 
-        count: 0 
+    const newZikir = {
+      id: sessionId,
+      text: t(`recommendations.${item.id}.text`),
+      arabic: item.arabic,
+      target: item.target,
+      count: 0,
     };
-    await AsyncStorage.setItem('selected_zikir', JSON.stringify(newZikir));
-    
+    await AsyncStorage.setItem("selected_zikir", JSON.stringify(newZikir));
+
     try {
-        const historyVal = await AsyncStorage.getItem('zikir_history');
-        let history = historyVal ? JSON.parse(historyVal) : [];
-        history.push({
-            id: sessionId,
-            text: item.text,
-            arabic: item.arabic,
-            count: 0,
-            target: item.target,
-            date: new Date().toISOString(),
-            isFinished: false,
-        });
-        await AsyncStorage.setItem('zikir_history', JSON.stringify(history));
+      const historyVal = await AsyncStorage.getItem("zikir_history");
+      let history = historyVal ? JSON.parse(historyVal) : [];
+      history.push({
+        ...newZikir, // Use spread to include all properties from newZikir
+        date: new Date().toISOString(),
+        isFinished: false,
+      });
+      await AsyncStorage.setItem("zikir_history", JSON.stringify(history));
+      Alert.alert(t("common.ok"), t("list.add_success")); // Added Alert
     } catch (e) {
-        console.error(e);
+      console.error(e);
     }
     router.back();
   };
 
-
-  const renderItem = ({ item, section, index }: { item: ZikirItem, section: ZikirSection, index: number }) => {
+  const renderItem = ({
+    item,
+    section,
+    index,
+  }: {
+    item: ZikirItem;
+    section: ZikirSection;
+    index: number;
+  }) => {
     const isExpanded = expandedSection === section.title;
-    
+
     // We use a separate component logic per-item to avoid re-rendering entire list unnecessary
     // But since it's a small list, we can use a controlled visibility.
     // To ensure animation works, we render items but hide them if not expanded.
-    
+
     return (
-      <AccordionItem 
-        item={item} 
-        index={index} 
-        isExpanded={isExpanded} 
-        onPress={() => selectZikir(item)} 
+      <AccordionItem
+        item={item}
+        index={index}
+        isExpanded={isExpanded}
+        onPress={() => selectZikir(item)}
       />
     );
   };
@@ -191,10 +233,10 @@ export default function ListScreen() {
         renderSectionHeader={({ section: { title } }) => {
           const isExp = expandedSection === title;
           return (
-            <SectionHeader 
-              title={title} 
-              isExpanded={isExp} 
-              onPress={() => toggleSection(title)} 
+            <SectionHeader
+              title={title}
+              isExpanded={isExp}
+              onPress={() => toggleSection(title)}
             />
           );
         }}
@@ -220,9 +262,9 @@ const styles = StyleSheet.create({
     padding: 18,
     borderRadius: 16,
     marginBottom: 8,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
     borderWidth: 1,
     borderColor: Colors.dark.border,
   },
@@ -235,7 +277,7 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     fontSize: 16,
-    fontWeight: '700',
+    fontWeight: "700",
     color: Colors.dark.text,
   },
   sectionTitleExpanded: {
@@ -259,14 +301,14 @@ const styles = StyleSheet.create({
     marginTop: 4,
   },
   cardHeader: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'flex-start',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "flex-start",
     marginBottom: 10,
   },
   cardTitle: {
     fontSize: 15,
-    fontWeight: '700',
+    fontWeight: "700",
     color: Colors.dark.text,
     flex: 1,
     marginRight: 10,
@@ -274,19 +316,19 @@ const styles = StyleSheet.create({
   cardArabic: {
     fontSize: 22,
     color: Colors.dark.primary,
-    textAlign: 'right',
+    textAlign: "right",
     marginBottom: 12,
     lineHeight: 34,
   },
   cardTarget: {
     fontSize: 14,
-    fontWeight: '800',
+    fontWeight: "800",
     color: Colors.dark.primary,
   },
   cardTranslation: {
     fontSize: 13,
     color: Colors.dark.textSecondary,
-    fontStyle: 'italic',
+    fontStyle: "italic",
     marginBottom: 10,
     lineHeight: 18,
   },
@@ -298,7 +340,7 @@ const styles = StyleSheet.create({
   cardSource: {
     fontSize: 12,
     color: Colors.dark.textSecondary,
-    fontWeight: '400',
+    fontWeight: "400",
     lineHeight: 18,
   },
 });
