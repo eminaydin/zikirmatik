@@ -158,8 +158,8 @@
     },
     "stats": {
         "title": "Statistics",
-        "total_zikir": "Total Dhikr",
-        "completed_zikirs": "Completed Dhikrs",
+        "total_zikr": "Total Dhikrs",
+        "completed_zikirs": "Completed Goals",
         "daily_activity": "Daily Activity",
         "no_data": "No data available yet.",
         "today": "Today",

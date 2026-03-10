@@ -26,7 +26,7 @@ interface HistoryItem {
 }
 
 export default function StatsScreen() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [stats, setStats] = useState({
     totalCount: 0,
     completedGoals: 0,
@@ -53,7 +53,7 @@ export default function StatsScreen() {
           total += item.count;
           if (item.isFinished) completed++;
           
-          const dateKey = new Date(item.date).toLocaleDateString("en-US", {
+          const dateKey = new Date(item.date).toLocaleDateString(i18n.language, {
             month: "short",
             day: "numeric",
           });
@@ -65,7 +65,7 @@ export default function StatsScreen() {
         for (let i = 6; i >= 0; i--) {
           const d = new Date();
           d.setDate(d.getDate() - i);
-          const key = d.toLocaleDateString("en-US", {
+          const key = d.toLocaleDateString(i18n.language, {
             month: "short",
             day: "numeric",
           });
@@ -97,7 +97,7 @@ export default function StatsScreen() {
             <Ionicons name="stats-chart" size={24} color="#EAB308" />
           </View>
           <Text style={styles.summaryValue}>{stats.totalCount}</Text>
-          <Text style={styles.summaryLabel}>{t("stats.total_zikir")}</Text>
+          <Text style={styles.summaryLabel}>{t("stats.total_zikr")}</Text>
         </Animated.View>
 
         <Animated.View entering={FadeInUp.delay(200)} style={styles.summaryCard}>
@@ -134,7 +134,7 @@ export default function StatsScreen() {
       <Animated.View entering={FadeInUp.delay(400)} style={styles.infoBox}>
         <Ionicons name="bulb-outline" size={20} color="#6366F1" style={{ marginRight: 12 }} />
         <Text style={styles.infoText}>
-          Consistency is key! Regular zikir brings peace to the heart.
+          {t("stats.motivation")}
         </Text>
       </Animated.View>
     </ScrollView>

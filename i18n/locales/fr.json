@@ -22,7 +22,7 @@
     "menu": {
         "new_zikir": "Ajouter un nouveau Dhikr",
         "recommendations": "Suggestions de Dhikr",
-        "history": "Mon historique",
+        "history": "Mon historique de Dhikr",
         "stats": "Statistiques",
         "rate_app": "Évaluer l'application"
     },
@@ -158,8 +158,8 @@
     },
     "stats": {
         "title": "Statistiques",
-        "total_zikir": "Total Dhikr",
-        "completed_zikirs": "Dhikrs terminés",
+        "total_zikr": "Total des zikrs",
+        "completed_zikirs": "Objectifs terminés",
         "daily_activity": "Activité quotidienne",
         "no_data": "Aucune donnée disponible pour le moment.",
         "today": "Aujourd'hui",

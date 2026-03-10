@@ -158,11 +158,12 @@
     },
     "stats": {
         "title": "Statistika",
-        "total_zikir": "Ukupno zikra",
-        "completed_zikirs": "Završeni zikrovi",
+        "total_zikr": "Ukupno zikra",
+        "completed_zikirs": "Završeni ciljevi",
         "daily_activity": "Dnevna aktivnost",
         "no_data": "Još uvijek nema podataka.",
         "today": "Danas",
-        "last_7_days": "Posljednjih 7 dana"
+        "last_7_days": "Posljednjih 7 dana",
+        "motivation": "Dosljednost je ključ! Redovan zikr donosi mir srcu."
     }
 }

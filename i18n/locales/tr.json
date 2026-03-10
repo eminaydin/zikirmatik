@@ -158,11 +158,12 @@
     },
     "stats": {
         "title": "İstatistikler",
-        "total_zikir": "Toplam Zikir",
-        "completed_zikirs": "Tamamlanan Zikirler",
+        "total_zikr": "Toplam Zikir",
+        "completed_zikirs": "Tamamlanan Hedefler",
         "daily_activity": "Günlük Aktivite",
         "no_data": "Henüz veri bulunmuyor.",
         "today": "Bugün",
-        "last_7_days": "Son 7 Gün"
+        "last_7_days": "Son 7 Gün",
+        "motivation": "İstikrar önemlidir! Düzenli zikir kalbe huzur verir."
     }
 }
