@@ -23,7 +23,8 @@
         "new_zikir": "Neuen Dhikr hinzufügen",
         "recommendations": "Dhikr-Vorschläge",
         "history": "Mein Dhikr-Verlauf",
-        "rate_app": "App bewerten"
+        "rate_app": "App bewerten",
+        "free_mode": "Freier Modus"
     },
     "home": {
         "reminder_modal_title": "Dhikr-Erinnerung",

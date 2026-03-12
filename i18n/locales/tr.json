@@ -23,7 +23,8 @@
         "new_zikir": "Yeni Zikir Ekle",
         "recommendations": "Zikir Önerileri",
         "history": "Zikir Geçmişim",
-        "rate_app": "Uygulamayı Değerlendir"
+        "rate_app": "Uygulamayı Değerlendir",
+        "free_mode": "Serbest Mod"
     },
     "home": {
         "reminder_modal_title": "Zikir Hatırlatıcısı",
