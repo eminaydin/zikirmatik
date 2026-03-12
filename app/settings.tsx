@@ -13,17 +13,15 @@ import {
 import { Colors } from "../constants/Colors";
 import { useRouter, useFocusEffect } from "expo-router";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import * as Haptics from "expo-haptics";
 import { Switch, Dimensions } from "react-native";
 import { useNotifications } from "../hooks/useNotifications";
 import DateTimePicker from "@react-native-community/datetimepicker";
-import { Ionicons } from "@expo/vector-icons";
 import { useTranslation } from "react-i18next";
 
 const { width } = Dimensions.get("window");
 
 export default function SettingsScreen() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const [text, setText] = useState("");
   const [arabic, setArabic] = useState("");
   const [target, setTarget] = useState("33");
@@ -96,10 +94,7 @@ export default function SettingsScreen() {
       const stored = await AsyncStorage.getItem("zikir_history");
       const history = stored ? JSON.parse(stored) : [];
       history.push(newItem);
-      await AsyncStorage.setItem(
-        "zikir_history",
-        JSON.stringify(history),
-      );
+      await AsyncStorage.setItem("zikir_history", JSON.stringify(history));
       await AsyncStorage.setItem("selected_zikir", JSON.stringify(newItem));
       router.back();
     } catch (error) {

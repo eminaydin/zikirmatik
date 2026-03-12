@@ -8,11 +8,14 @@ import {
   Pressable,
 } from "react-native";
 import { Colors } from "../constants/Colors";
-import { useFocusEffect, useRouter, Stack } from "expo-router";
+import { useFocusEffect, useRouter } from "expo-router";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Ionicons } from "@expo/vector-icons";
 import { useTranslation } from "react-i18next";
-import Animated, { FadeInUp, FadeInDown, ZoomIn } from "react-native-reanimated";
+import Animated, {
+  FadeInUp,
+  ZoomIn,
+} from "react-native-reanimated";
 
 const { width } = Dimensions.get("window");
 
@@ -35,18 +38,12 @@ export default function StatsScreen() {
     dailyData: [] as { date: string; count: number }[],
   });
 
-  useFocusEffect(
-    useCallback(() => {
-      loadStats();
-    }, []),
-  );
-
-  const loadStats = async () => {
+  const loadStats = useCallback(async () => {
     try {
       const stored = await AsyncStorage.getItem("zikir_history");
       if (stored) {
         const history: HistoryItem[] = JSON.parse(stored);
-        
+
         let total = 0;
         let completed = 0;
         const dailyMap = new Map<string, number>();
@@ -54,7 +51,7 @@ export default function StatsScreen() {
         history.forEach((item) => {
           total += item.count;
           if (item.isFinished) completed++;
-          
+
           const dateKey = new Date(item.date).toLocaleDateString(i18n.language, {
             month: "short",
             day: "numeric",
@@ -84,35 +81,50 @@ export default function StatsScreen() {
           dailyData: chartData,
         });
       }
-    } catch (e) {
-      console.error(e);
+    } catch (error) {
+      console.error(error);
     }
-  };
+  }, [i18n.language]);
 
-  const maxDaily = Math.max(...stats.dailyData.map(d => d.count), 1);
+  useFocusEffect(
+    useCallback(() => {
+      loadStats();
+    }, [loadStats]),
+  );
+
+  const maxDaily = Math.max(...stats.dailyData.map((d) => d.count), 1);
 
   if (stats.totalSessions === 0) {
     return (
       <View style={styles.emptyContainer}>
-        <Animated.View entering={ZoomIn.duration(600)} style={styles.emptyIconWrapper}>
+        <Animated.View
+          entering={ZoomIn.duration(600)}
+          style={styles.emptyIconWrapper}
+        >
           <View style={styles.emptyIconBg}>
             <Ionicons name="sparkles" size={60} color="#EAB308" />
           </View>
           <View style={styles.pulseContainer}>
-            <Animated.View entering={ZoomIn.delay(300).duration(1000)} style={styles.pulse} />
+            <Animated.View
+              entering={ZoomIn.delay(300).duration(1000)}
+              style={styles.pulse}
+            />
           </View>
         </Animated.View>
 
-        <Animated.View entering={FadeInUp.delay(300)} style={styles.emptyTextWrapper}>
+        <Animated.View
+          entering={FadeInUp.delay(300)}
+          style={styles.emptyTextWrapper}
+        >
           <Text style={styles.emptyTitle}>{t("stats.empty_title")}</Text>
           <Text style={styles.emptyDesc}>{t("stats.empty_desc")}</Text>
         </Animated.View>
 
         <Animated.View entering={FadeInUp.delay(500)}>
-          <Pressable 
+          <Pressable
             style={({ pressed }) => [
               styles.startNowButton,
-              pressed && styles.startNowButtonPressed
+              pressed && styles.startNowButtonPressed,
             ]}
             onPress={() => {
               if (router.canGoBack()) {
@@ -123,7 +135,12 @@ export default function StatsScreen() {
             }}
           >
             <Text style={styles.startNowText}>{t("stats.start_now")}</Text>
-            <Ionicons name="arrow-forward" size={20} color="#0F172A" style={{ marginLeft: 8 }} />
+            <Ionicons
+              name="arrow-forward"
+              size={20}
+              color="#0F172A"
+              style={{ marginLeft: 8 }}
+            />
           </Pressable>
         </Animated.View>
       </View>
@@ -134,8 +151,16 @@ export default function StatsScreen() {
     <ScrollView style={styles.container} contentContainerStyle={styles.content}>
       {/* Summary Cards */}
       <View style={styles.summaryGrid}>
-        <Animated.View entering={FadeInUp.delay(100)} style={styles.summaryCardLarge}>
-          <View style={[styles.iconBox, { backgroundColor: "rgba(234, 179, 8, 0.1)" }]}>
+        <Animated.View
+          entering={FadeInUp.delay(100)}
+          style={styles.summaryCardLarge}
+        >
+          <View
+            style={[
+              styles.iconBox,
+              { backgroundColor: "rgba(234, 179, 8, 0.1)" },
+            ]}
+          >
             <Ionicons name="stats-chart" size={24} color="#EAB308" />
           </View>
           <View>
@@ -145,20 +170,40 @@ export default function StatsScreen() {
         </Animated.View>
 
         <View style={styles.summaryRow}>
-          <Animated.View entering={FadeInUp.delay(200)} style={styles.summaryCardSmall}>
-            <View style={[styles.iconBoxSmall, { backgroundColor: "rgba(16, 185, 129, 0.1)" }]}>
+          <Animated.View
+            entering={FadeInUp.delay(200)}
+            style={styles.summaryCardSmall}
+          >
+            <View
+              style={[
+                styles.iconBoxSmall,
+                { backgroundColor: "rgba(16, 185, 129, 0.1)" },
+              ]}
+            >
               <Ionicons name="checkmark-circle" size={20} color="#10B981" />
             </View>
             <Text style={styles.summaryValue}>{stats.completedGoals}</Text>
-            <Text style={styles.summaryLabelSmall}>{t("stats.completed_zikirs")}</Text>
+            <Text style={styles.summaryLabelSmall}>
+              {t("stats.completed_zikirs")}
+            </Text>
           </Animated.View>
 
-          <Animated.View entering={FadeInUp.delay(300)} style={styles.summaryCardSmall}>
-            <View style={[styles.iconBoxSmall, { backgroundColor: "rgba(99, 102, 241, 0.1)" }]}>
+          <Animated.View
+            entering={FadeInUp.delay(300)}
+            style={styles.summaryCardSmall}
+          >
+            <View
+              style={[
+                styles.iconBoxSmall,
+                { backgroundColor: "rgba(99, 102, 241, 0.1)" },
+              ]}
+            >
               <Ionicons name="time" size={20} color="#6366F1" />
             </View>
             <Text style={styles.summaryValue}>{stats.totalSessions}</Text>
-            <Text style={styles.summaryLabelSmall}>{t("stats.total_sessions")}</Text>
+            <Text style={styles.summaryLabelSmall}>
+              {t("stats.total_sessions")}
+            </Text>
           </Animated.View>
         </View>
       </View>
@@ -172,16 +217,16 @@ export default function StatsScreen() {
             <Text style={styles.legendText}>{t("stats.total_zikr")}</Text>
           </View>
         </View>
-        
+
         <View style={styles.chartContainer}>
           {stats.dailyData.map((day, index) => (
             <View key={index} style={styles.chartBarWrapper}>
               <View style={styles.barBackground}>
-                <View 
+                <View
                   style={[
-                    styles.barFill, 
-                    { height: `${(day.count / maxDaily) * 100}%` }
-                  ]} 
+                    styles.barFill,
+                    { height: `${(day.count / maxDaily) * 100}%` },
+                  ]}
                 />
               </View>
               <Text style={styles.chartDate}>{day.date}</Text>
@@ -197,10 +242,13 @@ export default function StatsScreen() {
 
       {/* Info Box */}
       <Animated.View entering={FadeInUp.delay(500)} style={styles.infoBox}>
-        <Ionicons name="bulb-outline" size={20} color="#6366F1" style={{ marginRight: 12 }} />
-        <Text style={styles.infoText}>
-          {t("stats.motivation")}
-        </Text>
+        <Ionicons
+          name="bulb-outline"
+          size={20}
+          color="#6366F1"
+          style={{ marginRight: 12 }}
+        />
+        <Text style={styles.infoText}>{t("stats.motivation")}</Text>
       </Animated.View>
     </ScrollView>
   );
@@ -372,7 +420,7 @@ const styles = StyleSheet.create({
     flex: 1,
     lineHeight: 18,
   },
-  
+
   // Empty State Styles
   emptyContainer: {
     flex: 1,

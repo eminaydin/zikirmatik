@@ -14,15 +14,15 @@ Zikirmatik, manevi yolculuğunuzda size eşlik etmek için tasarlanmış, modern
 
 ## 📸 Ekran Görüntüleri
 
-| Ana Ekran | Öneriler | Yeni Zikir | Geçmiş |
-| :---: | :---: | :---: | :---: |
+|                   Ana Ekran                   |                   Öneriler                   |                   Yeni Zikir                   |                   Geçmiş                   |
+| :-------------------------------------------: | :------------------------------------------: | :--------------------------------------------: | :----------------------------------------: |
 | ![Ana Ekran](assets/screenshots/mockup_1.png) | ![Öneriler](assets/screenshots/mockup_2.png) | ![Yeni Zikir](assets/screenshots/mockup_3.png) | ![Geçmiş](assets/screenshots/mockup_4.png) |
 
 ---
 
 ## 🕊️ Neden Zikirmatik?
 
-Zikir çekerken araya giren, maneviyatı ve odaklanmayı bozan gereksiz reklamlardan rahatsız olduğum için bu uygulamayı geliştirdim. 
+Zikir çekerken araya giren, maneviyatı ve odaklanmayı bozan gereksiz reklamlardan rahatsız olduğum için bu uygulamayı geliştirdim.
 
 Zikirmatik **tamamen ücretsizdir** ve her zaman öyle kalacaktır. Uygulamamız **hiçbir şekilde kişisel veri toplamaz, kullanmaz ve hiçbir zaman da kullanmayacaktır.** Sizin de huzur içinde zikir çekebilmeniz için reklamsız, sade ve güvenli bir deneyim sunmaya devam edeceğiz.
 
@@ -43,7 +43,7 @@ Zikirmatik **tamamen ücretsizdir** ve her zaman öyle kalacaktır. Uygulamamız
 - **Dil:** TypeScript
 - **Depolama:** AsyncStorage
 
-## 🚀 Kurulum 
+## 🚀 Kurulum
 
 Projeyi yerel olarak çalıştırmak isterseniz:
 
@@ -71,13 +71,14 @@ Bir sorunla karşılaştıysanız veya öneriniz varsa lütfen [Issues](https://
 ---
 
 <a name="english"></a>
+
 # Zikirmatik - Modern Digital Tasbih
 
 Zikirmatik is a modern and easy-to-use digital tasbih application designed to accompany you on your spiritual journey.
 
 ## 📸 Screenshots
 
-*(See imagery in the section above)*
+_(See imagery in the section above)_
 
 ## 🕊️ Why Zikirmatik?
 

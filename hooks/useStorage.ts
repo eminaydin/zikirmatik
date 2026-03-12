@@ -1,35 +1,35 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useState, useEffect } from 'react';
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useState, useEffect, useCallback } from "react";
 
 export function useStorage<T>(key: string, initialValue: T) {
-    const [data, setData] = useState<T>(initialValue);
-    const [loading, setLoading] = useState(true);
+  const [data, setData] = useState<T>(initialValue);
+  const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        loadData();
-    }, []);
+  const loadData = useCallback(async () => {
+    try {
+      const stored = await AsyncStorage.getItem(key);
+      if (stored) {
+        setData(JSON.parse(stored));
+      }
+    } catch (error) {
+      console.error(`Error loading data from ${key}:`, error);
+    } finally {
+      setLoading(false);
+    }
+  }, [key]);
 
-    const loadData = async () => {
-        try {
-            const value = await AsyncStorage.getItem(key);
-            if (value !== null) {
-                setData(JSON.parse(value));
-            }
-        } catch (e) {
-            console.error('Storage error:', e);
-        } finally {
-            setLoading(false);
-        }
-    };
+  useEffect(() => {
+    loadData();
+  }, [loadData]);
 
-    const saveData = async (newValue: T) => {
-        try {
-            setData(newValue);
-            await AsyncStorage.setItem(key, JSON.stringify(newValue));
-        } catch (e) {
-            console.error('Save error:', e);
-        }
-    };
+  const saveData = async (newValue: T) => {
+    try {
+      setData(newValue);
+      await AsyncStorage.setItem(key, JSON.stringify(newValue));
+    } catch (e) {
+      console.error("Save error:", e);
+    }
+  };
 
-    return { data, saveData, loading };
+  return { data, saveData, loading };
 }

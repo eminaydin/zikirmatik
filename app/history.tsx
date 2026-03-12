@@ -9,7 +9,7 @@ import {
   Dimensions,
 } from "react-native";
 import { Colors } from "../constants/Colors";
-import { useRouter, useFocusEffect, Stack } from "expo-router";
+import { useRouter, useFocusEffect } from "expo-router";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Ionicons } from "@expo/vector-icons";
 import * as Haptics from "expo-haptics";
@@ -19,7 +19,7 @@ import {
 } from "react-native-gesture-handler";
 import { useTranslation } from "react-i18next";
 
-const { width, height } = Dimensions.get("window");
+const { width } = Dimensions.get("window");
 
 interface HistoryItem {
   id: string;
@@ -42,8 +42,9 @@ export default function HistoryScreen() {
       AsyncStorage.getItem("zikir_history").then((val) => {
         if (val) {
           const parsed = JSON.parse(val);
-          const sorted = parsed.sort((a: any, b: any) => 
-            new Date(b.date).getTime() - new Date(a.date).getTime()
+          const sorted = parsed.sort(
+            (a: any, b: any) =>
+              new Date(b.date).getTime() - new Date(a.date).getTime(),
           );
           setHistory(sorted);
         }
@@ -97,7 +98,7 @@ export default function HistoryScreen() {
     router.back();
   };
 
-  const renderRightActions = (id: string) => (
+  const renderRightActions = () => (
     <View style={styles.deleteAction}>
       <Ionicons name="trash" size={24} color="#FFF" />
     </View>
@@ -105,7 +106,7 @@ export default function HistoryScreen() {
 
   const renderItem = ({ item }: { item: HistoryItem }) => (
     <Swipeable
-      renderRightActions={() => renderRightActions(item.id)}
+      renderRightActions={renderRightActions}
       onSwipeableWillOpen={(direction) => {
         if (direction === "right") {
           deleteItem(item.id);

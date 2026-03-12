@@ -6,11 +6,9 @@ import {
   View,
   Pressable,
   Dimensions,
-  Animated as RNAnimated,
   Platform,
   Modal,
   Switch,
-  Image,
   ScrollView,
 } from "react-native";
 import * as Haptics from "expo-haptics";
@@ -24,16 +22,21 @@ import Animated, {
   withRepeat,
   runOnJS,
   LinearTransition,
-  Easing,
 } from "react-native-reanimated";
 import { Colors } from "../constants/Colors";
-import { Link, useFocusEffect, useRouter } from "expo-router";
+import { useFocusEffect, useRouter } from "expo-router";
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNotifications } from "../hooks/useNotifications";
-import DateTimePicker from "@react-native-community/datetimepicker";
 import { useTranslation } from "react-i18next";
 import Constants from "expo-constants";
+import DateTimePicker from "@react-native-community/datetimepicker";
+
+import {
+  GestureHandlerRootView,
+  GestureDetector,
+  Gesture,
+} from "react-native-gesture-handler";
 
 const { width, height } = Dimensions.get("window");
 
@@ -52,12 +55,6 @@ const DEFAULT_ZIKIR: ZikirData = {
   target: 33,
   count: 0,
 };
-
-import {
-  GestureHandlerRootView,
-  GestureDetector,
-  Gesture,
-} from "react-native-gesture-handler";
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
@@ -100,7 +97,7 @@ export default function CounterScreen() {
       },
     );
     setIsTextExpanded(false); // Reset expansion when zikir changes
-  }, [zikir.count, zikir.target, zikir.text]);
+  }, [zikir.count, zikir.target, zikir.text, progressValue]);
 
   useFocusEffect(
     useCallback(() => {
@@ -151,7 +148,7 @@ export default function CounterScreen() {
       duration: 250,
     });
     sidebarOpacity.value = withTiming(nextState ? 1 : 0, { duration: 250 });
-  }, [isSidebarOpen]);
+  }, [isSidebarOpen, sidebarOpacity, sidebarTranslateX]);
 
   const panGesture = Gesture.Pan()
     .onStart((_) => {
@@ -187,11 +184,10 @@ export default function CounterScreen() {
     }
   };
 
-  const save = async (data: ZikirData) => {
-    setZikir(data);
-    await AsyncStorage.setItem("selected_zikir", JSON.stringify(data));
-    updateHistory(data);
-  };
+  const save = useCallback(async (updated: ZikirData) => {
+    setZikir(updated);
+    await AsyncStorage.setItem("selected_zikir", JSON.stringify(updated));
+  }, []);
 
   const updateHistory = async (data: ZikirData) => {
     try {
@@ -238,8 +234,7 @@ export default function CounterScreen() {
       target: 0,
       count: 0,
     };
-    setZikir(freeZikir);
-    await AsyncStorage.setItem("selected_zikir", JSON.stringify(freeZikir));
+    await save(freeZikir);
     await updateHistory(freeZikir);
     toggleSidebar();
     if (hapticsEnabled) {
@@ -260,6 +255,10 @@ export default function CounterScreen() {
     );
 
     const newCount = zikir.count + 1;
+    const updatedZikir = { ...zikir, count: newCount };
+    await save(updatedZikir);
+    await updateHistory(updatedZikir);
+
     if (newCount === zikir.target) {
       if (hapticsEnabled) {
         await Haptics.notificationAsync(
@@ -279,9 +278,7 @@ export default function CounterScreen() {
         console.log("Error requesting review", e);
       }
     }
-
-    await save({ ...zikir, count: newCount });
-  }, [zikir, isFinished, hapticsEnabled]);
+  }, [zikir, isFinished, hapticsEnabled, save, scale, updateHistory]);
 
   const resetCount = async () => {
     if (hapticsEnabled) {
@@ -295,28 +292,13 @@ export default function CounterScreen() {
         id: Date.now().toString(),
         count: 0,
       };
-      setZikir(newZikir);
-      await AsyncStorage.setItem("selected_zikir", JSON.stringify(newZikir));
+      await save(newZikir);
       await updateHistory(newZikir);
     } else {
-      await save({ ...zikir, count: 0 });
+      const resetZikir = { ...zikir, count: 0 };
+      await save(resetZikir);
+      await updateHistory(resetZikir);
     }
-  };
-
-  const nextRound = async () => {
-    if (hapticsEnabled) {
-      await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-    }
-
-    // Create a new session for the next round
-    const newZikir = {
-      ...zikir,
-      id: Date.now().toString(),
-      count: 0,
-    };
-    setZikir(newZikir);
-    await AsyncStorage.setItem("selected_zikir", JSON.stringify(newZikir));
-    await updateHistory(newZikir);
   };
 
   const toggleReminder = async (value: boolean) => {
@@ -348,11 +330,7 @@ export default function CounterScreen() {
 
   useEffect(() => {
     if (isFinished) {
-      pulseValue.value = withRepeat(
-        withTiming(1.1, { duration: 1500 }),
-        -1,
-        true,
-      );
+      pulseValue.value = withRepeat(withTiming(1.2, { duration: 1500 }), -1, true);
     } else {
       pulseValue.value = 1;
     }
@@ -480,7 +458,9 @@ export default function CounterScreen() {
                       <View style={{ alignItems: "center" }}>
                         <Text style={styles.mainCount}>{zikir.count}</Text>
                         {zikir.target > 0 && (
-                          <Text style={styles.targetCount}>/ {zikir.target}</Text>
+                          <Text style={styles.targetCount}>
+                            / {zikir.target}
+                          </Text>
                         )}
                       </View>
                     )}
@@ -615,7 +595,7 @@ export default function CounterScreen() {
             </View>
 
             <View style={styles.sidebarContent}>
-              <ScrollView 
+              <ScrollView
                 showsVerticalScrollIndicator={false}
                 contentContainerStyle={{ paddingBottom: 20 }}
               >
@@ -707,7 +687,9 @@ export default function CounterScreen() {
                   >
                     <Ionicons name="time-outline" size={22} color="#6366F1" />
                   </View>
-                  <Text style={styles.sidebarItemText}>{t("menu.history")}</Text>
+                  <Text style={styles.sidebarItemText}>
+                    {t("menu.history")}
+                  </Text>
                 </Pressable>
 
                 <Pressable
@@ -726,7 +708,11 @@ export default function CounterScreen() {
                       { backgroundColor: "rgba(59, 130, 246, 0.1)" },
                     ]}
                   >
-                    <Ionicons name="stats-chart-outline" size={20} color="#3B82F6" />
+                    <Ionicons
+                      name="stats-chart-outline"
+                      size={20}
+                      color="#3B82F6"
+                    />
                   </View>
                   <Text style={styles.sidebarItemText}>{t("menu.stats")}</Text>
                 </Pressable>
@@ -756,7 +742,9 @@ export default function CounterScreen() {
                   >
                     <Ionicons name="star-outline" size={20} color="#EC4899" />
                   </View>
-                  <Text style={styles.sidebarItemText}>{t("menu.rate_app")}</Text>
+                  <Text style={styles.sidebarItemText}>
+                    {t("menu.rate_app")}
+                  </Text>
                 </Pressable>
 
                 <View style={styles.sidebarDivider} />
@@ -1273,9 +1261,6 @@ const styles = StyleSheet.create({
     color: "#0F172A",
     fontSize: 16,
     fontWeight: "700",
-  },
-  footerNote: {
-    display: "none",
   },
   sectionHeader: {
     color: Colors.dark.primary,

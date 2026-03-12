@@ -5,13 +5,8 @@ import {
   View,
   SectionList,
   Pressable,
-  Platform,
-  UIManager,
 } from "react-native";
 import Animated, {
-  FadeIn,
-  FadeOut,
-  LinearTransition,
   Easing,
   useSharedValue,
   useAnimatedStyle,
@@ -29,13 +24,6 @@ import {
   ZikirSection,
   CATEGORIZED_RECOMMENDATIONS,
 } from "../constants/Recommendations";
-
-if (
-  Platform.OS === "android" &&
-  UIManager.setLayoutAnimationEnabledExperimental
-) {
-  UIManager.setLayoutAnimationEnabledExperimental(true);
-}
 
 const AccordionItem = ({
   item,
@@ -268,20 +256,10 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: Colors.dark.border,
   },
-  sectionHeaderExpanded: {
-    borderColor: Colors.dark.primary,
-    borderBottomLeftRadius: 0,
-    borderBottomRightRadius: 0,
-    borderBottomWidth: 0,
-    marginBottom: 0,
-  },
   sectionTitle: {
     fontSize: 16,
     fontWeight: "700",
     color: Colors.dark.text,
-  },
-  sectionTitleExpanded: {
-    color: Colors.dark.primary,
   },
   card: {
     backgroundColor: Colors.dark.surface,
