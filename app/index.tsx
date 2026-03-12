@@ -615,177 +615,182 @@ export default function CounterScreen() {
             </View>
 
             <View style={styles.sidebarContent}>
-              <Pressable
-                style={({ pressed }) => [
-                  styles.sidebarItem,
-                  pressed && styles.sidebarItemPressed,
-                ]}
-                onPress={startFreeMode}
+              <ScrollView 
+                showsVerticalScrollIndicator={false}
+                contentContainerStyle={{ paddingBottom: 20 }}
               >
-                <View
-                  style={[
-                    styles.sidebarIconWrapper,
-                    { backgroundColor: "rgba(139, 92, 246, 0.1)" },
+                <Pressable
+                  style={({ pressed }) => [
+                    styles.sidebarItem,
+                    pressed && styles.sidebarItemPressed,
                   ]}
+                  onPress={startFreeMode}
                 >
-                  <Ionicons name="infinite" size={22} color="#8B5CF6" />
-                </View>
-                <Text style={styles.sidebarItemText}>
-                  {t("menu.free_mode")}
-                </Text>
-              </Pressable>
+                  <View
+                    style={[
+                      styles.sidebarIconWrapper,
+                      { backgroundColor: "rgba(139, 92, 246, 0.1)" },
+                    ]}
+                  >
+                    <Ionicons name="infinite" size={22} color="#8B5CF6" />
+                  </View>
+                  <Text style={styles.sidebarItemText}>
+                    {t("menu.free_mode")}
+                  </Text>
+                </Pressable>
 
-              <Pressable
-                style={({ pressed }) => [
-                  styles.sidebarItem,
-                  pressed && styles.sidebarItemPressed,
-                ]}
-                onPress={() => {
-                  router.push("/settings");
-                  toggleSidebar();
-                }}
-              >
-                <View
-                  style={[
-                    styles.sidebarIconWrapper,
-                    { backgroundColor: "rgba(234, 179, 8, 0.1)" },
+                <Pressable
+                  style={({ pressed }) => [
+                    styles.sidebarItem,
+                    pressed && styles.sidebarItemPressed,
                   ]}
+                  onPress={() => {
+                    router.push("/settings");
+                    toggleSidebar();
+                  }}
                 >
-                  <Ionicons name="add-outline" size={22} color="#EAB308" />
-                </View>
-                <Text style={styles.sidebarItemText}>
-                  {t("menu.new_zikir")}
-                </Text>
-              </Pressable>
+                  <View
+                    style={[
+                      styles.sidebarIconWrapper,
+                      { backgroundColor: "rgba(234, 179, 8, 0.1)" },
+                    ]}
+                  >
+                    <Ionicons name="add-outline" size={22} color="#EAB308" />
+                  </View>
+                  <Text style={styles.sidebarItemText}>
+                    {t("menu.new_zikir")}
+                  </Text>
+                </Pressable>
 
-              <Pressable
-                style={({ pressed }) => [
-                  styles.sidebarItem,
-                  pressed && styles.sidebarItemPressed,
-                ]}
-                onPress={() => {
-                  router.push("/list");
-                  toggleSidebar();
-                }}
-              >
-                <View
-                  style={[
-                    styles.sidebarIconWrapper,
-                    { backgroundColor: "rgba(20, 184, 166, 0.1)" },
+                <Pressable
+                  style={({ pressed }) => [
+                    styles.sidebarItem,
+                    pressed && styles.sidebarItemPressed,
                   ]}
+                  onPress={() => {
+                    router.push("/list");
+                    toggleSidebar();
+                  }}
                 >
-                  <Ionicons
-                    name="bookmarks-outline"
-                    size={20}
-                    color="#14B8A6"
-                  />
-                </View>
-                <Text style={styles.sidebarItemText}>
-                  {t("menu.recommendations")}
-                </Text>
-              </Pressable>
+                  <View
+                    style={[
+                      styles.sidebarIconWrapper,
+                      { backgroundColor: "rgba(20, 184, 166, 0.1)" },
+                    ]}
+                  >
+                    <Ionicons
+                      name="bookmarks-outline"
+                      size={20}
+                      color="#14B8A6"
+                    />
+                  </View>
+                  <Text style={styles.sidebarItemText}>
+                    {t("menu.recommendations")}
+                  </Text>
+                </Pressable>
 
-              <Pressable
-                style={({ pressed }) => [
-                  styles.sidebarItem,
-                  pressed && styles.sidebarItemPressed,
-                ]}
-                onPress={() => {
-                  router.push("/history");
-                  toggleSidebar();
-                }}
-              >
-                <View
-                  style={[
-                    styles.sidebarIconWrapper,
-                    { backgroundColor: "rgba(99, 102, 241, 0.1)" },
+                <Pressable
+                  style={({ pressed }) => [
+                    styles.sidebarItem,
+                    pressed && styles.sidebarItemPressed,
                   ]}
+                  onPress={() => {
+                    router.push("/history");
+                    toggleSidebar();
+                  }}
                 >
-                  <Ionicons name="time-outline" size={22} color="#6366F1" />
-                </View>
-                <Text style={styles.sidebarItemText}>{t("menu.history")}</Text>
-              </Pressable>
+                  <View
+                    style={[
+                      styles.sidebarIconWrapper,
+                      { backgroundColor: "rgba(99, 102, 241, 0.1)" },
+                    ]}
+                  >
+                    <Ionicons name="time-outline" size={22} color="#6366F1" />
+                  </View>
+                  <Text style={styles.sidebarItemText}>{t("menu.history")}</Text>
+                </Pressable>
 
-              <Pressable
-                style={({ pressed }) => [
-                  styles.sidebarItem,
-                  pressed && styles.sidebarItemPressed,
-                ]}
-                onPress={() => {
-                  router.push("/stats");
-                  toggleSidebar();
-                }}
-              >
-                <View
-                  style={[
-                    styles.sidebarIconWrapper,
-                    { backgroundColor: "rgba(139, 92, 246, 0.1)" },
+                <Pressable
+                  style={({ pressed }) => [
+                    styles.sidebarItem,
+                    pressed && styles.sidebarItemPressed,
                   ]}
+                  onPress={() => {
+                    router.push("/stats");
+                    toggleSidebar();
+                  }}
                 >
-                  <Ionicons name="stats-chart-outline" size={20} color="#8B5CF6" />
-                </View>
-                <Text style={styles.sidebarItemText}>{t("menu.stats")}</Text>
-              </Pressable>
+                  <View
+                    style={[
+                      styles.sidebarIconWrapper,
+                      { backgroundColor: "rgba(59, 130, 246, 0.1)" },
+                    ]}
+                  >
+                    <Ionicons name="stats-chart-outline" size={20} color="#3B82F6" />
+                  </View>
+                  <Text style={styles.sidebarItemText}>{t("menu.stats")}</Text>
+                </Pressable>
 
-              <Pressable
-                style={({ pressed }) => [
-                  styles.sidebarItem,
-                  pressed && styles.sidebarItemPressed,
-                ]}
-                onPress={async () => {
-                  toggleSidebar();
-                  try {
-                    if (await StoreReview.hasAction()) {
-                      await StoreReview.requestReview();
-                      await AsyncStorage.setItem("has_rated_app", "true");
+                <Pressable
+                  style={({ pressed }) => [
+                    styles.sidebarItem,
+                    pressed && styles.sidebarItemPressed,
+                  ]}
+                  onPress={async () => {
+                    toggleSidebar();
+                    try {
+                      if (await StoreReview.hasAction()) {
+                        await StoreReview.requestReview();
+                        await AsyncStorage.setItem("has_rated_app", "true");
+                      }
+                    } catch (e) {
+                      console.log("Error requesting review", e);
                     }
-                  } catch (e) {
-                    console.log("Error requesting review", e);
-                  }
-                }}
-              >
-                <View
-                  style={[
-                    styles.sidebarIconWrapper,
-                    { backgroundColor: "rgba(236, 72, 153, 0.1)" },
-                  ]}
+                  }}
                 >
-                  <Ionicons name="star-outline" size={20} color="#EC4899" />
-                </View>
-                <Text style={styles.sidebarItemText}>{t("menu.rate_app")}</Text>
-              </Pressable>
+                  <View
+                    style={[
+                      styles.sidebarIconWrapper,
+                      { backgroundColor: "rgba(236, 72, 153, 0.1)" },
+                    ]}
+                  >
+                    <Ionicons name="star-outline" size={20} color="#EC4899" />
+                  </View>
+                  <Text style={styles.sidebarItemText}>{t("menu.rate_app")}</Text>
+                </Pressable>
 
-              <View style={styles.sidebarDivider} />
+                <View style={styles.sidebarDivider} />
 
-              <View style={{ padding: 20, paddingTop: 0 }}>
-                <Text style={[styles.sectionHeader, { marginBottom: 12 }]}>
-                  {t("common.language").toUpperCase()}
-                </Text>
-                <View style={styles.langGrid}>
-                  {languages.map((lang) => (
-                    <Pressable
-                      key={lang.code}
-                      onPress={() => changeLanguage(lang.code)}
-                      style={[
-                        styles.langItem,
-                        i18n.language.startsWith(lang.code) &&
-                          styles.langItemActive,
-                      ]}
-                    >
-                      <Text style={styles.langFlag}>{lang.flag}</Text>
-                      <Text
+                <View style={{ paddingHorizontal: 8 }}>
+                  <Text style={[styles.sectionHeader, { marginBottom: 16 }]}>
+                    {t("common.language").toUpperCase()}
+                  </Text>
+                  <View style={styles.langGrid}>
+                    {languages.map((lang) => (
+                      <Pressable
+                        key={lang.code}
+                        onPress={() => changeLanguage(lang.code)}
                         style={[
-                          styles.langLabel,
+                          styles.langItem,
                           i18n.language.startsWith(lang.code) &&
-                            styles.langLabelActive,
+                            styles.langItemActive,
                         ]}
                       >
-                        {lang.label}
-                      </Text>
-                    </Pressable>
-                  ))}
+                        <Text style={styles.langFlag}>{lang.flag}</Text>
+                        <Text
+                          style={[
+                            styles.langLabel,
+                            i18n.language.startsWith(lang.code) &&
+                              styles.langLabelActive,
+                          ]}
+                        >
+                          {lang.label}
+                        </Text>
+                      </Pressable>
+                    ))}
+                  </View>
                 </View>
-              </View>
+              </ScrollView>
             </View>
 
             <View style={styles.sidebarFooter}>
