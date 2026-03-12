@@ -147,7 +147,9 @@ export default function HistoryScreen() {
             >
               {item.count}
             </Text>
-            <Text style={styles.cardTarget}>/ {item.target || 33}</Text>
+            {item.target > 0 && (
+              <Text style={styles.cardTarget}>/ {item.target}</Text>
+            )}
           </View>
         </View>
         <Text style={styles.cardDate}>

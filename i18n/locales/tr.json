@@ -24,7 +24,8 @@
         "recommendations": "Zikir Önerileri",
         "history": "Zikir Geçmişim",
         "stats": "İstatistikler",
-        "rate_app": "Uygulamayı Puanla"
+        "rate_app": "Uygulamayı Değerlendir",
+        "free_mode": "Serbest Mod"
     },
     "home": {
         "reminder_modal_title": "Zikir Hatırlatıcısı",

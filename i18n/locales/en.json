@@ -24,7 +24,8 @@
         "recommendations": "Dhikr Suggestions",
         "history": "My Dhikr History",
         "stats": "Statistics",
-        "rate_app": "Rate App"
+        "rate_app": "Rate App",
+        "free_mode": "Free Mode"
     },
     "home": {
         "reminder_modal_title": "Dhikr Reminder",

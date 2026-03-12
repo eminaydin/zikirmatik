@@ -207,7 +207,7 @@ export default function CounterScreen() {
           count: data.count,
           target: data.target,
           arabic: data.arabic,
-          isFinished: data.count >= data.target,
+          isFinished: data.target > 0 && data.count >= data.target,
           date: new Date().toISOString(), // Update last activity time
         };
       } else {
@@ -219,7 +219,7 @@ export default function CounterScreen() {
           count: data.count,
           target: data.target,
           date: new Date().toISOString(),
-          isFinished: data.count >= data.target,
+          isFinished: data.target > 0 && data.count >= data.target,
         });
       }
 
@@ -229,7 +229,23 @@ export default function CounterScreen() {
     }
   };
 
-  const isFinished = zikir.count >= zikir.target;
+  const isFinished = zikir.target > 0 && zikir.count >= zikir.target;
+
+  const startFreeMode = async () => {
+    const freeZikir: ZikirData = {
+      id: "free_" + Date.now(),
+      text: t("menu.free_mode"),
+      target: 0,
+      count: 0,
+    };
+    setZikir(freeZikir);
+    await AsyncStorage.setItem("selected_zikir", JSON.stringify(freeZikir));
+    await updateHistory(freeZikir);
+    toggleSidebar();
+    if (hapticsEnabled) {
+      await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+    }
+  };
 
   const handlePress = useCallback(async () => {
     if (isFinished) return;
@@ -463,7 +479,9 @@ export default function CounterScreen() {
                     ) : (
                       <View style={{ alignItems: "center" }}>
                         <Text style={styles.mainCount}>{zikir.count}</Text>
-                        <Text style={styles.targetCount}>/ {zikir.target}</Text>
+                        {zikir.target > 0 && (
+                          <Text style={styles.targetCount}>/ {zikir.target}</Text>
+                        )}
                       </View>
                     )}
                   </View>
@@ -534,17 +552,19 @@ export default function CounterScreen() {
                   {zikir.text}
                 </Text>
 
-                <View style={styles.progressContainer}>
-                  <View style={styles.progressTrack}>
-                    <Animated.View
-                      style={[
-                        styles.progressActive,
-                        progressAnimationStyle,
-                        isFinished && { backgroundColor: "#10B981" },
-                      ]}
-                    />
+                {zikir.target > 0 && (
+                  <View style={styles.progressContainer}>
+                    <View style={styles.progressTrack}>
+                      <Animated.View
+                        style={[
+                          styles.progressActive,
+                          progressAnimationStyle,
+                          isFinished && { backgroundColor: "#10B981" },
+                        ]}
+                      />
+                    </View>
                   </View>
-                </View>
+                )}
 
                 {naturalTextHeight > SAFE_Y_BOUNDARY && (
                   <Animated.View
@@ -595,6 +615,26 @@ export default function CounterScreen() {
             </View>
 
             <View style={styles.sidebarContent}>
+              <Pressable
+                style={({ pressed }) => [
+                  styles.sidebarItem,
+                  pressed && styles.sidebarItemPressed,
+                ]}
+                onPress={startFreeMode}
+              >
+                <View
+                  style={[
+                    styles.sidebarIconWrapper,
+                    { backgroundColor: "rgba(139, 92, 246, 0.1)" },
+                  ]}
+                >
+                  <Ionicons name="infinite" size={22} color="#8B5CF6" />
+                </View>
+                <Text style={styles.sidebarItemText}>
+                  {t("menu.free_mode")}
+                </Text>
+              </Pressable>
+
               <Pressable
                 style={({ pressed }) => [
                   styles.sidebarItem,

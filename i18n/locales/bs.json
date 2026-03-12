@@ -24,7 +24,8 @@
         "recommendations": "Preporučeni zikrovi",
         "history": "Moja historija zikra",
         "stats": "Statistika",
-        "rate_app": "Ocijeni aplikaciju"
+        "rate_app": "Ocijeni aplikaciju",
+        "free_mode": "Slobodni način"
     },
     "home": {
         "reminder_modal_title": "Podsjetnik na zikr",
