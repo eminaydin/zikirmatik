@@ -159,10 +159,14 @@
     },
     "stats": {
         "title": "Statistik",
-        "total_zikr": "Gesamt-Dhikr",
+        "total_zikr": "Gesamt-Wiederholungen",
+        "total_sessions": "Gesamt-Sitzungen",
         "completed_zikirs": "Abgeschlossene Ziele",
-        "daily_activity": "Tägliche Aktivität",
+        "daily_activity": "Tägliche Aktivität (7 Tage)",
         "no_data": "Noch keine Daten verfügbar.",
+        "empty_title": "Noch keine Aktivität",
+        "empty_desc": "Sobald du Dhikr machst, erstellen wir hier schöne Diagramme und Statistiken für dich. Fangen wir an!",
+        "start_now": "Jetzt starten",
         "today": "Heute",
         "last_7_days": "Letzte 7 Tage",
         "motivation": "Beständigkeit ist der Schlüssel! Regelmäßiger Dhikr bringt dem Herzen Frieden."

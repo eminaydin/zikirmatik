@@ -15,6 +15,7 @@ export default function RootLayout() {
             backgroundColor: "#0F172A",
           },
           headerTintColor: "#EAB308",
+          headerTitleAlign: "center",
           headerShadowVisible: false,
           gestureEnabled: true,
           animation: "slide_from_right",
@@ -35,8 +36,14 @@ export default function RootLayout() {
           name="settings"
           options={{ title: t("settings.title"), presentation: "modal" }}
         />
-        <Stack.Screen name="history" options={{ title: t("history.title") }} />
-        <Stack.Screen name="stats" options={{ title: t("stats.title") }} />
+        <Stack.Screen 
+          name="history" 
+          options={{ title: t("history.title"), presentation: "modal" }} 
+        />
+        <Stack.Screen 
+          name="stats" 
+          options={{ title: t("stats.title"), presentation: "modal" }} 
+        />
       </Stack>
     </>
   );

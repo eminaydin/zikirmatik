@@ -159,10 +159,14 @@
     },
     "stats": {
         "title": "Statistika",
-        "total_zikr": "Ukupno zikra",
+        "total_zikr": "Ukupno ponavljanja",
+        "total_sessions": "Ukupno sesija",
         "completed_zikirs": "Završeni ciljevi",
-        "daily_activity": "Dnevna aktivnost",
+        "daily_activity": "Dnevna aktivnost (7 dana)",
         "no_data": "Još uvijek nema podataka.",
+        "empty_title": "Još nema aktivnosti",
+        "empty_desc": "Kako budeš činio zikr, ovdje ćemo za tebe kreirati lijepe grafikone i statistiku. Hajde da počnemo!",
+        "start_now": "Započni odmah",
         "today": "Danas",
         "last_7_days": "Posljednjih 7 dana",
         "motivation": "Dosljednost je ključ! Redovan zikr donosi mir srcu."

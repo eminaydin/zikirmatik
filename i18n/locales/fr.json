@@ -159,10 +159,14 @@
     },
     "stats": {
         "title": "Statistiques",
-        "total_zikr": "Total des zikrs",
+        "total_zikr": "Répétitions totales",
+        "total_sessions": "Sessions totales",
         "completed_zikirs": "Objectifs terminés",
-        "daily_activity": "Activité quotidienne",
+        "daily_activity": "Activité quotidienne (7 jours)",
         "no_data": "Aucune donnée disponible pour le moment.",
+        "empty_title": "Aucune activité pour le moment",
+        "empty_desc": "Au fur et à mesure que vous pratiquez le dhikr, nous créerons ici de superbes graphiques et statistiques. Commençons !",
+        "start_now": "Commencer maintenant",
         "today": "Aujourd'hui",
         "last_7_days": "7 derniers jours",
         "motivation": "La régularité est la clé ! Le dhikr régulier apaise le cœur."

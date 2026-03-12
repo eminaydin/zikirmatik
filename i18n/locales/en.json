@@ -159,10 +159,14 @@
     },
     "stats": {
         "title": "Statistics",
-        "total_zikr": "Total Dhikrs",
+        "total_zikr": "Total Repetitions",
+        "total_sessions": "Total Sessions",
         "completed_zikirs": "Completed Goals",
-        "daily_activity": "Daily Activity",
+        "daily_activity": "Daily Activity (7 Days)",
         "no_data": "No data available yet.",
+        "empty_title": "No Activity Yet",
+        "empty_desc": "As you perform dhikr, we'll create beautiful charts and stats for you here. Let's start!",
+        "start_now": "Start Now",
         "today": "Today",
         "last_7_days": "Last 7 Days",
         "motivation": "Consistency is key! Regular zikir brings peace to the heart."

@@ -159,10 +159,14 @@
     },
     "stats": {
         "title": "İstatistikler",
-        "total_zikr": "Toplam Zikir",
+        "total_zikr": "Toplam Tesbih",
+        "total_sessions": "Toplam Oturum",
         "completed_zikirs": "Tamamlanan Hedefler",
-        "daily_activity": "Günlük Aktivite",
+        "daily_activity": "Günlük Aktivite (7 Gün)",
         "no_data": "Henüz veri bulunmuyor.",
+        "empty_title": "Henüz Zikir Kaydı Yok",
+        "empty_desc": "Zikirlerini çektikçe burada senin için özel grafikler ve istatistikler oluşacak. Hadi başlayalım!",
+        "start_now": "Hemen Başla",
         "today": "Bugün",
         "last_7_days": "Son 7 Gün",
         "motivation": "İstikrar önemlidir! Düzenli zikir kalbe huzur verir."
