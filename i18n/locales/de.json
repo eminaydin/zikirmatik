@@ -17,21 +17,26 @@
       "fr": "Français",
       "ru": "Русский",
       "bs": "Bosanski"
-    }
+    },
+    "done": "Done"
   },
   "menu": {
+    "title": "Dhikr-Zähler",
+    "zikir_list": "Dhikr-Liste",
     "new_zikir": "Neuen Dhikr hinzufügen",
     "recommendations": "Dhikr-Vorschläge",
     "history": "Mein Dhikr-Verlauf",
     "stats": "Statistik",
     "rate_app": "App bewerten",
-    "free_mode": "Freier Modus"
+    "free_mode": "Freier Modus",
+    "settings": "Einstellungen"
   },
   "home": {
     "reminder_modal_title": "Dhikr-Erinnerung",
     "daily_notification": "Tägliche Benachrichtigung",
     "daily_notification_sub": "Nehmen wir uns eine ruhige Zeit des Friedens für dich.",
-    "reminder_time_label": "Erinnerungszeit"
+    "reminder_time_label": "Erinnerungszeit",
+    "target_reached": "Target Reached"
   },
   "history": {
     "title": "Mein Dhikr-Verlauf",
@@ -74,53 +79,55 @@
     "system_settings": "SYSTEMEINSTELLUNGEN",
     "daily_reminder": "Tägliche Erinnerung",
     "daily_reminder_sub": "Sendet eine Benachrichtigung, um dich an den Dhikr des Tages zu erinnern.",
-    "error_empty": "Bitte gib einen Dhikr-Text ein."
+    "error_empty": "Bitte gib einen Dhikr-Text ein.",
+    "reminder_desc": "Sends a notification to remind you of the day's dhikr.",
+    "reminder_time": "Reminder Time"
   },
   "recommendations": {
-    "12": {
-      "text": "Subhanallahi wal-hamdülillahi wa la ilaha illallahu vallahu akbar",
-      "translation": "Ehre sei Allah, Lob sei Ihm, es gibt keinen Gott außer Allah, und Allah ist der Größte.",
-      "source": "Muslim, Adab 12"
-    },
-    "15": {
-      "text": "La ilaha illallahu wahdahu la sharika lah, lahul-mulku wa lahul-hamdu wa huwa ala kulli shay'in qadir",
-      "translation": "Es gibt keinen Gott außer Allah, allein, ohne Partner. Sein ist die Herrschaft, Sein ist das Lob, und Er ist allmächtig.",
-      "source": "Bukhari, Daavat 54"
-    },
-    "6": {
-      "text": "Subhanallahi wa bihamdihi adada khalqihi wa rida nafsihi wa zinata arshihi wa midada kalimatih",
-      "translation": "Ehre und Lob sei Allah, entsprechend der Zahl Seiner Geschöpfe, Seinem Wohlgefallen, dem Gewicht Seines Thrones und der Tinte Seiner Worte.",
-      "source": "Muslim, Dhikr 79"
-    },
     "1": {
       "text": "La ilaha illa anta subhanaka inni kuntu minaz-zalimin",
       "translation": "Es gibt keinen Gott außer Dir. Ehre sei Dir! Ich bin gewiss einer der Ungerechten gewesen.",
       "source": "Sure Al-Anbiya, 87"
-    },
-    "4": {
-      "text": "Hasbunallahu wa ni'mal-wakil, ni'mal-mawla wa ni'man-nasir",
-      "translation": "Allah genügt uns, und Er ist der beste Sachwalter. Was für ein wunderbarer Beschützer und was für ein wunderbarer Helfer.",
-      "source": "Sure Al-Imran, 173"
     },
     "2": {
       "text": "Hasbiyallahu la ilaha illa hu, alayhi tawakkaltu wa huwa rabbul-arshil-azim",
       "translation": "Allah genügt mir. Es gibt keinen Gott außer Ihm. Auf Ihn vertraue ich, und Er ist der Herr des Gewaltigen Throns.",
       "source": "Sure At-Tawbah, 129"
     },
-    "8": {
-      "text": "Ya Hayyu Ya Qayyum birahmatika astagithu, aslih li sha'ni kullahu wa la takilni ila nafsi tarfata ayn",
-      "translation": "O Lebendiger, O Beständiger, durch Deine Barmherzigkeit suche ich Hilfe. Ordne alle meine Angelegenheiten und überlasse mich nicht mir selbst, auch nicht für einen Augenblick.",
-      "source": "Tirmidhi, Daavat 91"
+    "3": {
+      "text": "Rabbi inni massaniyad-durru wa anta arhamur-rahimin",
+      "translation": "Mein Herr! Wahrlich, Unheil hat mich getroffen, und Du bist der Barmherzigste der Barmherzigen.",
+      "source": "Sure Al-Anbiya, 83"
+    },
+    "4": {
+      "text": "Hasbunallahu wa ni'mal-wakil, ni'mal-mawla wa ni'man-nasir",
+      "translation": "Allah genügt uns, und Er ist der beste Sachwalter. Was für ein wunderbarer Beschützer und was für ein wunderbarer Helfer.",
+      "source": "Sure Al-Imran, 173"
+    },
+    "5": {
+      "text": "Rabbana atina fid-dunya hasanatan wa fil-akhirati hasanatan wa qina adhaban-nar",
+      "translation": "Unser Herr! Gib uns in dieser Welt Gutes und im Jenseits Gutes und bewahre uns vor der Strafe des Feuers.",
+      "source": "Sure Al-Baqarah, 201"
+    },
+    "6": {
+      "text": "Subhanallahi wa bihamdihi adada khalqihi wa rida nafsihi wa zinata arshihi wa midada kalimatih",
+      "translation": "Ehre und Lob sei Allah, entsprechend der Zahl Seiner Geschöpfe, Seinem Wohlgefallen, dem Gewicht Seines Thrones und der Tinte Seiner Worte.",
+      "source": "Muslim, Dhikr 79"
     },
     "7": {
       "text": "Astaghfirullahal-azim alladhi la ilaha illa huwal-hayyul-qayyumu wa atubu ilayh",
       "translation": "Ich bitte Allah den Allmächtigen um Vergebung, außer dem es keinen Gott gibt, den Lebendigen, den Beständigen, und ich bereue vor Ihm.",
       "source": "Abu Dawood, Witr 26"
     },
-    "3": {
-      "text": "Rabbi inni massaniyad-durru wa anta arhamur-rahimin",
-      "translation": "Mein Herr! Wahrlich, Unheil hat mich getroffen, und Du bist der Barmherzigste der Barmherzigen.",
-      "source": "Sure Al-Anbiya, 83"
+    "8": {
+      "text": "Ya Hayyu Ya Qayyum birahmatika astagithu, aslih li sha'ni kullahu wa la takilni ila nafsi tarfata ayn",
+      "translation": "O Lebendiger, O Beständiger, durch Deine Barmherzigkeit suche ich Hilfe. Ordne alle meine Angelegenheiten und überlasse mich nicht mir selbst, auch nicht für einen Augenblick.",
+      "source": "Tirmidhi, Daavat 91"
+    },
+    "9": {
+      "text": "La ilaha illallahul-malikul-haqqul-mubin",
+      "translation": "Es gibt keinen Gott außer Allah, dem König, der Wahrheit, dem Offenkundigen.",
+      "source": "Hadith"
     },
     "10": {
       "text": "Allahumme salli ala sayyidina Muhammadin salaten tunjina biha min jami'il-ahwali wal-afat",
@@ -132,25 +139,25 @@
       "translation": "O Allah! Schenke unserem Herrn Muhammad einen vollkommenen Segen und einen vollständigen Frieden, durch den Knoten gelöst werden.",
       "source": "Salat-ı Tafrijiyah"
     },
-    "5": {
-      "text": "Rabbana atina fid-dunya hasanatan wa fil-akhirati hasanatan wa qina adhaban-nar",
-      "translation": "Unser Herr! Gib uns in dieser Welt Gutes und im Jenseits Gutes und bewahre uns vor der Strafe des Feuers.",
-      "source": "Sure Al-Baqarah, 201"
+    "12": {
+      "text": "Subhanallahi wal-hamdülillahi wa la ilaha illallahu vallahu akbar",
+      "translation": "Ehre sei Allah, Lob sei Ihm, es gibt keinen Gott außer Allah, und Allah ist der Größte.",
+      "source": "Muslim, Adab 12"
+    },
+    "13": {
+      "text": "Ya Dhal-Jalali wal-Ikram",
+      "translation": "O Herr der Majestät und der Ehre!",
+      "source": "Tirmidhi, Daavat 92"
     },
     "14": {
       "text": "Rabbi hab li min ladunka dhurriyatan tayyibatan innaka sami'ud-du'a",
       "translation": "Mein Herr! Schenke mir von Dir aus gute Nachkommenschaft. Wahrlich, Du bist der Erhörer des Gebets.",
       "source": "Sure Al-Imran, 38"
     },
-    "9": {
-      "text": "La ilaha illallahul-malikul-haqqul-mubin",
-      "translation": "Es gibt keinen Gott außer Allah, dem König, der Wahrheit, dem Offenkundigen.",
-      "source": "Hadith"
-    },
-    "13": {
-      "text": "Ya Dhal-Jalali wal-Ikram",
-      "translation": "O Herr der Majestät und der Ehre!",
-      "source": "Tirmidhi, Daavat 92"
+    "15": {
+      "text": "La ilaha illallahu wahdahu la sharika lah, lahul-mulku wa lahul-hamdu wa huwa ala kulli shay'in qadir",
+      "translation": "Es gibt keinen Gott außer Allah, allein, ohne Partner. Sein ist die Herrschaft, Sein ist das Lob, und Er ist allmächtig.",
+      "source": "Bukhari, Daavat 54"
     }
   },
   "notifications": {
@@ -163,6 +170,8 @@
     "total_sessions": "Gesamt-Sitzungen",
     "completed_zikirs": "Abgeschlossene Ziele",
     "daily_activity": "Tägliche Aktivität (7 Tage)",
+    "activity": "Aktivität",
+    "count": "Anzahl",
     "no_data": "Noch keine Daten verfügbar.",
     "empty_title": "Noch keine Aktivität",
     "empty_desc": "Sobald du Dhikr machst, erstellen wir hier schöne Diagramme und Statistiken für dich. Fangen wir an!",

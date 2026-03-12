@@ -4,6 +4,7 @@
     "save": "Kaydet",
     "cancel": "Vazgeç",
     "ok": "Tamam",
+    "done": "Bitti",
     "delete": "Sil",
     "reset": "Sıfırla",
     "finished": "TAMAMLANDI",
@@ -20,18 +21,22 @@
     }
   },
   "menu": {
+    "title": "Zikirmatik",
+    "zikir_list": "Zikir Listesi",
     "new_zikir": "Yeni Zikir Ekle",
     "recommendations": "Zikir Önerileri",
     "history": "Zikir Geçmişim",
     "stats": "İstatistikler",
     "rate_app": "Uygulamayı Değerlendir",
-    "free_mode": "Serbest Mod"
+    "free_mode": "Serbest Mod",
+    "settings": "Ayarlar"
   },
   "home": {
     "reminder_modal_title": "Zikir Hatırlatıcısı",
     "daily_notification": "Günlük Bildirim",
     "daily_notification_sub": "Senin için sessiz bir huzur vakti ayıralım.",
-    "reminder_time_label": "Hatırlatma Saati"
+    "reminder_time_label": "Hatırlatma Saati",
+    "target_reached": "Hedefe Ulaşıldı"
   },
   "history": {
     "title": "Zikir Geçmişim",
@@ -74,6 +79,9 @@
     "system_settings": "SİSTEM AYARLARI",
     "daily_reminder": "Günlük Hatırlatıcı",
     "daily_reminder_sub": "Günün zikrini hatırlatmak için bildirim gönderir.",
+    "notifications": "Bildirimler",
+    "reminder_time": "Hatırlatma Saati",
+    "reminder_desc": "Günün zikrini hatırlatmak için bildirim gönderir.",
     "error_empty": "Lütfen bir zikir metni gir."
   },
   "recommendations": {
@@ -163,6 +171,8 @@
     "total_sessions": "Toplam Oturum",
     "completed_zikirs": "Tamamlanan Hedefler",
     "daily_activity": "Günlük Aktivite (7 Gün)",
+    "activity": "Aktivite",
+    "count": "Sayı",
     "no_data": "Henüz veri bulunmuyor.",
     "empty_title": "Henüz Zikir Kaydı Yok",
     "empty_desc": "Zikirlerini çektikçe burada senin için özel grafikler ve istatistikler oluşacak. Hadi başlayalım!",
@@ -170,5 +180,12 @@
     "today": "Bugün",
     "last_7_days": "Son 7 Gün",
     "motivation": "İstikrar önemlidir! Düzenli zikir kalbe huzur verir."
+  },
+  "rating": {
+    "title": "Uygulamayı Beğendiniz mi?",
+    "description": "Zikirmatik size yardımcı oluyorsa, lütfen vakit ayırıp değerlendirin. Desteğiniz daha fazla kişiye ulaşmamıza yardımcı olur.",
+    "submit": "Şimdi Puan Ver",
+    "remind_later": "Daha Sonra Hatırlat",
+    "no_thanks": "Hayır, teşekkürler"
   }
 }

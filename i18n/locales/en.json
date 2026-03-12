@@ -4,6 +4,7 @@
     "save": "Save",
     "cancel": "Cancel",
     "ok": "OK",
+    "done": "Done",
     "delete": "Delete",
     "reset": "Reset",
     "finished": "COMPLETED",
@@ -20,18 +21,22 @@
     }
   },
   "menu": {
+    "title": "Tasbih Counter",
+    "zikir_list": "Dhikr List",
     "new_zikir": "Add New Dhikr",
     "recommendations": "Dhikr Suggestions",
     "history": "My Dhikr History",
     "stats": "Statistics",
     "rate_app": "Rate App",
-    "free_mode": "Free Mode"
+    "free_mode": "Free Mode",
+    "settings": "Settings"
   },
   "home": {
     "reminder_modal_title": "Dhikr Reminder",
     "daily_notification": "Daily Notification",
     "daily_notification_sub": "Let's set a quiet time of peace for you.",
-    "reminder_time_label": "Reminder Time"
+    "reminder_time_label": "Reminder Time",
+    "target_reached": "Target Reached"
   },
   "history": {
     "title": "My Dhikr History",
@@ -74,6 +79,9 @@
     "system_settings": "SYSTEM SETTINGS",
     "daily_reminder": "Daily Reminder",
     "daily_reminder_sub": "Sends a notification to remind you of the day's dhikr.",
+    "notifications": "Notifications",
+    "reminder_time": "Reminder Time",
+    "reminder_desc": "Sends a notification to remind you of the day's dhikr.",
     "error_empty": "Please enter a dhikr text."
   },
   "recommendations": {
@@ -163,6 +171,8 @@
     "total_sessions": "Total Sessions",
     "completed_zikirs": "Completed Goals",
     "daily_activity": "Daily Activity (7 Days)",
+    "activity": "Activity",
+    "count": "Count",
     "no_data": "No data available yet.",
     "empty_title": "No Activity Yet",
     "empty_desc": "As you perform dhikr, we'll create beautiful charts and stats for you here. Let's start!",
@@ -170,5 +180,12 @@
     "today": "Today",
     "last_7_days": "Last 7 Days",
     "motivation": "Consistency is key! Regular zikir brings peace to the heart."
+  },
+  "rating": {
+    "title": "Enjoying the App?",
+    "description": "If you find this app helpful, please take a moment to rate it. Your support helps us reach more people.",
+    "submit": "Rate Now",
+    "remind_later": "Remind Me Later",
+    "no_thanks": "No thanks"
   }
 }
