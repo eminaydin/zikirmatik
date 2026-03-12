@@ -23,6 +23,7 @@
         "new_zikir": "Dodaj novi zikr",
         "recommendations": "Preporučeni zikrovi",
         "history": "Moja historija zikra",
+        "stats": "Statistika",
         "rate_app": "Ocijeni aplikaciju",
         "free_mode": "Slobodni način"
     },
@@ -155,5 +156,19 @@
     "notifications": {
         "daily_title": "Vrijeme za mir ✨",
         "daily_body": "A srca se doista, kad se Allah spomene, smiruju. Šta kažeš na kratku pauzu za zikr? 🌙"
+    },
+    "stats": {
+        "title": "Statistika",
+        "total_zikr": "Ukupno ponavljanja",
+        "total_sessions": "Ukupno sesija",
+        "completed_zikirs": "Završeni ciljevi",
+        "daily_activity": "Dnevna aktivnost (7 dana)",
+        "no_data": "Još uvijek nema podataka.",
+        "empty_title": "Još nema aktivnosti",
+        "empty_desc": "Kako budeš činio zikr, ovdje ćemo za tebe kreirati lijepe grafikone i statistiku. Hajde da počnemo!",
+        "start_now": "Započni odmah",
+        "today": "Danas",
+        "last_7_days": "Posljednjih 7 dana",
+        "motivation": "Dosljednost je ključ! Redovan zikr donosi mir srcu."
     }
 }

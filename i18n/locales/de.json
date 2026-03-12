@@ -23,6 +23,7 @@
         "new_zikir": "Neuen Dhikr hinzufügen",
         "recommendations": "Dhikr-Vorschläge",
         "history": "Mein Dhikr-Verlauf",
+        "stats": "Statistik",
         "rate_app": "App bewerten",
         "free_mode": "Freier Modus"
     },
@@ -155,5 +156,19 @@
     "notifications": {
         "daily_title": "Zeit für Frieden ✨",
         "daily_body": "Herzen finden Ruhe nur im Gedenken an Allah. Wie wäre es mit einer kurzen Dhikr-Pause? 🌙"
+    },
+    "stats": {
+        "title": "Statistik",
+        "total_zikr": "Gesamt-Wiederholungen",
+        "total_sessions": "Gesamt-Sitzungen",
+        "completed_zikirs": "Abgeschlossene Ziele",
+        "daily_activity": "Tägliche Aktivität (7 Tage)",
+        "no_data": "Noch keine Daten verfügbar.",
+        "empty_title": "Noch keine Aktivität",
+        "empty_desc": "Sobald du Dhikr machst, erstellen wir hier schöne Diagramme und Statistiken für dich. Fangen wir an!",
+        "start_now": "Jetzt starten",
+        "today": "Heute",
+        "last_7_days": "Letzte 7 Tage",
+        "motivation": "Beständigkeit ist der Schlüssel! Regelmäßiger Dhikr bringt dem Herzen Frieden."
     }
 }

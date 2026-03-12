@@ -23,6 +23,7 @@
         "new_zikir": "Add New Dhikr",
         "recommendations": "Dhikr Suggestions",
         "history": "My Dhikr History",
+        "stats": "Statistics",
         "rate_app": "Rate App",
         "free_mode": "Free Mode"
     },
@@ -155,5 +156,19 @@
     "notifications": {
         "daily_title": "Time for Peace ✨",
         "daily_body": "Hearts find rest only in the remembrance of Allah. How about a short dhikr break? 🌙"
+    },
+    "stats": {
+        "title": "Statistics",
+        "total_zikr": "Total Repetitions",
+        "total_sessions": "Total Sessions",
+        "completed_zikirs": "Completed Goals",
+        "daily_activity": "Daily Activity (7 Days)",
+        "no_data": "No data available yet.",
+        "empty_title": "No Activity Yet",
+        "empty_desc": "As you perform dhikr, we'll create beautiful charts and stats for you here. Let's start!",
+        "start_now": "Start Now",
+        "today": "Today",
+        "last_7_days": "Last 7 Days",
+        "motivation": "Consistency is key! Regular zikir brings peace to the heart."
     }
 }

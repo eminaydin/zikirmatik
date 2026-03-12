@@ -41,7 +41,11 @@ export default function HistoryScreen() {
     React.useCallback(() => {
       AsyncStorage.getItem("zikir_history").then((val) => {
         if (val) {
-          setHistory(JSON.parse(val).reverse());
+          const parsed = JSON.parse(val);
+          const sorted = parsed.sort((a: any, b: any) => 
+            new Date(b.date).getTime() - new Date(a.date).getTime()
+          );
+          setHistory(sorted);
         }
       });
     }, []),
@@ -90,7 +94,7 @@ export default function HistoryScreen() {
       target: item.target,
     };
     await AsyncStorage.setItem("selected_zikir", JSON.stringify(activeZikir));
-    router.push("/");
+    router.back();
   };
 
   const renderRightActions = (id: string) => (
@@ -167,12 +171,6 @@ export default function HistoryScreen() {
 
   return (
     <View style={styles.container}>
-      <Stack.Screen
-        options={{
-          headerTitle: t("history.title"),
-          headerTitleAlign: "center",
-        }}
-      />
       <GestureHandlerRootView style={{ flex: 1 }}>
         <View style={styles.tabBar}>
           <Pressable

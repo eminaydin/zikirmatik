@@ -95,12 +95,13 @@ export default function SettingsScreen() {
     try {
       const stored = await AsyncStorage.getItem("zikir_history");
       const history = stored ? JSON.parse(stored) : [];
+      history.push(newItem);
       await AsyncStorage.setItem(
         "zikir_history",
-        JSON.stringify([newItem, ...history]),
+        JSON.stringify(history),
       );
       await AsyncStorage.setItem("selected_zikir", JSON.stringify(newItem));
-      router.replace("/");
+      router.back();
     } catch (error) {
       console.error(error);
     }
