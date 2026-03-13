@@ -52,14 +52,20 @@ export const styles = StyleSheet.create({
         borderColor: "#10B98133",
         backgroundColor: "#10B98108",
     },
-    deleteAction: {
-        backgroundColor: "#EF4444",
+    deleteActionContainer: {
+        width: 70,
         justifyContent: "center",
         alignItems: "center",
-        width: 70,
-        height: "85%", // Match card height without being too tight
-        borderRadius: 16,
         marginBottom: 12,
+        marginLeft: 12,
+    },
+    deleteAction: {
+        width: 44,
+        height: 44,
+        borderRadius: 16,
+        backgroundColor: "rgba(255, 255, 255, 0.05)",
+        justifyContent: "center",
+        alignItems: "center",
     },
     cardHeader: {
         flexDirection: "row",
@@ -123,8 +129,8 @@ export const styles = StyleSheet.create({
     headerIcon: {
         width: 38,
         height: 38,
-        borderRadius: 19,
-        backgroundColor: "rgba(255, 255, 255, 0.06)",
+        borderRadius: 1,
+        backgroundColor: "transparent",
         alignItems: "center",
         justifyContent: "center",
     },

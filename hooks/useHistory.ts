@@ -61,7 +61,6 @@ export function useHistory() {
             count: item.count,
             target: item.target,
         }));
-        router.back();
     };
 
     const filteredHistory = history.filter((item) =>

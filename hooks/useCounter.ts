@@ -173,6 +173,14 @@ export function useCounter() {
     }, [zikir, isFinished, hapticsEnabled, save, updateHistory]);
 
     const startFreeMode = useCallback(async () => {
+        // If already in free mode, just close sidebar
+        if (zikir.target === 0) {
+            setIsSidebarOpen(false);
+            sidebarTranslateX.value = withTiming(-width, { duration: 250 });
+            sidebarOpacity.value = withTiming(0, { duration: 250 });
+            return;
+        }
+
         const freeZikir: ZikirData = {
             id: "free_" + Date.now(),
             text: t("menu.free_mode"),
@@ -187,7 +195,7 @@ export function useCounter() {
         if (hapticsEnabled) {
             await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
         }
-    }, [hapticsEnabled, save, updateHistory, sidebarOpacity, sidebarTranslateX, t]);
+    }, [zikir.target, hapticsEnabled, save, updateHistory, sidebarOpacity, sidebarTranslateX, t]);
 
     const toggleSidebar = useCallback(() => {
         const nextState = !isSidebarOpen;

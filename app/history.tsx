@@ -2,6 +2,7 @@ import React from "react";
 import { View, Text, FlatList, Pressable } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import Animated, { FadeIn } from "react-native-reanimated";
 
 import { Stack } from "expo-router";
 
@@ -23,24 +24,23 @@ export default function HistoryScreen() {
   } = useHistory();
 
   return (
-    <View style={styles.container}>
-      <Stack.Screen
-        options={{
-          headerRight: () => (
-            <Pressable
-              onPress={clearHistory}
-              style={({ pressed }) => [
-                styles.headerIcon,
-                { marginRight: 8 },
-                pressed && { opacity: 0.7, transform: [{ scale: 0.92 }] },
-              ]}
-            >
-              <Ionicons name="trash-outline" size={20} color="#EF4444" />
-            </Pressable>
-          ),
-        }}
-      />
-      <GestureHandlerRootView style={{ flex: 1 }}>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <View style={styles.container}>
+        <Stack.Screen
+          options={{
+            headerRight: () => (
+              <Pressable
+                onPress={clearHistory}
+                style={({ pressed }) => [
+                  styles.headerIcon,
+                  pressed && { opacity: 0.7, transform: [{ scale: 0.92 }] },
+                ]}
+              >
+                <Ionicons name="trash-outline" size={20} color="#EF4444" />
+              </Pressable>
+            ),
+          }}
+        />
         <View style={styles.tabBar}>
           <Pressable
             style={[styles.tab, activeTab === "ongoing" && styles.tabActive]}
@@ -61,7 +61,11 @@ export default function HistoryScreen() {
         </View>
 
         {history.length > 0 ? (
-          <View style={{ flex: 1 }}>
+          <Animated.View 
+            key={activeTab}
+            entering={FadeIn.duration(300)} 
+            style={{ flex: 1 }}
+          >
             <FlatList
               data={history}
               renderItem={({ item }) => (
@@ -76,16 +80,20 @@ export default function HistoryScreen() {
               keyExtractor={(item) => item.id}
               contentContainerStyle={styles.list}
             />
-          </View>
+          </Animated.View>
         ) : (
-          <View style={styles.empty}>
+          <Animated.View 
+            key={activeTab}
+            entering={FadeIn.duration(300)} 
+            style={styles.empty}
+          >
             <Ionicons name="time-outline" size={64} color={Colors.dark.border} />
             <Text style={styles.emptyText}>
               {activeTab === "finished" ? t("history.empty_finished") : t("history.empty_ongoing")}
             </Text>
-          </View>
+          </Animated.View>
         )}
-      </GestureHandlerRootView>
-    </View>
+      </View>
+    </GestureHandlerRootView>
   );
 }
