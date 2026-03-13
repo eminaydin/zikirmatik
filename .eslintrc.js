@@ -1,6 +1,6 @@
 module.exports = {
   extends: ["expo", "prettier"],
-  plugins: ["react-native", "@typescript-eslint"],
+  plugins: ["react-native", "@typescript-eslint", "unused-imports"],
   parser: "@typescript-eslint/parser",
   rules: {
     "react-native/no-unused-styles": "error",
@@ -9,7 +9,18 @@ module.exports = {
     "react-native/no-color-literals": "warn",
     "react-native/no-raw-text": "warn",
     "react-native/no-single-element-style-arrays": "error",
-    "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "off",
+    "unused-imports/no-unused-imports": "error",
+    "unused-imports/no-unused-vars": [
+      "warn",
+      {
+        vars: "all",
+        varsIgnorePattern: "^_",
+        args: "after-used",
+        argsIgnorePattern: "^_",
+      },
+    ],
     "no-console": ["warn", { allow: ["warn", "error"] }],
   },
 };

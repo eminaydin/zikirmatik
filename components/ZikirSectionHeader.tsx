@@ -1,7 +1,11 @@
 import React, { useEffect } from "react";
-import { Text, Pressable } from "react-native";
+import { Pressable } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import Animated, { useSharedValue, useAnimatedStyle, withTiming } from "react-native-reanimated";
+import Animated, {
+  useSharedValue,
+  useAnimatedStyle,
+  withTiming,
+} from "react-native-reanimated";
 import { styles } from "../styles/list.styles";
 import { Colors } from "../constants/Colors";
 
