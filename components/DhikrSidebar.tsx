@@ -3,6 +3,7 @@ import { View, Text, Pressable, ScrollView } from "react-native";
 import Animated from "react-native-reanimated";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
+import Constants from "expo-constants";
 import { styles } from "../styles/index.styles";
 import { Colors } from "../constants/Colors";
 
@@ -207,7 +208,9 @@ export const DhikrSidebar: React.FC<DhikrSidebarProps> = ({
         </ScrollView>
 
         <View style={styles.sidebarFooter}>
-          <Text style={styles.versionText}>V 2.0.0</Text>
+          <Text style={styles.versionText}>
+            v{Constants.expoConfig?.version}
+          </Text>
         </View>
       </Animated.View>
     </>
