@@ -19,6 +19,7 @@ export default function HistoryScreen() {
     deleteItem,
     clearHistory,
     selectItem,
+    editItem,
     t,
     i18n,
   } = useHistory();
@@ -46,7 +47,12 @@ export default function HistoryScreen() {
             style={[styles.tab, activeTab === "ongoing" && styles.tabActive]}
             onPress={() => setActiveTab("ongoing")}
           >
-            <Text style={[styles.tabText, activeTab === "ongoing" && styles.tabTextActive]}>
+            <Text
+              style={[
+                styles.tabText,
+                activeTab === "ongoing" && styles.tabTextActive,
+              ]}
+            >
               {t("history.ongoing_tab")}
             </Text>
           </Pressable>
@@ -54,16 +60,21 @@ export default function HistoryScreen() {
             style={[styles.tab, activeTab === "finished" && styles.tabActive]}
             onPress={() => setActiveTab("finished")}
           >
-            <Text style={[styles.tabText, activeTab === "finished" && styles.tabTextActive]}>
+            <Text
+              style={[
+                styles.tabText,
+                activeTab === "finished" && styles.tabTextActive,
+              ]}
+            >
               {t("history.finished_tab")}
             </Text>
           </Pressable>
         </View>
 
         {history.length > 0 ? (
-          <Animated.View 
+          <Animated.View
             key={activeTab}
-            entering={FadeIn.duration(300)} 
+            entering={FadeIn.duration(300)}
             style={{ flex: 1 }}
           >
             <FlatList
@@ -73,6 +84,7 @@ export default function HistoryScreen() {
                   item={item}
                   onDelete={deleteItem}
                   onSelect={selectItem}
+                  onEdit={editItem}
                   t={t}
                   language={i18n.language}
                 />
@@ -82,14 +94,20 @@ export default function HistoryScreen() {
             />
           </Animated.View>
         ) : (
-          <Animated.View 
+          <Animated.View
             key={activeTab}
-            entering={FadeIn.duration(300)} 
+            entering={FadeIn.duration(300)}
             style={styles.empty}
           >
-            <Ionicons name="time-outline" size={64} color={Colors.dark.border} />
+            <Ionicons
+              name="time-outline"
+              size={64}
+              color={Colors.dark.border}
+            />
             <Text style={styles.emptyText}>
-              {activeTab === "finished" ? t("history.empty_finished") : t("history.empty_ongoing")}
+              {activeTab === "finished"
+                ? t("history.empty_finished")
+                : t("history.empty_ongoing")}
             </Text>
           </Animated.View>
         )}

@@ -66,6 +66,7 @@
   },
   "settings": {
     "title": "Add New Dhikr",
+    "edit_title": "Edit Dhikr",
     "zikir_text_placeholder": "Dhikr text...",
     "zikir_text_placeholder_example": "e.g. La ilaha illallah",
     "arabic_text_placeholder": "Arabic text (optional)",

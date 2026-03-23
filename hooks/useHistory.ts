@@ -74,6 +74,18 @@ export function useHistory() {
     router.back();
   };
 
+  const editItem = (item: HistoryItem) => {
+    router.push({
+      pathname: "/settings",
+      params: {
+        id: item.id,
+        text: item.text,
+        arabic: item.arabic,
+        target: item.target.toString(),
+      },
+    });
+  };
+
   const filteredHistory = history.filter((item) =>
     activeTab === "finished" ? item.isFinished : !item.isFinished,
   );
@@ -85,6 +97,7 @@ export function useHistory() {
     deleteItem,
     clearHistory,
     selectItem,
+    editItem,
     t,
     i18n,
   };

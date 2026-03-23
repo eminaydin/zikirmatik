@@ -14,6 +14,8 @@ import { styles } from "../styles/settings.styles";
 import { Colors } from "../constants/Colors";
 import { useSettings } from "../hooks/useSettings";
 
+import { Stack } from "expo-router";
+
 export default function SettingsScreen() {
   const {
     t,
@@ -30,6 +32,7 @@ export default function SettingsScreen() {
     showTimePicker,
     setShowTimePicker,
     handleSave,
+    isEdit,
   } = useSettings();
 
   return (
@@ -37,7 +40,16 @@ export default function SettingsScreen() {
       behavior={Platform.OS === "ios" ? "padding" : "height"}
       style={styles.container}
     >
-      <ScrollView contentContainerStyle={styles.scroll} keyboardShouldPersistTaps="handled" showsVerticalScrollIndicator={false}>
+      <Stack.Screen
+        options={{
+          title: isEdit ? t("settings.edit_title") : t("settings.title"),
+        }}
+      />
+      <ScrollView
+        contentContainerStyle={styles.scroll}
+        keyboardShouldPersistTaps="handled"
+        showsVerticalScrollIndicator={false}
+      >
         <Text style={styles.hint}>{t("settings.hint")}</Text>
 
         <View style={styles.section}>
@@ -79,12 +91,18 @@ export default function SettingsScreen() {
         <View style={styles.divider} />
 
         <View style={styles.section}>
-          <Text style={styles.sectionHeader}>{t("settings.system_settings")}</Text>
+          <Text style={styles.sectionHeader}>
+            {t("settings.system_settings")}
+          </Text>
 
           <View style={styles.settingRow}>
             <View>
-              <Text style={styles.settingLabel}>{t("settings.daily_reminder")}</Text>
-              <Text style={styles.settingSubLabel}>{t("settings.daily_reminder_sub")}</Text>
+              <Text style={styles.settingLabel}>
+                {t("settings.daily_reminder")}
+              </Text>
+              <Text style={styles.settingSubLabel}>
+                {t("settings.daily_reminder_sub")}
+              </Text>
             </View>
             <Switch
               value={reminderEnabled}
@@ -95,8 +113,13 @@ export default function SettingsScreen() {
           </View>
 
           {reminderEnabled && (
-            <Pressable onPress={() => setShowTimePicker(true)} style={styles.timeSelectRow}>
-              <Text style={styles.settingLabel}>{t("home.reminder_time_label")}</Text>
+            <Pressable
+              onPress={() => setShowTimePicker(true)}
+              style={styles.timeSelectRow}
+            >
+              <Text style={styles.settingLabel}>
+                {t("home.reminder_time_label")}
+              </Text>
               <View style={styles.timeBadge}>
                 <Text style={styles.timeText}>
                   {reminderTime.getHours().toString().padStart(2, "0")}:
@@ -129,7 +152,9 @@ export default function SettingsScreen() {
           onPress={handleSave}
           disabled={!text.trim()}
         >
-          <Text style={styles.buttonText}>{t("settings.save_start")}</Text>
+          <Text style={styles.buttonText}>
+            {isEdit ? t("common.save") : t("settings.save_start")}
+          </Text>
         </Pressable>
       </ScrollView>
     </KeyboardAvoidingView>

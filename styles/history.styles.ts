@@ -143,4 +143,15 @@ export const styles = StyleSheet.create({
   cardCountFinished: {
     color: "#10B981",
   },
+  cardFooter: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginTop: 8,
+  },
+  editButton: {
+    padding: 8,
+    borderRadius: 8,
+    backgroundColor: "rgba(255, 255, 255, 0.05)",
+  },
 });

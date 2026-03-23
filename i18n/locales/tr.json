@@ -66,6 +66,7 @@
   },
   "settings": {
     "title": "Yeni Zikir Ekle",
+    "edit_title": "Zikri Düzenle",
     "zikir_text_placeholder": "Zikir metni...",
     "zikir_text_placeholder_example": "Örn: La İlahe İllallah",
     "arabic_text_placeholder": "Arapça metin (opsiyonel)",
