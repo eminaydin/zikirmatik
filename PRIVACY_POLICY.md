@@ -1,6 +1,6 @@
 # Gizlilik Politikası - Zikirmatik
 
-Son Güncelleme: 1 Mart 2026
+Son Güncelleme: 23 Mart 2026
 
 Bu Gizlilik Politikası, mobil uygulamamızı kullandığınızda Zikirmatik'in ("biz", "bizim" veya "bize") bilgileri nasıl işlediğini açıklar.
 
@@ -8,17 +8,17 @@ Bu Gizlilik Politikası, mobil uygulamamızı kullandığınızda Zikirmatik'in 
 
 Zikirmatik, gizlilik odaklı bir uygulama olarak tasarlanmıştır.
 
-- **Kişisel Veri Yok**: Kişisel olarak tanımlanabilir herhangi bir bilgiyi (PII) toplamıyoruz, saklamıyoruz veya iletmiyoruz.
-- **Yerel Depolama**: Tüm zikir geçmişiniz ve ayarlarınız cihazınızda yerel olarak saklanır. Bu verilere erişimimiz yoktur.
-- **Bulut Senkronizasyonu Yok**: Verilerinizi saklamak için herhangi bir bulut sunucusu kullanmıyoruz.
+- **Kişisel Veri Yok**: Kişisel olarak tanımlanabilir herhangi bir bilgiyi (PII) toplamıyoruz, saklamıyoruz veya iletmiyoruz. Kayıt olmanız gerekmez.
+- **Yerel Depolama**: Kişisel zikir geçmişiniz ve ayarlarınız cihazınızda yerel olarak saklanır. Bu verilere erişimimiz yoktur.
+- **Toplu Zikir (Bulut Senkronizasyonu)**: "Toplu Zikir" (Dhikr Room) özelliğini kullandığınızda, zikir ilerlemesinin katılımcılar arasında gerçek zamanlı senkronize edilebilmesi için geçici veriler (oda kodu, zikir adı, hedef ve katılımcı sayıları) güvenli bir bulut veritabanında (Firebase) saklanır. Bu veriler herhangi bir kişisel kimlikle eşleştirilmez ve sadece o seansın işleyişi için kullanılır.
 
 ## 2. Bilgi Kullanımı
 
-Herhangi bir veri toplamadığımız için kullanıcı bilgilerini kullanmıyoruz, paylaşmıyoruz veya satmıyoruz.
+Toplanan senkronizasyon verileri sadece odadaki katılımcıların ilerlemesini göstermek için kullanılır. Kullanıcı bilgilerini kullanmıyoruz, paylaşmıyoruz veya satmıyoruz.
 
 ## 3. Üçüncü Taraf Hizmetleri
 
-Zikirmatik, Expo ve React Native kullanılarak oluşturulmuştur. Uygulama, veri toplayan herhangi bir üçüncü taraf analiz veya reklam hizmetiyle entegre değildir.
+Zikirmatik, Expo ve Firebase kullanılarak oluşturulmuştur. Firebase, hem "Toplu Zikir" özelliğinin senkronizasyonu hem de uygulamanın performansını ve hatalarını izlemek amacıyla **anonim** kullanım verileri (Firebase Analytics) toplamak için kullanılır. Bu veriler hiçbir şekilde kimliğinizle eşleştirilmez ve sadece uygulamanın teknik gelişimine katkıda bulunmak için kullanılır. Uygulama, kişisel veri toplayan herhangi bir üçüncü taraf reklam hizmetiyle entegre değildir.
 
 ## 4. Çocukların Gizliliği
 
@@ -37,7 +37,7 @@ Bu Gizlilik Politikası hakkında herhangi bir sorunuz varsa GitHub sayfamız ü
 
 # Privacy Policy for Zikirmatik
 
-Last updated: March 01, 2026
+Last updated: March 23, 2026
 
 This Privacy Policy describes how Zikirmatik ("we", "our", or "us") handles information when you use our mobile application.
 
@@ -45,17 +45,17 @@ This Privacy Policy describes how Zikirmatik ("we", "our", or "us") handles info
 
 Zikirmatik is designed to be a privacy-focused application.
 
-- **No Personal Data**: We do not collect, store, or transmit any personally identifiable information (PII).
-- **Local Storage**: All your dhikr history and settings are stored locally on your device. We do not have access to this data.
-- **No Cloud Sync**: We do not use any cloud servers to store your data.
+- **No Personal Data**: We do not collect, store, or transmit any personally identifiable information (PII). No registration is required.
+- **Local Storage**: All your personal dhikr history and settings are stored locally on your device. We do not have access to this data.
+- **Group Dhikr (Cloud Sync)**: When you use the "Group Dhikr" (Dhikr Room) feature, temporary data (room code, dhikr name, target, and participant counts) is stored in a secure cloud database (Firebase) to synchronize progress in real-time between participants. This data is not linked to any personal identity and is used solely for the duration of that session.
 
 ## 2. Information Usage
 
-Since we do not collect any data, we do not use, share, or sell any user information.
+The collected synchronization data is used only to show progress to participants in the same room. We do not use, share, or sell any user information.
 
 ## 3. Third-Party Services
 
-Zikirmatik is built using Expo and React Native. The app does not integrate with any third-party analytics or advertising services that collect data.
+Zikirmatik is built using Expo and Firebase. Firebase is used both for synchronizing the "Group Dhikr" feature and for collecting **anonymous** usage data (Firebase Analytics) to monitor the app's performance and track technical errors. This data is in no way linked to your identity and is used solely to contribute to the app's technical improvement. The app does not integrate with any third-party advertising services that collect personal data.
 
 ## 4. Children's Privacy
 
