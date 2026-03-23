@@ -151,8 +151,39 @@ export function useCounter() {
     await save(updatedZikir);
     await updateHistory(updatedZikir);
 
+    // Sync with Firebase if it's a group zikir
+    if (zikir.isGroup && zikir.groupRoomId && zikir.memberId) {
+      try {
+        const { ref, runTransaction, set } = await import("firebase/database");
+        const { db } = await import("../services/firebase");
+        const countRef = ref(
+          db,
+          `rooms/${zikir.groupRoomId}/members/${zikir.memberId}/count`,
+        );
+        const finishedRef = ref(
+          db,
+          `rooms/${zikir.groupRoomId}/members/${zikir.memberId}/isFinished`,
+        );
+
+        await runTransaction(countRef, (current) => (current || 0) + 1).then(
+          async (res) => {
+            if (res.snapshot.val() >= zikir.target) {
+              await set(finishedRef, true);
+              if (hapticsEnabled) {
+                await Haptics.notificationAsync(
+                  Haptics.NotificationFeedbackType.Success,
+                );
+              }
+            }
+          },
+        );
+      } catch (e) {
+        console.error("Firebase sync error from main screen:", e);
+      }
+    }
+
     if (newCount === zikir.target) {
-      if (hapticsEnabled) {
+      if (hapticsEnabled && !zikir.isGroup) {
         await Haptics.notificationAsync(
           Haptics.NotificationFeedbackType.Success,
         );
@@ -169,6 +200,8 @@ export function useCounter() {
   }, [zikir, isFinished, hapticsEnabled, save, updateHistory, scale]);
 
   const resetCount = useCallback(async () => {
+    if (zikir.isGroup) return; // Prevent resetting group zikirs from main screen
+
     if (hapticsEnabled) {
       await Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning);
     }

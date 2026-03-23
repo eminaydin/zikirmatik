@@ -78,6 +78,46 @@ export const HistoryItem: React.FC<HistoryItemProps> = ({
         >
           <View style={styles.cardHeader}>
             <View style={{ flex: 1 }}>
+              <View
+                style={{
+                  flexDirection: "row",
+                  alignItems: "center",
+                  gap: 6,
+                  marginBottom: 4,
+                }}
+              >
+                {item.isGroup && (
+                  <View
+                    style={{
+                      backgroundColor: "#EAB308",
+                      paddingHorizontal: 6,
+                      paddingVertical: 2,
+                      borderRadius: 4,
+                    }}
+                  >
+                    <Text
+                      style={{
+                        fontSize: 9,
+                        fontWeight: "900",
+                        color: "#0F172A",
+                      }}
+                    >
+                      {t("group.tag")}
+                    </Text>
+                  </View>
+                )}
+                {item.roomCode && (
+                  <Text
+                    style={{
+                      fontSize: 11,
+                      fontWeight: "700",
+                      color: "#EAB308",
+                    }}
+                  >
+                    #{item.roomCode}
+                  </Text>
+                )}
+              </View>
               <Text style={styles.cardTitle} numberOfLines={2}>
                 {item.text}
               </Text>
@@ -88,7 +128,13 @@ export const HistoryItem: React.FC<HistoryItemProps> = ({
                 ]}
               >
                 <Ionicons
-                  name={item.isFinished ? "checkmark-circle" : "time"}
+                  name={
+                    item.isGroup
+                      ? "people"
+                      : item.isFinished
+                        ? "checkmark-circle"
+                        : "time"
+                  }
                   size={12}
                   color={item.isFinished ? "#10B981" : "#EAB308"}
                 />
@@ -99,7 +145,9 @@ export const HistoryItem: React.FC<HistoryItemProps> = ({
                   ]}
                 >
                   {item.isFinished
-                    ? t("history.status_finished")
+                    ? item.isGroup
+                      ? t("group.all_done")
+                      : t("history.status_finished")
                     : t("history.status_ongoing")}
                 </Text>
               </View>

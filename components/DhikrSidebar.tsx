@@ -49,10 +49,16 @@ export const DhikrSidebar: React.FC<DhikrSidebarProps> = ({
           </Pressable>
         </View>
 
-        <ScrollView style={styles.sidebarContent} showsVerticalScrollIndicator={false}>
+        <ScrollView
+          style={styles.sidebarContent}
+          showsVerticalScrollIndicator={false}
+        >
           <Pressable
             onPress={startFreeMode}
-            style={({ pressed }) => [styles.sidebarItem, pressed && styles.sidebarItemPressed]}
+            style={({ pressed }) => [
+              styles.sidebarItem,
+              pressed && styles.sidebarItemPressed,
+            ]}
           >
             <View style={styles.sidebarIconYellow}>
               <Ionicons name="infinite" size={22} color="#EAB308" />
@@ -65,7 +71,10 @@ export const DhikrSidebar: React.FC<DhikrSidebarProps> = ({
               toggleSidebar();
               router.push("/settings");
             }}
-            style={({ pressed }) => [styles.sidebarItem, pressed && styles.sidebarItemPressed]}
+            style={({ pressed }) => [
+              styles.sidebarItem,
+              pressed && styles.sidebarItemPressed,
+            ]}
           >
             <View style={styles.sidebarIconBlue}>
               <Ionicons name="add-circle" size={22} color="#3B82F6" />
@@ -78,12 +87,17 @@ export const DhikrSidebar: React.FC<DhikrSidebarProps> = ({
               toggleSidebar();
               router.push("/list");
             }}
-            style={({ pressed }) => [styles.sidebarItem, pressed && styles.sidebarItemPressed]}
+            style={({ pressed }) => [
+              styles.sidebarItem,
+              pressed && styles.sidebarItemPressed,
+            ]}
           >
             <View style={styles.sidebarIconIndigo}>
               <Ionicons name="bookmarks" size={22} color="#6366F1" />
             </View>
-            <Text style={styles.sidebarItemText}>{t("menu.recommendations")}</Text>
+            <Text style={styles.sidebarItemText}>
+              {t("menu.recommendations")}
+            </Text>
           </Pressable>
 
           <Pressable
@@ -91,9 +105,17 @@ export const DhikrSidebar: React.FC<DhikrSidebarProps> = ({
               toggleSidebar();
               router.push("/history");
             }}
-            style={({ pressed }) => [styles.sidebarItem, pressed && styles.sidebarItemPressed]}
+            style={({ pressed }) => [
+              styles.sidebarItem,
+              pressed && styles.sidebarItemPressed,
+            ]}
           >
-            <View style={[styles.sidebarIconWrapper, { backgroundColor: "rgba(139, 92, 246, 0.1)" }]}>
+            <View
+              style={[
+                styles.sidebarIconWrapper,
+                { backgroundColor: "rgba(139, 92, 246, 0.1)" },
+              ]}
+            >
               <Ionicons name="time" size={22} color="#8B5CF6" />
             </View>
             <Text style={styles.sidebarItemText}>{t("menu.history")}</Text>
@@ -104,7 +126,10 @@ export const DhikrSidebar: React.FC<DhikrSidebarProps> = ({
               toggleSidebar();
               router.push("/stats");
             }}
-            style={({ pressed }) => [styles.sidebarItem, pressed && styles.sidebarItemPressed]}
+            style={({ pressed }) => [
+              styles.sidebarItem,
+              pressed && styles.sidebarItemPressed,
+            ]}
           >
             <View style={styles.sidebarIconTeal}>
               <Ionicons name="stats-chart" size={20} color="#14B8A6" />
@@ -115,11 +140,40 @@ export const DhikrSidebar: React.FC<DhikrSidebarProps> = ({
           <Pressable
             onPress={() => {
               toggleSidebar();
+              router.push("/group");
+            }}
+            style={({ pressed }) => [
+              styles.sidebarItem,
+              pressed && styles.sidebarItemPressed,
+            ]}
+          >
+            <View
+              style={[
+                styles.sidebarIconWrapper,
+                { backgroundColor: "rgba(234, 179, 8, 0.1)" },
+              ]}
+            >
+              <Ionicons name="people" size={22} color="#EAB308" />
+            </View>
+            <Text style={styles.sidebarItemText}>{t("group.title")}</Text>
+          </Pressable>
+
+          <Pressable
+            onPress={() => {
+              toggleSidebar();
               setIsRateModalVisible(true);
             }}
-            style={({ pressed }) => [styles.sidebarItem, pressed && styles.sidebarItemPressed]}
+            style={({ pressed }) => [
+              styles.sidebarItem,
+              pressed && styles.sidebarItemPressed,
+            ]}
           >
-            <View style={[styles.sidebarIconWrapper, { backgroundColor: "rgba(236, 72, 153, 0.1)" }]}>
+            <View
+              style={[
+                styles.sidebarIconWrapper,
+                { backgroundColor: "rgba(236, 72, 153, 0.1)" },
+              ]}
+            >
               <Ionicons name="star" size={22} color="#EC4899" />
             </View>
             <Text style={styles.sidebarItemText}>{t("menu.rate_app")}</Text>
@@ -133,10 +187,18 @@ export const DhikrSidebar: React.FC<DhikrSidebarProps> = ({
               <Pressable
                 key={lang.code}
                 onPress={() => changeLanguage(lang.code)}
-                style={[styles.langItem, currentLanguage === lang.code && styles.langItemActive]}
+                style={[
+                  styles.langItem,
+                  currentLanguage === lang.code && styles.langItemActive,
+                ]}
               >
                 <Text style={styles.langFlag}>{lang.flag}</Text>
-                <Text style={[styles.langLabel, currentLanguage === lang.code && styles.langLabelActive]}>
+                <Text
+                  style={[
+                    styles.langLabel,
+                    currentLanguage === lang.code && styles.langLabelActive,
+                  ]}
+                >
                   {lang.label}
                 </Text>
               </Pressable>

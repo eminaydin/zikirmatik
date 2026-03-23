@@ -58,9 +58,18 @@ export function useHistory() {
     );
   };
 
-  const selectItem = async (item: HistoryItem) => {
-    if (item.isFinished) return;
+  const selectItem = async (item: any) => {
+    if (item.isFinished && !item.isGroup) return;
     await Haptics.selectionAsync();
+
+    if (item.isGroup && item.groupRoomId && item.memberId) {
+      router.push({
+        pathname: "/group-counter",
+        params: { roomId: item.groupRoomId, memberId: item.memberId },
+      });
+      return;
+    }
+
     await AsyncStorage.setItem(
       "selected_zikir",
       JSON.stringify({
@@ -74,7 +83,11 @@ export function useHistory() {
     router.back();
   };
 
-  const editItem = (item: HistoryItem) => {
+  const editItem = (item: any) => {
+    if (item.isGroup) {
+      router.push("/group");
+      return;
+    }
     router.push({
       pathname: "/settings",
       params: {

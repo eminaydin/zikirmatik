@@ -44,6 +44,14 @@ export default function RootLayout() {
           name="stats"
           options={{ title: t("stats.title"), presentation: "modal" }}
         />
+        <Stack.Screen
+          name="group"
+          options={{ title: t("group.title"), presentation: "modal" }}
+        />
+        <Stack.Screen
+          name="group-counter"
+          options={{ title: t("group.counter_title"), headerShown: false }}
+        />
       </Stack>
     </>
   );
