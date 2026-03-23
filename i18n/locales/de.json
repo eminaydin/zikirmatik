@@ -18,7 +18,7 @@
       "ru": "Русский",
       "bs": "Bosanski"
     },
-    "done": "Done"
+    "done": "Fertig"
   },
   "menu": {
     "title": "Dhikr-Zähler",
@@ -36,7 +36,7 @@
     "daily_notification": "Tägliche Benachrichtigung",
     "daily_notification_sub": "Nehmen wir uns eine ruhige Zeit des Friedens für dich.",
     "reminder_time_label": "Erinnerungszeit",
-    "target_reached": "Target Reached"
+    "target_reached": "Ziel erreicht"
   },
   "history": {
     "title": "Mein Dhikr-Verlauf",
@@ -79,9 +79,10 @@
     "system_settings": "SYSTEMEINSTELLUNGEN",
     "daily_reminder": "Tägliche Erinnerung",
     "daily_reminder_sub": "Sendet eine Benachrichtigung, um dich an den Dhikr des Tages zu erinnern.",
-    "error_empty": "Bitte gib einen Dhikr-Text ein.",
-    "reminder_desc": "Sends a notification to remind you of the day's dhikr.",
-    "reminder_time": "Reminder Time"
+    "notifications": "Benachrichtigungen",
+    "reminder_time": "Erinnerungszeit",
+    "reminder_desc": "Gibt eine Benachrichtigung aus, um dich an den heutigen Dhikr zu erinnern.",
+    "error_empty": "Bitte gib einen Dhikr-Text ein."
   },
   "recommendations": {
     "1": {
@@ -134,10 +135,15 @@
       "translation": "O Allah! Segne unseren Herrn Muhammad mit einem Gebet, durch das Du uns von allen Schrecken und Katastrophen rettest.",
       "source": "Salat-ı Munjiyah"
     },
+    "16": {
+      "text": "Allahümme salli alâ Seyyidinâ Muhammedin ve alâ âli Seyyidinâ Muhammed",
+      "translation": "O Allah! Schenke unserem Herrn Muhammad ve der Familie unseres Herrn Muhammads Segen.",
+      "source": "Salawat"
+    },
     "11": {
-      "text": "Allahumme salli salaten kamilatan wa sallim salaman tamman ala sayyidina Muhammadinil-ladhi tanhallo bihil-uqad",
-      "translation": "O Allah! Schenke unserem Herrn Muhammad einen vollkommenen Segen und einen vollständigen Frieden, durch den Knoten gelöst werden.",
-      "source": "Salat-ı Tafrijiyah"
+      "text": "Allâhumme salli salâten kâmileten ve sellim selâmen tâmmen alâ seyyidinâ Muhammedinillezî tenhallü bihil ukadü ve tenfericu bihil-kürebü ve tukdâ bihil-havâicu ve tünâlü bihir-reğâibü ve hüsnül-havâtimi ve yustaskal ğamâmu bivechihil Kerîm ve alâ âlihî ve sahbihi fî külli lemhatin ve nefesin bi adedi külli ma’lûmin lek",
+      "translation": "O Allah, gewähre ein vollkommenes Gebet und vollkommenen Frieden unserem Herrn Muhammad, durch den Knoten gelöst werden, durch den Kummer entfernt wird, durch den Bedürfnisse erfüllt werden, durch den Wünsche und ein gutes Ende erreicht werden, und durch dessen edles Gesicht Regen von den Wolken erbeten wird, und segne seine Familie und Gefährten in jedem Augenblick und jedem Atemzug, so oft wie die Zahl alles Dir Bekannten.",
+      "source": "Salat al-Tafrijiyah"
     },
     "12": {
       "text": "Subhanallahi wal-hamdülillahi wa la ilaha illallahu vallahu akbar",
@@ -179,5 +185,12 @@
     "today": "Heute",
     "last_7_days": "Letzte 7 Tage",
     "motivation": "Beständigkeit ist der Schlüssel! Regelmäßiger Dhikr bringt dem Herzen Frieden."
+  },
+  "rating": {
+    "title": "Gefällt dir die App?",
+    "description": "Wenn Zikirmatik dir hilft, nimm dir bitte einen Moment Zeit für eine Bewertung. Deine Unterstützung hilft uns, mehr Menschen zu erreichen.",
+    "submit": "Jetzt bewerten",
+    "remind_later": "Später erinnern",
+    "no_thanks": "Nein, danke"
   }
 }

@@ -18,7 +18,7 @@
       "ru": "Русский",
       "bs": "Bosanski"
     },
-    "done": "Done"
+    "done": "Terminé"
   },
   "menu": {
     "title": "Compteur Tasbih",
@@ -36,7 +36,7 @@
     "daily_notification": "Notification quotidienne",
     "daily_notification_sub": "Prévoyons un moment de paix pour toi.",
     "reminder_time_label": "Heure du rappel",
-    "target_reached": "Target Reached"
+    "target_reached": "Objectif atteint"
   },
   "history": {
     "title": "Mon historique de Dhikr",
@@ -79,9 +79,10 @@
     "system_settings": "PARAMÈTRES SYSTÈME",
     "daily_reminder": "Rappel Quotidien",
     "daily_reminder_sub": "Envoie une notification pour te rappeler le dhikr du jour.",
-    "error_empty": "S'il te plaît, entre un texte pour le dhikr.",
-    "reminder_desc": "Sends a notification to remind you of the day's dhikr.",
-    "reminder_time": "Reminder Time"
+    "notifications": "Notifications",
+    "reminder_time": "Heure du rappel",
+    "reminder_desc": "Envoie une notification pour vous rappeler le dhikr du jour.",
+    "error_empty": "S'il te plaît, entre un texte pour le dhikr."
   },
   "recommendations": {
     "1": {
@@ -134,9 +135,14 @@
       "translation": "Ô Allah ! Prie sur notre seigneur Muhammad d'une prière par laquelle Tu nous sauves de toutes les terreurs et calamités.",
       "source": "Salat al-Munjiyah"
     },
+    "16": {
+      "text": "Allahümme salli alâ Seyyidinâ Muhammedin ve alâ âli Seyyidinâ Muhammed",
+      "translation": "Ô Allah ! Répands Tes bénédictions sur notre seigneur Muhammad et sur la famille de notre seigneur Muhammad.",
+      "source": "Salawat"
+    },
     "11": {
-      "text": "Allahumme salli salaten kamilatan wa sallim salaman tamman ala sayyidina Muhammadinil-ladhi tanhallo bihil-uqad",
-      "translation": "Ô Allah ! Accorde une bénédiction parfaite et une paix complète à notre seigneur Muhammad, par qui les nœuds sont dénoués.",
+      "text": "Allâhumme salli salâten kâmileten ve sellim selâmen tâmmen alâ seyyidinâ Muhammedinillezî tenhallü bihil ukadü ve tenfericu bihil-kürebü ve tukdâ bihil-havâicu ve tünâlü bihir-reğâibü ve hüsnül-havâtimi ve yustaskal ğamâmu bivechihil Kerîm ve alâ âlihî ve sahbihi fî külli lemhatin ve nefesin bi adedi külli ma’lûmin lek",
+      "translation": "Ô Allah, accorde une bénédiction parfaite et une paix complète à notre seigneur Muhammad, par qui les nœuds sont dénoués, par qui les soucis sont dissipés, par qui les besoins sont comblés, par qui les désirs sont exaucés ainsi qu'une bonne fin, et par son noble visage la pluie est demandée aux nuages, et bénis sa famille et ses compagnons à chaque regard et à chaque souffle, autant de fois que le nombre de tout ce qui Te est connu.",
       "source": "Salat al-Tafrijiyah"
     },
     "12": {
@@ -179,5 +185,12 @@
     "today": "Aujourd'hui",
     "last_7_days": "7 derniers jours",
     "motivation": "La régularité est la clé ! Le dhikr régulier apaise le cœur."
+  },
+  "rating": {
+    "title": "Aimez-vous l'application ?",
+    "description": "Si Zikirmatik vous aide, veuillez prendre un moment pour laisser une évaluation. Votre soutien nous aide à toucher plus de personnes.",
+    "submit": "Évaluer maintenant",
+    "remind_later": "Rappeler plus tard",
+    "no_thanks": "Non, merci"
   }
 }

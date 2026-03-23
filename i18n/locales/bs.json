@@ -18,7 +18,7 @@
       "bs": "Bosanski"
     },
     "finished": "ZAVRŠENO",
-    "done": "Done"
+    "done": "Završeno"
   },
   "menu": {
     "title": "Zikirmatik",
@@ -36,7 +36,7 @@
     "daily_notification": "Dnevna obavijest",
     "daily_notification_sub": "Odvojimo vrijeme za mir i duhovnost.",
     "reminder_time_label": "Vrijeme podsjetnika",
-    "target_reached": "Target Reached"
+    "target_reached": "Cilj ostvaren"
   },
   "history": {
     "title": "Moja historija zikra",
@@ -79,9 +79,10 @@
     "system_settings": "SISTEMSKE POSTAVKE",
     "daily_reminder": "Dnevni podsjetnik",
     "daily_reminder_sub": "Šalje obavijest da te podsjeti na zikr dana.",
-    "error_empty": "Molim te unesi tekst zikra.",
-    "reminder_desc": "Sends a notification to remind you of the day's dhikr.",
-    "reminder_time": "Reminder Time"
+    "notifications": "Obavijesti",
+    "reminder_time": "Vrijeme podsjetnika",
+    "reminder_desc": "Šalje obavijest da vas podsjeti na zikr dana.",
+    "error_empty": "Molim te unesi tekst zikra."
   },
   "recommendations": {
     "1": {
@@ -134,9 +135,14 @@
       "translation": "Allahu moj! Blagoslovi našeg prvaka Muhammeda onim blagoslovom kojim ćeš nas spasiti svih strahota i nedaća.",
       "source": "Salatun-Tundžina"
     },
+    "16": {
+      "text": "Allahümme salli alâ Seyyidinâ Muhammedin ve alâ âli Seyyidinâ Muhammed",
+      "translation": "Gospodaru moj! Blagoslovi našeg prvaka Muhammeda i porodicu našeg prvaka Muhammeda.",
+      "source": "Salavat"
+    },
     "11": {
-      "text": "Allahumme salli salaten kamileten ve sellim selamen tammen ala sejjidina Muhammedinillezi tenhallu bihil ukad",
-      "translation": "Allahu moj! Podari savršen blagoslov i potpuni mir našem prvaku Muhammedu, onome čijim se posredstvom čvorovi razrješuju.",
+      "text": "Allâhumme salli salâten kâmileten ve sellim selâmen tâmmen alâ seyyidinâ Muhammedinillezî tenhallü bihil ukadü ve tenfericu bihil-kürebü ve tukdâ bihil-havâicu ve tünâlü bihir-reğâibü ve hüsnül-havâtimi ve yustaskal ğamâmu bivechihil Kerîm ve alâ âlihî ve sahbihi fî külli lemhatin ve nefesin bi adedi külli ma’lûmin lek",
+      "translation": "Allahu moj! Podari savršen blagoslov i potpuni mir našem prvaku Muhammedu, onome čijim se posredstvom čvorovi razrješuju, nevolje otklanjaju, potrebe ispunjavaju, želje i lijepi završeci dostižu, a po čijem se plemenitom licu od oblaka kiša traži. Neka se donese blagoslov na njegovu porodicu i ashabe u svakom treptaju oka i dahu, onoliko koliko je Tebi poznato.",
       "source": "Salatun-Tefridžijja"
     },
     "12": {
@@ -179,5 +185,12 @@
     "today": "Danas",
     "last_7_days": "Posljednjih 7 dana",
     "motivation": "Dosljednost je ključ! Redovan zikr donosi mir srcu."
+  },
+  "rating": {
+    "title": "Sviđa li vam se aplikacija?",
+    "description": "Ako vam Zikirmatik pomaže, odvojite trenutak da nas ocijenite. Vaša podrška nam pomaže da dosegnemo više ljudi.",
+    "submit": "Ocijeni sada",
+    "remind_later": "Podsjeti me kasnije",
+    "no_thanks": "Ne, hvala"
   }
 }
