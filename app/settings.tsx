@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import {
-  StyleSheet,
   Text,
   View,
   TextInput,
@@ -8,113 +7,48 @@ import {
   KeyboardAvoidingView,
   Platform,
   ScrollView,
-  Alert,
+  Switch,
 } from "react-native";
-import { Colors } from "../constants/Colors";
-import { useRouter, useFocusEffect } from "expo-router";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import * as Haptics from "expo-haptics";
-import { Switch, Dimensions } from "react-native";
-import { useNotifications } from "../hooks/useNotifications";
 import DateTimePicker from "@react-native-community/datetimepicker";
-import { Ionicons } from "@expo/vector-icons";
-import { useTranslation } from "react-i18next";
+import { styles } from "../styles/settings.styles";
+import { Colors } from "../constants/Colors";
+import { useSettings } from "../hooks/useSettings";
 
-const { width } = Dimensions.get("window");
+import { Stack } from "expo-router";
 
 export default function SettingsScreen() {
-  const { t, i18n } = useTranslation();
-  const [text, setText] = useState("");
-  const [arabic, setArabic] = useState("");
-  const [target, setTarget] = useState("33");
-  const [reminderEnabled, setReminderEnabled] = useState(false);
-  const [reminderTime, setReminderTime] = useState(
-    new Date(new Date().setHours(20, 0, 0, 0)),
-  );
-  const [showTimePicker, setShowTimePicker] = useState(false);
-  const { scheduleDailyNotification, cancelAllNotifications } =
-    useNotifications();
-  const router = useRouter();
-
-  useFocusEffect(
-    React.useCallback(() => {
-      AsyncStorage.getItem("notification_time").then((val) => {
-        if (val) {
-          const { hour, minute } = JSON.parse(val);
-          const date = new Date();
-          date.setHours(hour, minute, 0, 0);
-          setReminderTime(date);
-          setReminderEnabled(true);
-        }
-      });
-    }, []),
-  );
-
-  const toggleReminder = async (value: boolean) => {
-    setReminderEnabled(value);
-    if (value) {
-      await scheduleDailyNotification(
-        reminderTime.getHours(),
-        reminderTime.getMinutes(),
-      );
-    } else {
-      await cancelAllNotifications();
-    }
-  };
-
-  const onTimeChange = async (event: any, selectedDate?: Date) => {
-    setShowTimePicker(Platform.OS === "ios");
-    if (selectedDate) {
-      setReminderTime(selectedDate);
-      if (reminderEnabled) {
-        await scheduleDailyNotification(
-          selectedDate.getHours(),
-          selectedDate.getMinutes(),
-        );
-      }
-    }
-  };
-
-  const handleSave = async () => {
-    const trimmed = text.trim();
-    if (!trimmed) {
-      Alert.alert(t("common.warning"), t("settings.error_empty"));
-      return;
-    }
-
-    const newItem = {
-      id: Date.now().toString(),
-      text: trimmed,
-      arabic: arabic.trim(),
-      target: parseInt(target) || 33,
-      count: 0,
-      date: new Date().toISOString(),
-      isFinished: false,
-    };
-
-    try {
-      const stored = await AsyncStorage.getItem("zikir_history");
-      const history = stored ? JSON.parse(stored) : [];
-      history.push(newItem);
-      await AsyncStorage.setItem(
-        "zikir_history",
-        JSON.stringify(history),
-      );
-      await AsyncStorage.setItem("selected_zikir", JSON.stringify(newItem));
-      router.back();
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  const {
+    t,
+    text,
+    setText,
+    arabic,
+    setArabic,
+    target,
+    setTarget,
+    reminderEnabled,
+    toggleReminder,
+    reminderTime,
+    onTimeChange,
+    showTimePicker,
+    setShowTimePicker,
+    handleSave,
+    isEdit,
+  } = useSettings();
 
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
       style={styles.container}
     >
+      <Stack.Screen
+        options={{
+          title: isEdit ? t("settings.edit_title") : t("settings.title"),
+        }}
+      />
       <ScrollView
         contentContainerStyle={styles.scroll}
         keyboardShouldPersistTaps="handled"
+        showsVerticalScrollIndicator={false}
       >
         <Text style={styles.hint}>{t("settings.hint")}</Text>
 
@@ -218,118 +152,11 @@ export default function SettingsScreen() {
           onPress={handleSave}
           disabled={!text.trim()}
         >
-          <Text style={styles.buttonText}>{t("settings.save_start")}</Text>
+          <Text style={styles.buttonText}>
+            {isEdit ? t("common.save") : t("settings.save_start")}
+          </Text>
         </Pressable>
       </ScrollView>
     </KeyboardAvoidingView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: Colors.dark.background,
-  },
-  scroll: {
-    padding: 20,
-    flexGrow: 1,
-  },
-  hint: {
-    color: Colors.dark.textSecondary,
-    fontSize: 14,
-    marginBottom: 24,
-    lineHeight: 20,
-  },
-  section: {
-    marginBottom: 20,
-  },
-  label: {
-    color: Colors.dark.textSecondary,
-    fontSize: 13,
-    marginBottom: 8,
-    fontWeight: "600",
-    textTransform: "uppercase",
-    letterSpacing: 0.5,
-  },
-  input: {
-    backgroundColor: Colors.dark.surface,
-    borderRadius: 12,
-    padding: 16,
-    color: Colors.dark.text,
-    fontSize: 16,
-    borderWidth: 1,
-    borderColor: Colors.dark.border,
-    minHeight: 52,
-  },
-  button: {
-    backgroundColor: Colors.dark.primary,
-    borderRadius: 12,
-    padding: 16,
-    alignItems: "center",
-    marginTop: 12,
-  },
-  buttonDisabled: {
-    opacity: 0.4,
-  },
-  buttonPressed: {
-    opacity: 0.8,
-  },
-  buttonText: {
-    color: "#0F172A",
-    fontSize: 16,
-    fontWeight: "700",
-  },
-  divider: {
-    height: 1,
-    backgroundColor: Colors.dark.border,
-    marginVertical: 32,
-    opacity: 0.5,
-  },
-  sectionHeader: {
-    color: Colors.dark.primary,
-    fontSize: 12,
-    fontWeight: "800",
-    letterSpacing: 2,
-    marginBottom: 20,
-  },
-  settingRow: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginBottom: 24,
-  },
-  settingLabel: {
-    color: Colors.dark.text,
-    fontSize: 15,
-    fontWeight: "600",
-    marginBottom: 4,
-  },
-  settingSubLabel: {
-    color: Colors.dark.textSecondary,
-    fontSize: 12,
-    width: width * 0.6,
-  },
-  timeSelectRow: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    backgroundColor: "rgba(234, 179, 8, 0.05)",
-    padding: 14,
-    borderRadius: 12,
-    borderWidth: 1,
-    borderColor: "rgba(234, 179, 8, 0.15)",
-  },
-  timeBadge: {
-    flexDirection: "row",
-    alignItems: "center",
-    backgroundColor: "rgba(234, 179, 8, 0.1)",
-    paddingHorizontal: 12,
-    paddingVertical: 6,
-    borderRadius: 8,
-  },
-  timeText: {
-    color: "#8B5CF6",
-    fontSize: 14,
-    fontWeight: "600",
-  },
-});

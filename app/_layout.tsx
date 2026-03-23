@@ -36,13 +36,13 @@ export default function RootLayout() {
           name="settings"
           options={{ title: t("settings.title"), presentation: "modal" }}
         />
-        <Stack.Screen 
-          name="history" 
-          options={{ title: t("history.title"), presentation: "modal" }} 
+        <Stack.Screen
+          name="history"
+          options={{ title: t("history.title"), presentation: "modal" }}
         />
-        <Stack.Screen 
-          name="stats" 
-          options={{ title: t("stats.title"), presentation: "modal" }} 
+        <Stack.Screen
+          name="stats"
+          options={{ title: t("stats.title"), presentation: "modal" }}
         />
       </Stack>
     </>

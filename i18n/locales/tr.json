@@ -1,174 +1,197 @@
 {
-    "common": {
-        "app_name": "Zikirmatik",
-        "save": "Kaydet",
-        "cancel": "Vazgeç",
-        "ok": "Tamam",
-        "delete": "Sil",
-        "reset": "Sıfırla",
-        "finished": "TAMAMLANDI",
-        "warning": "Uyarı",
-        "yes_delete": "Evet, Sil",
-        "language": "Dil",
-        "languages": {
-            "tr": "Türkçe",
-            "en": "English",
-            "de": "Deutsch",
-            "fr": "Français",
-            "ru": "Русский",
-            "bs": "Bosanski"
-        }
-    },
-    "menu": {
-        "new_zikir": "Yeni Zikir Ekle",
-        "recommendations": "Zikir Önerileri",
-        "history": "Zikir Geçmişim",
-        "stats": "İstatistikler",
-        "rate_app": "Uygulamayı Değerlendir",
-        "free_mode": "Serbest Mod"
-    },
-    "home": {
-        "reminder_modal_title": "Zikir Hatırlatıcısı",
-        "daily_notification": "Günlük Bildirim",
-        "daily_notification_sub": "Senin için sessiz bir huzur vakti ayıralım.",
-        "reminder_time_label": "Hatırlatma Saati"
-    },
-    "history": {
-        "title": "Zikir Geçmişim",
-        "no_history": "Henüz bir zikir geçmişin yok.",
-        "session_date": "Tarih",
-        "session_count": "Sayı",
-        "ongoing_tab": "Devam Edenler",
-        "finished_tab": "Tamamlananlar",
-        "clear_history": "Geçmişi Temizle",
-        "clear_confirm_title": "Geçmişi Temizle",
-        "clear_confirm_body": "Tüm zikir geçmişin silinecek. Bu işlem geri alınamaz. Onaylıyor musun?",
-        "status_ongoing": "Devam Ediyor",
-        "status_finished": "Tamamlandı",
-        "empty_ongoing": "Henüz devam eden bir zikir yok.",
-        "empty_finished": "Henüz tamamlanmış bir zikir yok."
-    },
-    "list": {
-        "title": "Zikir Önerileri",
-        "add_success": "Zikir başarıyla eklendi!",
-        "categories": {
-            "basic": "Temel Zikirler",
-            "protection": "Korunma ve Selamet",
-            "healing": "Şifa ve İstiğfar",
-            "salavat": "Salavat-ı Şerifeler",
-            "quran": "Kur'anî Dualar"
-        }
-    },
-    "settings": {
-        "title": "Yeni Zikir Ekle",
-        "zikir_text_placeholder": "Zikir metni...",
-        "zikir_text_placeholder_example": "Örn: La İlahe İllallah",
-        "arabic_text_placeholder": "Arapça metin (opsiyonel)",
-        "target_placeholder": "Hedef sayı",
-        "add_button": "Zikir Ekle",
-        "save_start": "Kaydet ve Başla",
-        "hint": "Yeni bir zikir ekleyerek hedefini belirleyebilir ve uygulama ayarlarını yönetebilirsin.",
-        "label_text": "Zikir Metni (Türkçe / Okunuş)",
-        "label_arabic": "Zikir Metni (Arapça - İsteğe Bağlı)",
-        "label_target": "Hedef Sayı",
-        "system_settings": "SİSTEM AYARLARI",
-        "daily_reminder": "Günlük Hatırlatıcı",
-        "daily_reminder_sub": "Günün zikrini hatırlatmak için bildirim gönderir.",
-        "error_empty": "Lütfen bir zikir metni gir."
-    },
-    "recommendations": {
-        "12": {
-            "text": "Subhanallahi vel-hamdülillahi ve la ilahe illallahu vallahu ekber",
-            "translation": "Allah'ı tenzih ederim, hamd O'nadır, O'ndan başka ilah yoktur ve Allah en büyüktür.",
-            "source": "Müslim, Âdâb 12"
-        },
-        "15": {
-            "text": "La ilahe illallahu vahdehu la şerike leh, lehü'l-mülkü ve lehü'l-hamdü ve hüve ala külli şey'in kadir",
-            "translation": "Allah'tan başka ilah yoktur, tektir, ortağı yoktur. Mülk O'nundur, hamd O'nadır ve O her şeye kadirdir.",
-            "source": "Buhari, Daavat 54"
-        },
-        "6": {
-            "text": "Subhanallahi ve bihamdihi adede halkihi ve rida nefsihi ve zinete arşihi ve midade kelimatih",
-            "translation": "Yarattıklarının sayısınca, kendisinin hoşnutluğunca, Arş'ının ağırlığınca ve kelimelerinin mürekkebince Allah'ı hamd ile tesbih ederim.",
-            "source": "Müslim, Zikir 79"
-        },
-        "1": {
-            "text": "La ilahe illa ente subhaneke inni kuntu minez-zalimin",
-            "translation": "Senden başka ilah yoktur. Seni eksikliklerden tenzih ederim, ben zalimlerden oldum.",
-            "source": "Enbiya Suresi, 87"
-        },
-        "4": {
-            "text": "Hasbunallahu ve ni'mel vekil, ni'mel mevla ve ni'men-nasir",
-            "translation": "Allah bize yeter, O ne güzel vekildir. Ne güzel mevla ve ne güzel yardımcıdır.",
-            "source": "Âl-i İmrân Suresi, 173"
-        },
-        "2": {
-            "text": "Hasbiyallahu la ilahe illa hu, aleyhi tevekkeltü ve hüve rabbü'l-arşi'l-azim",
-            "translation": "Bana Allah yeter. O'ndan başka ilah yoktur. Ben O'na tevekkül ettim ve O, büyük Arş'ın Rabbidir.",
-            "source": "Tevbe Suresi, 129"
-        },
-        "8": {
-            "text": "Ya Hayyu Ya Kayyum bi-rahmetike estegisu, aslih li şe'ni kullehu ve la tekilni ila nefsi tarfete ayn",
-            "translation": "Ey Hayy ve Kayyum olan Allah'ım! Senin rahmetinden yardım dilerim. Tüm işlerimi düzelt ve beni bir göz kırpımı kadar bile nefsime bırakma.",
-            "source": "Tirmizi, Daavat 91"
-        },
-        "7": {
-            "text": "Estağfirullahe'l-azim el-lezi la ilahe illa huve'l-hayyu'l-kayyumu ve etubü ileyh",
-            "translation": "Kendisinden başka ilah olmayan, Hayy ve Kayyum olan Azim Allah'tan mağfiret dilerim.",
-            "source": "Ebû Dâvûd, Vitir 26"
-        },
-        "3": {
-            "text": "Rabbi inni messeniye'd-durru ve ente erhamu'r-rahimin",
-            "translation": "Rabbim! Şüphesiz bu dert beni sardı; sen ise merhametlilerin en merhametlisisin.",
-            "source": "Enbiya Suresi, 83"
-        },
-        "10": {
-            "text": "Allahumme salli ala seyyidina Muhammedin salaten tuncina biha min cemial ehvali vel-afat",
-            "translation": "Allah'ım! Efendimiz Muhammed'e öyle bir salat et ki, onunla bizi tüm korku ve belalardan kurtar.",
-            "source": "Salat-ı Münciye"
-        },
-        "11": {
-            "text": "Allahumme salli salaten kamileten ve sellim selamen tammen ala seyyidina Muhammedinillezi tenhallu bihil ukad",
-            "translation": "Allah'ım! Efendimiz Muhammed'e kâmil bir salât ve tam bir selâm eyle ki, onun hürmetine düğümler çözülsün.",
-            "source": "Salat-ı Tefriciye"
-        },
-        "5": {
-            "text": "Rabbena atina fid-dunya haseneten ve fil-ahireti haseneten ve kina azaben-nar",
-            "translation": "Rabbimiz! Bize dünyada da iyilik ver, ahirette de iyilik ver ve bizi ateş azabından koru.",
-            "source": "Bakara Suresi, 201"
-        },
-        "14": {
-            "text": "Rabbi heb li min ledunke zurriyeten tayyibeten inneke semi'ud-dua",
-            "translation": "Rabbim! Bana katından temiz bir nesil bahşet. Şüphesiz sen duayı hakkıyla işitensin.",
-            "source": "Âl-i İmrân Suresi, 38"
-        },
-        "9": {
-            "text": "La ilahe illallahü'l-melikü'l-hakku'l-mübin",
-            "translation": "Mülk sahibi, hak ve varlığı apaçık olan Allah'tan başka ilah yoktur.",
-            "source": "Hadis-i Şerif"
-        },
-        "13": {
-            "text": "Ya Zel Celali vel İkram",
-            "translation": "Ey Celal ve İkram sahibi olan Allah'ım!",
-            "source": "Tirmizi, Daavat 92"
-        }
-    },
-    "notifications": {
-        "daily_title": "Huzur Vakti ✨",
-        "daily_body": "Kalpler ancak Allah'ı anmakla huzur bulur. Kısa bir zikir molasına ne dersin? 🌙"
-    },
-    "stats": {
-        "title": "İstatistikler",
-        "total_zikr": "Toplam Tesbih",
-        "total_sessions": "Toplam Oturum",
-        "completed_zikirs": "Tamamlanan Hedefler",
-        "daily_activity": "Günlük Aktivite (7 Gün)",
-        "no_data": "Henüz veri bulunmuyor.",
-        "empty_title": "Henüz Zikir Kaydı Yok",
-        "empty_desc": "Zikirlerini çektikçe burada senin için özel grafikler ve istatistikler oluşacak. Hadi başlayalım!",
-        "start_now": "Hemen Başla",
-        "today": "Bugün",
-        "last_7_days": "Son 7 Gün",
-        "motivation": "İstikrar önemlidir! Düzenli zikir kalbe huzur verir."
+  "common": {
+    "app_name": "Zikirmatik",
+    "save": "Kaydet",
+    "cancel": "Vazgeç",
+    "ok": "Tamam",
+    "done": "Bitti",
+    "delete": "Sil",
+    "reset": "Sıfırla",
+    "finished": "TAMAMLANDI",
+    "warning": "Uyarı",
+    "yes_delete": "Evet, Sil",
+    "language": "Dil",
+    "languages": {
+      "tr": "Türkçe",
+      "en": "English",
+      "de": "Deutsch",
+      "fr": "Français",
+      "ru": "Русский",
+      "bs": "Bosanski"
     }
+  },
+  "menu": {
+    "title": "Zikirmatik",
+    "zikir_list": "Zikir Listesi",
+    "new_zikir": "Yeni Zikir Ekle",
+    "recommendations": "Zikir Önerileri",
+    "history": "Zikir Geçmişim",
+    "stats": "İstatistikler",
+    "rate_app": "Uygulamayı Değerlendir",
+    "free_mode": "Serbest Mod",
+    "settings": "Ayarlar"
+  },
+  "home": {
+    "reminder_modal_title": "Zikir Hatırlatıcısı",
+    "daily_notification": "Günlük Bildirim",
+    "daily_notification_sub": "Senin için sessiz bir huzur vakti ayıralım.",
+    "reminder_time_label": "Hatırlatma Saati",
+    "target_reached": "Hedefe Ulaşıldı"
+  },
+  "history": {
+    "title": "Zikir Geçmişim",
+    "no_history": "Henüz bir zikir geçmişin yok.",
+    "session_date": "Tarih",
+    "session_count": "Sayı",
+    "ongoing_tab": "Devam Edenler",
+    "finished_tab": "Tamamlananlar",
+    "clear_history": "Geçmişi Temizle",
+    "clear_confirm_title": "Geçmişi Temizle",
+    "clear_confirm_body": "Tüm zikir geçmişin silinecek. Bu işlem geri alınamaz. Onaylıyor musun?",
+    "status_ongoing": "Devam Ediyor",
+    "status_finished": "Tamamlandı",
+    "empty_ongoing": "Henüz devam eden bir zikir yok.",
+    "empty_finished": "Henüz tamamlanmış bir zikir yok."
+  },
+  "list": {
+    "title": "Zikir Önerileri",
+    "add_success": "Zikir başarıyla eklendi!",
+    "categories": {
+      "basic": "Temel Zikirler",
+      "protection": "Korunma ve Selamet",
+      "healing": "Şifa ve İstiğfar",
+      "salavat": "Salavat-ı Şerifeler",
+      "quran": "Kur'anî Dualar"
+    }
+  },
+  "settings": {
+    "title": "Yeni Zikir Ekle",
+    "edit_title": "Zikri Düzenle",
+    "zikir_text_placeholder": "Zikir metni...",
+    "zikir_text_placeholder_example": "Örn: La İlahe İllallah",
+    "arabic_text_placeholder": "Arapça metin (opsiyonel)",
+    "target_placeholder": "Hedef sayı",
+    "add_button": "Zikir Ekle",
+    "save_start": "Kaydet ve Başla",
+    "hint": "Yeni bir zikir ekleyerek hedefini belirleyebilir ve uygulama ayarlarını yönetebilirsin.",
+    "label_text": "Zikir Metni (Türkçe / Okunuş)",
+    "label_arabic": "Zikir Metni (Arapça - İsteğe Bağlı)",
+    "label_target": "Hedef Sayı",
+    "system_settings": "SİSTEM AYARLARI",
+    "daily_reminder": "Günlük Hatırlatıcı",
+    "daily_reminder_sub": "Günün zikrini hatırlatmak için bildirim gönderir.",
+    "notifications": "Bildirimler",
+    "reminder_time": "Hatırlatma Saati",
+    "reminder_desc": "Günün zikrini hatırlatmak için bildirim gönderir.",
+    "error_empty": "Lütfen bir zikir metni gir."
+  },
+  "recommendations": {
+    "12": {
+      "text": "Subhanallahi vel-hamdülillahi ve la ilahe illallahu vallahu ekber",
+      "translation": "Allah'ı tenzih ederim, hamd O'nadır, O'ndan başka ilah yoktur ve Allah en büyüktür.",
+      "source": "Müslim, Âdâb 12"
+    },
+    "15": {
+      "text": "La ilahe illallahu vahdehu la şerike leh, lehü'l-mülkü ve lehü'l-hamdü ve hüve ala külli şey'in kadir",
+      "translation": "Allah'tan başka ilah yoktur, tektir, ortağı yoktur. Mülk O'nundur, hamd O'nadır ve O her şeye kadirdir.",
+      "source": "Buhari, Daavat 54"
+    },
+    "6": {
+      "text": "Subhanallahi ve bihamdihi adede halkihi ve rida nefsihi ve zinete arşihi ve midade kelimatih",
+      "translation": "Yarattıklarının sayısınca, kendisinin hoşnutluğunca, Arş'ının ağırlığınca ve kelimelerinin mürekkebince Allah'ı hamd ile tesbih ederim.",
+      "source": "Müslim, Zikir 79"
+    },
+    "1": {
+      "text": "La ilahe illa ente subhaneke inni kuntu minez-zalimin",
+      "translation": "Senden başka ilah yoktur. Seni eksikliklerden tenzih ederim, ben zalimlerden oldum.",
+      "source": "Enbiya Suresi, 87"
+    },
+    "4": {
+      "text": "Hasbunallahu ve ni'mel vekil, ni'mel mevla ve ni'men-nasir",
+      "translation": "Allah bize yeter, O ne güzel vekildir. Ne güzel mevla ve ne güzel yardımcıdır.",
+      "source": "Âl-i İmrân Suresi, 173"
+    },
+    "2": {
+      "text": "Hasbiyallahu la ilahe illa hu, aleyhi tevekkeltü ve hüve rabbü'l-arşi'l-azim",
+      "translation": "Bana Allah yeter. O'ndan başka ilah yoktur. Ben O'na tevekkül ettim ve O, büyük Arş'ın Rabbidir.",
+      "source": "Tevbe Suresi, 129"
+    },
+    "8": {
+      "text": "Ya Hayyu Ya Kayyum bi-rahmetike estegisu, aslih li şe'ni kullehu ve la tekilni ila nefsi tarfete ayn",
+      "translation": "Ey Hayy ve Kayyum olan Allah'ım! Senin rahmetinden yardım dilerim. Tüm işlerimi düzelt ve beni bir göz kırpımı kadar bile nefsime bırakma.",
+      "source": "Tirmizi, Daavat 91"
+    },
+    "7": {
+      "text": "Estağfirullahe'l-azim el-lezi la ilahe illa huve'l-hayyu'l-kayyumu ve etubü ileyh",
+      "translation": "Kendisinden başka ilah olmayan, Hayy ve Kayyum olan Azim Allah'tan mağfiret dilerim.",
+      "source": "Ebû Dâvûd, Vitir 26"
+    },
+    "3": {
+      "text": "Rabbi inni messeniye'd-durru ve ente erhamu'r-rahimin",
+      "translation": "Rabbim! Şüphesiz bu dert beni sardı; sen ise merhametlilerin en merhametlisisin.",
+      "source": "Enbiya Suresi, 83"
+    },
+    "10": {
+      "text": "Allahumme salli ala seyyidina Muhammedin salaten tuncina biha min cemial ehvali vel-afat",
+      "translation": "Allah'ım! Efendimiz Muhammed'e öyle bir salat et ki, onunla bizi tüm korku ve belalardan kurtar.",
+      "source": "Salat-ı Münciye"
+    },
+    "16": {
+      "text": "Allahümme salli alâ Seyyidinâ Muhammedin ve alâ âli Seyyidinâ Muhammed",
+      "translation": "Allah'ım! Efendimiz Muhammed'e ve O'nun âline salât eyle.",
+      "source": "Salavat-ı Şerife"
+    },
+    "11": {
+      "text": "Allâhumme salli salâten kâmileten ve sellim selâmen tâmmen alâ seyyidinâ Muhammedinillezî tenhallü bihil ukadü ve tenfericu bihil-kürebü ve tukdâ bihil-havâicu ve tünâlü bihir-reğâibü ve hüsnül-havâtimi ve yustaskal ğamâmu bivechihil Kerîm ve alâ âlihî ve sahbihi fî külli lemhatin ve nefesin bi adedi külli ma’lûmin lek",
+      "translation": "Allah'im! Efendimiz Muhammed'e kâmil bir salât ve tam bir selâm eyle ki, onun hürmetine düğümler çözülsün, kederler dağılsın, ihtiyaçlar karşılansın, isteklere kavuşulsun, güzel sonlar elde edilsin ve kerim olan yüzü hürmetine bulutlardan yağmur istensin. O'nun âline ve ashabına da her bakışta ve her nefeste, senin bildiğin şeyler sayısınca salât ve selâm eyle.",
+      "source": "Salat-ı Tefriciye"
+    },
+    "5": {
+      "text": "Rabbena atina fid-dunya haseneten ve fil-ahireti haseneten ve kina azaben-nar",
+      "translation": "Rabbimiz! Bize dünyada da iyilik ver, ahirette de iyilik ver ve bizi ateş azabından koru.",
+      "source": "Bakara Suresi, 201"
+    },
+    "14": {
+      "text": "Rabbi heb li min ledunke zurriyeten tayyibeten inneke semi'ud-dua",
+      "translation": "Rabbim! Bana katından temiz bir nesil bahşet. Şüphesiz sen duayı hakkıyla işitensin.",
+      "source": "Âl-i İmrân Suresi, 38"
+    },
+    "9": {
+      "text": "La ilahe illallahü'l-melikü'l-hakku'l-mübin",
+      "translation": "Mülk sahibi, hak ve varlığı apaçık olan Allah'tan başka ilah yoktur.",
+      "source": "Hadis-i Şerif"
+    },
+    "13": {
+      "text": "Ya Zel Celali vel İkram",
+      "translation": "Ey Celal ve İkram sahibi olan Allah'ım!",
+      "source": "Tirmizi, Daavat 92"
+    }
+  },
+  "notifications": {
+    "daily_title": "Huzur Vakti ✨",
+    "daily_body": "Kalpler ancak Allah'ı anmakla huzur bulur. Kısa bir zikir molasına ne dersin? 🌙"
+  },
+  "stats": {
+    "title": "İstatistikler",
+    "total_zikr": "Toplam Tesbih",
+    "total_sessions": "Toplam Oturum",
+    "completed_zikirs": "Tamamlanan Hedefler",
+    "daily_activity": "Günlük Aktivite (7 Gün)",
+    "activity": "Aktivite",
+    "count": "Sayı",
+    "no_data": "Henüz veri bulunmuyor.",
+    "empty_title": "Henüz Zikir Kaydı Yok",
+    "empty_desc": "Zikirlerini çektikçe burada senin için özel grafikler ve istatistikler oluşacak. Hadi başlayalım!",
+    "start_now": "Hemen Başla",
+    "today": "Bugün",
+    "last_7_days": "Son 7 Gün",
+    "motivation": "İstikrar önemlidir! Düzenli zikir kalbe huzur verir."
+  },
+  "rating": {
+    "title": "Uygulamayı Beğendiniz mi?",
+    "description": "Zikirmatik size yardımcı oluyorsa, lütfen vakit ayırıp değerlendirin. Desteğiniz daha fazla kişiye ulaşmamıza yardımcı olur.",
+    "submit": "Şimdi Puan Ver",
+    "remind_later": "Daha Sonra Hatırlat",
+    "no_thanks": "Hayır, teşekkürler"
+  }
 }
